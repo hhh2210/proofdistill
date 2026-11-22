@@ -1,0 +1,514 @@
+{
+  "timing_sec": {
+    "mathlib": 6.7,
+    "rh_in_cone": 68.7
+  },
+  "mathlib": {
+    "stats": {
+      "files": 8712,
+      "total_lines": 2368060,
+      "blank_lines": 465034,
+      "comment_lines": 122475,
+      "docstrings": 77649,
+      "def_lines": 32565,
+      "def_prop_lines": 1073,
+      "dump_files_strict": 6,
+      "have_lines": 40574,
+      "simp_attrs": 51114,
+      "import_mathlib_root": 2,
+      "ext_attrs": 1396,
+      "calc_lines": 2827
+    },
+    "decl_kinds": {
+      "structure": 1833,
+      "abbrev": 3707,
+      "def": 32859,
+      "inductive": 350,
+      "class": 2019,
+      "theorem": 127942,
+      "lemma": 55630,
+      "instance": 11111,
+      "opaque": 2,
+      "axiom": 3
+    },
+    "file_decl_buckets": {
+      "0": 412,
+      "6-20": 3035,
+      "1": 363,
+      "2-5": 1455,
+      "21+": 3447
+    },
+    "proof_len_buckets": {
+      "21-50": 8800,
+      "6-20": 81135,
+      "51-150": 980,
+      "1-5": 92624,
+      "151-500": 32,
+      "500+": 1
+    },
+    "indeg_all": {
+      "count": 8712,
+      "buckets": {
+        "21+": 39,
+        "0": 1578,
+        "3-5": 1869,
+        "2": 1530,
+        "1": 2597,
+        "6-20": 1099
+      },
+      "pct_eq_1": 29.81,
+      "pct_le_1": 47.92,
+      "pct_le_2": 65.48,
+      "median": 2,
+      "p90": 7,
+      "p99": 17,
+      "mean": 2.74,
+      "max": 205
+    },
+    "indeg_non_stmt": {
+      "count": 8712,
+      "buckets": {
+        "21+": 39,
+        "0": 1578,
+        "3-5": 1869,
+        "2": 1530,
+        "1": 2597,
+        "6-20": 1099
+      },
+      "pct_eq_1": 29.81,
+      "pct_le_1": 47.92,
+      "pct_le_2": 65.48,
+      "median": 2,
+      "p90": 7,
+      "p99": 17,
+      "mean": 2.74,
+      "max": 205
+    },
+    "lines_breakdown": {
+      "total": 2368060,
+      "stmt_or_glue_files": 0,
+      "non_stmt_with_dump_strict": 2349,
+      "non_stmt_clean_strict": 2365711
+    },
+    "dup_exact_name_total_extra": 30213,
+    "top_dup_exact_names": [
+      [
+        "ext",
+        416
+      ],
+      [
+        "hom_ext",
+        192
+      ],
+      [
+        "map_id",
+        136
+      ],
+      [
+        "coe_mk",
+        110
+      ],
+      [
+        "comp_apply",
+        109
+      ],
+      [
+        "map_comp",
+        96
+      ],
+      [
+        "comp_assoc",
+        92
+      ],
+      [
+        "comp",
+        87
+      ],
+      [
+        "id_apply",
+        85
+      ],
+      [
+        "coe_comp",
+        85
+      ],
+      [
+        "copy_eq",
+        81
+      ],
+      [
+        "coe_mul",
+        80
+      ],
+      [
+        "comp_id",
+        76
+      ],
+      [
+        "coe_id",
+        73
+      ],
+      [
+        "coe_one",
+        73
+      ],
+      [
+        "map_map",
+        70
+      ],
+      [
+        "id_comp",
+        70
+      ],
+      [
+        "coe_injective",
+        68
+      ],
+      [
+        "mono",
+        64
+      ],
+      [
+        "trans",
+        64
+      ]
+    ],
+    "multi_stem_groups_ge3": 4534,
+    "multi_stem_total_decls_ge3": 25717,
+    "top_stems": [
+      [
+        "hom_ext",
+        198
+      ],
+      [
+        "map_id",
+        147
+      ],
+      [
+        "coe_mk",
+        130
+      ],
+      [
+        "comp_apply",
+        110
+      ],
+      [
+        "map_comp",
+        99
+      ],
+      [
+        "comp_assoc",
+        92
+      ],
+      [
+        "id_apply",
+        86
+      ],
+      [
+        "coe_comp",
+        86
+      ],
+      [
+        "copy_eq",
+        81
+      ],
+      [
+        "coe_mul",
+        80
+      ],
+      [
+        "comp_id",
+        76
+      ],
+      [
+        "coe_id",
+        75
+      ],
+      [
+        "coe_one",
+        73
+      ],
+      [
+        "id_comp",
+        71
+      ],
+      [
+        "map_map",
+        70
+      ],
+      [
+        "coe_injective",
+        69
+      ],
+      [
+        "induction_on",
+        67
+      ],
+      [
+        "coe_copy",
+        64
+      ],
+      [
+        "toFun_eq_coe",
+        62
+      ],
+      [
+        "coe_smul",
+        58
+      ]
+    ]
+  },
+  "rh_in_cone": {
+    "stats": {
+      "files": 147489,
+      "total_lines": 15218364,
+      "blank_lines": 1595122,
+      "have_lines": 1891600,
+      "import_mathlib_root": 112156,
+      "def_lines": 175424,
+      "def_prop_lines": 65028,
+      "calc_lines": 34469,
+      "simp_attrs": 5973,
+      "glue_files": 37499,
+      "dump_files_strict": 717,
+      "ext_attrs": 104,
+      "statement_files": 37312
+    },
+    "decl_kinds": {
+      "theorem": 691746,
+      "def": 175424,
+      "structure": 6836,
+      "abbrev": 11182,
+      "inductive": 93,
+      "instance": 3915,
+      "lemma": 30551,
+      "class": 33
+    },
+    "file_decl_buckets": {
+      "2-5": 38588,
+      "1": 64100,
+      "21+": 9358,
+      "6-20": 35441,
+      "0": 2
+    },
+    "proof_len_buckets": {
+      "1-5": 218841,
+      "21-50": 122043,
+      "6-20": 335472,
+      "51-150": 43788,
+      "151-500": 2136,
+      "500+": 17
+    },
+    "indeg_all": {
+      "count": 147489,
+      "buckets": {
+        "0": 2450,
+        "1": 90483,
+        "3-5": 17709,
+        "2": 22539,
+        "21+": 4071,
+        "6-20": 10237
+      },
+      "pct_eq_1": 61.35,
+      "pct_le_1": 63.01,
+      "pct_le_2": 78.29,
+      "median": 1,
+      "p90": 5,
+      "p99": 49,
+      "mean": 3.94,
+      "max": 2300
+    },
+    "indeg_non_stmt": {
+      "count": 108229,
+      "buckets": {
+        "0": 1929,
+        "1": 60752,
+        "3-5": 14873,
+        "2": 17522,
+        "21+": 3922,
+        "6-20": 9231
+      },
+      "pct_eq_1": 56.13,
+      "pct_le_1": 57.92,
+      "pct_le_2": 74.1,
+      "median": 1,
+      "p90": 7,
+      "p99": 63,
+      "mean": 4.76,
+      "max": 2300
+    },
+    "lines_breakdown": {
+      "total": 15218364,
+      "stmt_or_glue_files": 691632,
+      "non_stmt_with_dump_strict": 114282,
+      "non_stmt_clean_strict": 14412450
+    },
+    "dup_exact_name_total_extra": 142021,
+    "top_dup_exact_names": [
+      [
+        "main",
+        2133
+      ],
+      [
+        "core",
+        531
+      ],
+      [
+        "exists_lift",
+        377
+      ],
+      [
+        "key",
+        269
+      ],
+      [
+        "step",
+        244
+      ],
+      [
+        "proof",
+        244
+      ],
+      [
+        "decomp",
+        202
+      ],
+      [
+        "goal1",
+        173
+      ],
+      [
+        "exists_factor",
+        155
+      ],
+      [
+        "exists_frame",
+        123
+      ],
+      [
+        "exists_basis",
+        123
+      ],
+      [
+        "exists_rep",
+        120
+      ],
+      [
+        "exists_ext",
+        118
+      ],
+      [
+        "transport",
+        113
+      ],
+      [
+        "conj_conj",
+        113
+      ],
+      [
+        "exists_den",
+        111
+      ],
+      [
+        "spMap_comp'",
+        111
+      ],
+      [
+        "exists_chart",
+        108
+      ],
+      [
+        "exists_coord",
+        105
+      ],
+      [
+        "conj_mem",
+        104
+      ]
+    ],
+    "multi_stem_groups_ge3": 21729,
+    "multi_stem_total_decls_ge3": 120612,
+    "top_stems": [
+      [
+        "exists_lift",
+        378
+      ],
+      [
+        "decomp",
+        206
+      ],
+      [
+        "spMap_comp",
+        204
+      ],
+      [
+        "exists_factor",
+        157
+      ],
+      [
+        "conj_conj",
+        123
+      ],
+      [
+        "exists_frame",
+        123
+      ],
+      [
+        "exists_basis",
+        123
+      ],
+      [
+        "exists_rep",
+        121
+      ],
+      [
+        "exists_ext",
+        119
+      ],
+      [
+        "transport",
+        113
+      ],
+      [
+        "conj_mem",
+        111
+      ],
+      [
+        "exists_den",
+        111
+      ],
+      [
+        "exists_chart",
+        108
+      ],
+      [
+        "exists_coord",
+        107
+      ],
+      [
+        "exists_unit",
+        100
+      ],
+      [
+        "exists_gen",
+        95
+      ],
+      [
+        "exists_section",
+        94
+      ],
+      [
+        "exists_form",
+        92
+      ],
+      [
+        "expand",
+        92
+      ],
+      [
+        "exists_bound",
+        92
+      ]
+    ]
+  }
+}

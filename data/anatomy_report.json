@@ -1,0 +1,801 @@
+{
+  "elapsed_seconds": 131.75,
+  "macro": {
+    "in_cone": {
+      "files": 147489,
+      "lines": 15218364,
+      "bytes": 899280876,
+      "theorems": 727017,
+      "defs": 201302
+    },
+    "dead_module": {
+      "files": 27698,
+      "lines": 2155851,
+      "bytes": 131250978,
+      "theorems": 91738,
+      "defs": 41366
+    }
+  },
+  "line_budget": {
+    "in_cone": {
+      "import": 757522,
+      "blank": 1595122,
+      "boilerplate": 1042368,
+      "thm_header": 1834632,
+      "thm_proof": 8917317,
+      "def_decl": 944766,
+      "other": 126637
+    },
+    "dead_module": {
+      "import": 152300,
+      "blank": 247334,
+      "other": 21262,
+      "boilerplate": 182509,
+      "thm_header": 248070,
+      "thm_proof": 1094892,
+      "def_decl": 209484
+    }
+  },
+  "tactics": {
+    "in_cone": {
+      "have": 1963117,
+      "let": 211903,
+      "rw": 1258040,
+      "simp": 430576,
+      "exact": 1145621,
+      "calc": 34469,
+      "linear_arith": 111667,
+      "intro_rcases": 983066,
+      "aesop_grind": 1115
+    },
+    "dead_module": {
+      "have": 258329,
+      "let": 30603,
+      "rw": 151330,
+      "simp": 51707,
+      "exact": 134465,
+      "calc": 4716,
+      "intro_rcases": 120226,
+      "linear_arith": 16067,
+      "aesop_grind": 145
+    }
+  },
+  "fragmentation_in_cone": {
+    "decls_per_file": {
+      "4-10": 34786,
+      "1": 64055,
+      "2-3": 23902,
+      "11+": 24746
+    },
+    "lines_per_file": {
+      "61-150": 42008,
+      "26-60": 26538,
+      "151-500": 30761,
+      "1-25": 46001,
+      "501+": 2181
+    },
+    "wrapper_like_files": 38608,
+    "wrapper_like_lines": 445332
+  },
+  "explicit_dumps": {
+    "files_with_dump_markers": {
+      "in_cone": 45350,
+      "dead_module": 9677
+    },
+    "lines_with_dump_markers": {
+      "in_cone": 114313,
+      "dead_module": 10390
+    },
+    "long_lines_ge_200": {
+      "in_cone": 146567,
+      "dead_module": 26013
+    },
+    "long_lines_ge_500": {
+      "in_cone": 41173,
+      "dead_module": 5616
+    },
+    "maxHeartbeats_files": {
+      "in_cone": 44235,
+      "dead_module": 9845
+    },
+    "maxHeartbeats_buckets": {
+      "400k_1M": 1780,
+      "ge_1M": 52275,
+      "lt_400k": 25
+    }
+  },
+  "naming_patterns_in_cone": {
+    "suffixes": {
+      "*DigitSuffix_files": 468,
+      "*DigitSuffix_lines": 50292,
+      "*Statement_files": 37312,
+      "*Statement_lines": 505316,
+      "*Cpt*_files": 161,
+      "*Cpt*_lines": 18210
+    },
+    "namespaces": {
+      "GlobalTheory_files": 110481,
+      "UpperTheory.Reformulated_files": 1440,
+      "UpperTheory.Reformulated_lines": 279005
+    }
+  },
+  "in_cone_duplication": {
+    "exact_groups": 10296,
+    "exact_extra": 12548,
+    "header_groups": 51631,
+    "header_extra": 59505,
+    "alpha_groups": 54149,
+    "alpha_extra": 65031,
+    "alpha_est_redundant_proof_lines": 940060,
+    "top_20_nontrivial_clones": [
+      {
+        "saved_lines": 407,
+        "occ": 6,
+        "avg_lines": 81.5,
+        "task": "M108606",
+        "domain3": "Development.AutomorphicArithmetic.AutomorphicVarieties",
+        "name": "phi_condition_of_finite_cohomology",
+        "header": "{Γ : Type} [Group Γ] [TopologicalSpace Γ] [IsTopologicalGroup Γ] [CompactSpace Γ] (n : ℕ) [NeZero n] (h : ∀ (M : Type) [AddCommGroup M] [Module (ZMod n) M] [Top"
+      },
+      {
+        "saved_lines": 375,
+        "occ": 29,
+        "avg_lines": 13.4,
+        "task": "M143284",
+        "domain3": "Development.WeilBound.ThetaLifts",
+        "name": "hasSig_det",
+        "header": "{n r s : ℕ} {M : Matrix (Fin n) (Fin n) ℂ} (h : HasSig M r s) : M.det ≠ 0"
+      },
+      {
+        "saved_lines": 276,
+        "occ": 116,
+        "avg_lines": 2.4,
+        "task": "M027075",
+        "domain3": "Development.AbelianVarietyTheory.Proofs",
+        "name": "spMap_comp_spMap",
+        "header": "{A B C : Type} [CommRing A] [CommRing B] [CommRing C] (a : A →+* B) (b : B →+* C) : spMap b ≫ spMap a = spMap (b.comp a)"
+      },
+      {
+        "saved_lines": 274,
+        "occ": 114,
+        "avg_lines": 2.4,
+        "task": "M003872",
+        "domain3": "Development.AbelianVarietyTheory.Definitions",
+        "name": "spMap_comp",
+        "header": "{A B C : Type} [CommRing A] [CommRing B] [CommRing C] (f : A →+* B) (g : B →+* C) : spMap (g.comp f) = spMap g ≫ spMap f"
+      },
+      {
+        "saved_lines": 254,
+        "occ": 20,
+        "avg_lines": 13.4,
+        "task": "M104007",
+        "domain3": "Development.AutomorphicArithmetic.AutomorphicVarieties",
+        "name": "intIff",
+        "header": "{l : ℕ} [Fact l.Prime] (x : PadicAlgCl l) : IsIntegral ℤ_[l] x ↔ ‖x‖ ≤ 1"
+      },
+      {
+        "saved_lines": 239,
+        "occ": 63,
+        "avg_lines": 3.9,
+        "task": "M064676",
+        "domain3": "Development.AbelianVarietyTheory.Proofs",
+        "name": "conj_conj",
+        "header": "(h : IsCMExt F E σ) (e : E) : σ (σ e) = e"
+      },
+      {
+        "saved_lines": 239,
+        "occ": 15,
+        "avg_lines": 17.1,
+        "task": "M108755",
+        "domain3": "Development.AutomorphicArithmetic.AutomorphicVarieties",
+        "name": "totDisc_quot",
+        "header": "{G : Type} [Group G] [TopologicalSpace G] [IsTopologicalGroup G] [CompactSpace G] [TotallyDisconnectedSpace G] (N : Subgroup G) [N.Normal] (hN : IsClosed (N : S"
+      },
+      {
+        "saved_lines": 209,
+        "occ": 12,
+        "avg_lines": 19.1,
+        "task": "M174733",
+        "domain3": "ReciprocityTheory.ReductiveGroups.DiscreteSeries",
+        "name": "hpk_mulVec'",
+        "header": "(v : Fin (2 * r + k + 1) → ℂ) (i : Fin (2 * r + k + 1)) : (Hpk k r *ᵥ v) i = if i.val < r ∨ r + k < i.val then v ⟨2 * r + k - i.val, by omega⟩ else if i.val = r"
+      },
+      {
+        "saved_lines": 200,
+        "occ": 40,
+        "avg_lines": 5.2,
+        "task": "M129553",
+        "domain3": "Development.AutomorphicSpectrum.Proofs",
+        "name": "form_mul",
+        "header": "{f g : MRing ι} {a b : K → ℕ} (hf : IsMultiHomog f a) (hg : IsMultiHomog g b) : IsMultiHomog (f * g) (a + b)"
+      },
+      {
+        "saved_lines": 190,
+        "occ": 6,
+        "avg_lines": 38.0,
+        "task": "M107678",
+        "domain3": "Development.AutomorphicArithmetic.AutomorphicVarieties",
+        "name": "z1fDesc_avg",
+        "header": "{k G W : Type} [Field k] [CharZero k] [Group G] [AddCommGroup W] [Module k W] (a : G → W →ₗ[k] W) (hmul : ∀ g h w, a (g * h) w = a g (a h w)) (f : G → W) (hf : "
+      },
+      {
+        "saved_lines": 190,
+        "occ": 4,
+        "avg_lines": 63.5,
+        "task": "M156476",
+        "domain3": "Formalism.PeriodIntegrals.UnitaryGroupMassFormula",
+        "name": "isDomain_of_forall_spanFinrank_lt",
+        "header": "(R : Type u) [CommRing R] [IsRegularLocalRing R] (IH : ∀ (S : Type u) [CommRing S] [IsRegularLocalRing S], Submodule.spanFinrank (maximalIdeal S) < Submodule.sp"
+      },
+      {
+        "saved_lines": 185,
+        "occ": 4,
+        "avg_lines": 61.8,
+        "task": "M156476",
+        "domain3": "Formalism.PeriodIntegrals.UnitaryGroupMassFormula",
+        "name": "spanFinrank_maximalIdeal_quotient_succ_le",
+        "header": "(R : Type*) [CommRing R] [IsLocalRing R] [IsNoetherianRing R] {x : R} (hx : x ∈ maximalIdeal R) (hx2 : x ∉ maximalIdeal R ^ 2) [IsLocalRing (R ⧸ Ideal.span ({x}"
+      },
+      {
+        "saved_lines": 181,
+        "occ": 32,
+        "avg_lines": 5.8,
+        "task": "M129553",
+        "domain3": "Development.AutomorphicSpectrum.Proofs",
+        "name": "form_add",
+        "header": "{f g : MRing ι} {a : K → ℕ} (hf : IsMultiHomog f a) (hg : IsMultiHomog g a) : IsMultiHomog (f + g) a"
+      },
+      {
+        "saved_lines": 178,
+        "occ": 6,
+        "avg_lines": 35.7,
+        "task": "M166829",
+        "domain3": "GroundTheory.HeightsAndTheta.Heights",
+        "name": "exists_form_of_mem_chartRingZ",
+        "header": "(y : (Σ k, ι k) → Ω) (c : ∀ k, ι k) (hc : ∀ k, y ⟨k, c k⟩ ≠ 0) {x : Ω} (hx : x ∈ chartRingZ y c) : ∃ (δ : K → ℕ) (e : MRing ι), IsMultiHomog e δ ∧ aeval y e = x"
+      },
+      {
+        "saved_lines": 177,
+        "occ": 11,
+        "avg_lines": 17.7,
+        "task": "M155888",
+        "domain3": "Formalism.PeriodIntegrals.UnitaryGroupMassFormula",
+        "name": "oev_mul",
+        "header": "{x y : Fv F v ⊗[F] E} (hx : x ∈ OEv (E := E) v) (hy : y ∈ OEv (E := E) v) : x * y ∈ OEv (E := E) v"
+      },
+      {
+        "saved_lines": 167,
+        "occ": 11,
+        "avg_lines": 16.7,
+        "task": "M101500",
+        "domain3": "Development.AutomorphicArithmetic.AutomorphicVarieties",
+        "name": "isPrecomplete_pi",
+        "header": "{R : Type} [CommRing R] (I : Ideal R) [IsPrecomplete I R] (r : ℕ) : IsPrecomplete I (Fin r → R)"
+      },
+      {
+        "saved_lines": 159,
+        "occ": 7,
+        "avg_lines": 26.6,
+        "task": "M101500",
+        "domain3": "Development.AutomorphicArithmetic.AutomorphicVarieties",
+        "name": "isPrecomplete_finite",
+        "header": "{R M : Type} [CommRing R] [AddCommGroup M] [Module R M] [Module.Finite R M] (I : Ideal R) [IsPrecomplete I R] : IsPrecomplete I M"
+      },
+      {
+        "saved_lines": 154,
+        "occ": 23,
+        "avg_lines": 7.0,
+        "task": "M131566",
+        "domain3": "Development.AutomorphicSpectrum.Proofs",
+        "name": "homog_pow_lemma",
+        "header": "{a : MRing ι} {d : K → ℕ} (ha : IsMultiHomog a d) (n : ℕ) : IsMultiHomog (a ^ n) (n • d)"
+      },
+      {
+        "saved_lines": 151,
+        "occ": 16,
+        "avg_lines": 10.1,
+        "task": "M143501",
+        "domain3": "Development.WeilBound.ThetaLifts",
+        "name": "continuous_ofMixed",
+        "header": ": Continuous (InfiniteAdeleRing.ringEquiv_mixedSpace F).symm"
+      },
+      {
+        "saved_lines": 150,
+        "occ": 4,
+        "avg_lines": 50.2,
+        "task": "M099657",
+        "domain3": "Development.AbelianVarietyTheory.Proofs",
+        "name": "smT_add",
+        "header": "(v : overAt x0 (DualNumber S) ⟶ G) (h0 : smT x0 0 v = 1) (a b : S) : smT x0 (a + b) v = smT x0 a v * smT x0 b v"
+      }
+    ]
+  },
+  "by_root_in_cone": {
+    "Development": {
+      "files": 119891,
+      "lines": 10707919,
+      "imp_lines": 670348,
+      "proof_lines": 6309372,
+      "dump_lines": 112223,
+      "theorems": 497334,
+      "defs": 110272
+    },
+    "Formalism": {
+      "files": 15030,
+      "lines": 2836403,
+      "imp_lines": 43207,
+      "proof_lines": 1636723,
+      "dump_lines": 344,
+      "theorems": 147581,
+      "defs": 64381
+    },
+    "GroundTheory": {
+      "files": 6693,
+      "lines": 902860,
+      "imp_lines": 24681,
+      "proof_lines": 492262,
+      "dump_lines": 303,
+      "theorems": 43998,
+      "defs": 15461
+    },
+    "ReciprocityTheory": {
+      "files": 3485,
+      "lines": 532939,
+      "imp_lines": 8858,
+      "proof_lines": 331681,
+      "dump_lines": 95,
+      "theorems": 26557,
+      "defs": 8130
+    },
+    "CompanionTheory": {
+      "files": 1887,
+      "lines": 186636,
+      "imp_lines": 8444,
+      "proof_lines": 117057,
+      "dump_lines": 618,
+      "theorems": 9048,
+      "defs": 2050
+    },
+    "PositivityTheory": {
+      "files": 343,
+      "lines": 42788,
+      "imp_lines": 1188,
+      "proof_lines": 25507,
+      "dump_lines": 36,
+      "theorems": 2261,
+      "defs": 1002
+    },
+    "Lemmata": {
+      "files": 158,
+      "lines": 8791,
+      "imp_lines": 791,
+      "proof_lines": 4713,
+      "dump_lines": 694,
+      "theorems": 229,
+      "defs": 6
+    },
+    "Supplements": {
+      "files": 1,
+      "lines": 16,
+      "imp_lines": 3,
+      "proof_lines": 2,
+      "dump_lines": 0,
+      "theorems": 4,
+      "defs": 0
+    },
+    "Main": {
+      "files": 1,
+      "lines": 12,
+      "imp_lines": 2,
+      "proof_lines": 0,
+      "dump_lines": 0,
+      "theorems": 5,
+      "defs": 0
+    }
+  },
+  "top_25_dom3_in_cone": [
+    {
+      "domain": "Development.AbelianVarietyTheory.Proofs",
+      "files": 77710,
+      "lines": 6337936,
+      "imp_lines": 468751,
+      "proof_lines": 3827130,
+      "dump_lines": 61003,
+      "theorems": 290358
+    },
+    {
+      "domain": "Development.AutomorphicSpectrum.Proofs",
+      "files": 13432,
+      "lines": 1045849,
+      "imp_lines": 74418,
+      "proof_lines": 628980,
+      "dump_lines": 6085,
+      "theorems": 51316
+    },
+    {
+      "domain": "Development.AutomorphicArithmetic.AutomorphicVarieties",
+      "files": 7399,
+      "lines": 798600,
+      "imp_lines": 28907,
+      "proof_lines": 552159,
+      "dump_lines": 2397,
+      "theorems": 32819
+    },
+    {
+      "domain": "GroundTheory.HeightsAndTheta.Heights",
+      "files": 4923,
+      "lines": 501520,
+      "imp_lines": 19029,
+      "proof_lines": 283608,
+      "dump_lines": 48,
+      "theorems": 20267
+    },
+    {
+      "domain": "Development.WeilBound.CoreStatements",
+      "files": 3540,
+      "lines": 437388,
+      "imp_lines": 17507,
+      "proof_lines": 265376,
+      "dump_lines": 381,
+      "theorems": 20746
+    },
+    {
+      "domain": "Development.AbelianVarietyTheory.Definitions",
+      "files": 1782,
+      "lines": 433325,
+      "imp_lines": 8199,
+      "proof_lines": 149338,
+      "dump_lines": 1733,
+      "theorems": 28563
+    },
+    {
+      "domain": "Formalism.HermitianCurvature.HermitianCurvatureProofs",
+      "files": 1729,
+      "lines": 419526,
+      "imp_lines": 5350,
+      "proof_lines": 264682,
+      "dump_lines": 100,
+      "theorems": 25675
+    },
+    {
+      "domain": "Development.AutomorphicArithmetic.Foundations",
+      "files": 4306,
+      "lines": 409577,
+      "imp_lines": 18659,
+      "proof_lines": 255366,
+      "dump_lines": 6926,
+      "theorems": 18243
+    },
+    {
+      "domain": "Formalism.PeriodIntegrals.UnitaryGroupMassFormula",
+      "files": 2847,
+      "lines": 358604,
+      "imp_lines": 7201,
+      "proof_lines": 223513,
+      "dump_lines": 30,
+      "theorems": 19680
+    },
+    {
+      "domain": "Formalism.LocalToGlobal.SiegelLatticeTheory",
+      "files": 1969,
+      "lines": 329237,
+      "imp_lines": 6947,
+      "proof_lines": 191753,
+      "dump_lines": 7,
+      "theorems": 16578
+    },
+    {
+      "domain": "Development.WeilBound.RepresentationTheoryGL",
+      "files": 2408,
+      "lines": 268278,
+      "imp_lines": 7933,
+      "proof_lines": 154981,
+      "dump_lines": 40,
+      "theorems": 13665
+    },
+    {
+      "domain": "ReciprocityTheory.ReductiveGroups.ArithmeticGeometry",
+      "files": 1505,
+      "lines": 230434,
+      "imp_lines": 3248,
+      "proof_lines": 143067,
+      "dump_lines": 7,
+      "theorems": 10555
+    },
+    {
+      "domain": "Formalism.SharpRestriction.GrowthBounds",
+      "files": 1176,
+      "lines": 229344,
+      "imp_lines": 2501,
+      "proof_lines": 142906,
+      "dump_lines": 20,
+      "theorems": 11468
+    },
+    {
+      "domain": "Development.AutomorphicArithmetic.ThetaCorrespondence",
+      "files": 3070,
+      "lines": 169581,
+      "imp_lines": 20946,
+      "proof_lines": 76657,
+      "dump_lines": 14147,
+      "theorems": 5297
+    },
+    {
+      "domain": "Formalism.SharpRestriction.LevelLetterCocycles",
+      "files": 727,
+      "lines": 168381,
+      "imp_lines": 2172,
+      "proof_lines": 96878,
+      "dump_lines": 5,
+      "theorems": 7090
+    },
+    {
+      "domain": "ReciprocityTheory.ReductiveGroups.DiscreteSeries",
+      "files": 986,
+      "lines": 152063,
+      "imp_lines": 3300,
+      "proof_lines": 94163,
+      "dump_lines": 1,
+      "theorems": 8455
+    },
+    {
+      "domain": "Development.ResolutionOfSingularities.EmbeddedResolution",
+      "files": 477,
+      "lines": 135525,
+      "imp_lines": 7103,
+      "proof_lines": 75288,
+      "dump_lines": 113,
+      "theorems": 6315
+    },
+    {
+      "domain": "Development.AutomorphicArithmetic.IntegralCasts",
+      "files": 814,
+      "lines": 117155,
+      "imp_lines": 1611,
+      "proof_lines": 33798,
+      "dump_lines": 18310,
+      "theorems": 2630
+    },
+    {
+      "domain": "Development.WeilBound.ThetaLifts",
+      "files": 764,
+      "lines": 115377,
+      "imp_lines": 2542,
+      "proof_lines": 72038,
+      "dump_lines": 65,
+      "theorems": 6216
+    },
+    {
+      "domain": "Formalism.SharpRestriction.CuspSpanNormBounds",
+      "files": 271,
+      "lines": 114790,
+      "imp_lines": 983,
+      "proof_lines": 64253,
+      "dump_lines": 0,
+      "theorems": 5521
+    },
+    {
+      "domain": "CompanionTheory.SpectralGeometry.LocalGlobalProofs",
+      "files": 1213,
+      "lines": 104081,
+      "imp_lines": 5206,
+      "proof_lines": 67600,
+      "dump_lines": 537,
+      "theorems": 5126
+    },
+    {
+      "domain": "Formalism.LocalToGlobal.Columns",
+      "files": 242,
+      "lines": 76044,
+      "imp_lines": 782,
+      "proof_lines": 41633,
+      "dump_lines": 5,
+      "theorems": 4316
+    },
+    {
+      "domain": "Formalism.LocalToGlobal.IndefiniteReal",
+      "files": 350,
+      "lines": 69744,
+      "imp_lines": 899,
+      "proof_lines": 32879,
+      "dump_lines": 8,
+      "theorems": 3711
+    },
+    {
+      "domain": "Development.AbelianVarietyTheory.BlockTheory",
+      "files": 467,
+      "lines": 66151,
+      "imp_lines": 1501,
+      "proof_lines": 8326,
+      "dump_lines": 412,
+      "theorems": 1399
+    },
+    {
+      "domain": "Formalism.LocalToGlobal.TorsionIntegrality",
+      "files": 424,
+      "lines": 63481,
+      "imp_lines": 1301,
+      "proof_lines": 35516,
+      "dump_lines": 31,
+      "theorems": 4287
+    }
+  ],
+  "top_25_dom4_in_cone": [
+    {
+      "domain": "Development.AbelianVarietyTheory.Proofs.DivisorProofs",
+      "files": 29441,
+      "lines": 2000782,
+      "proof_lines": 1171210,
+      "dump_lines": 18582
+    },
+    {
+      "domain": "Development.AbelianVarietyTheory.Proofs.InertiaEigenvalues",
+      "files": 8478,
+      "lines": 655471,
+      "proof_lines": 400851,
+      "dump_lines": 6248
+    },
+    {
+      "domain": "Development.AutomorphicSpectrum.Proofs.BlockDecomposition",
+      "files": 7076,
+      "lines": 579787,
+      "proof_lines": 343539,
+      "dump_lines": 2934
+    },
+    {
+      "domain": "Development.AbelianVarietyTheory.Proofs.TwistedOperators",
+      "files": 5880,
+      "lines": 508192,
+      "proof_lines": 292080,
+      "dump_lines": 4019
+    },
+    {
+      "domain": "Development.AbelianVarietyTheory.Proofs.IwasawaDecomposition",
+      "files": 5849,
+      "lines": 496914,
+      "proof_lines": 293942,
+      "dump_lines": 3431
+    },
+    {
+      "domain": "Development.AbelianVarietyTheory.Proofs.FlagMeasures",
+      "files": 3896,
+      "lines": 388103,
+      "proof_lines": 262426,
+      "dump_lines": 4616
+    },
+    {
+      "domain": "Development.AbelianVarietyTheory.Proofs.DecoratedLatticeProofs",
+      "files": 4551,
+      "lines": 344004,
+      "proof_lines": 196589,
+      "dump_lines": 2461
+    },
+    {
+      "domain": "Development.AbelianVarietyTheory.Proofs.FoundationProofs",
+      "files": 3329,
+      "lines": 286483,
+      "proof_lines": 183156,
+      "dump_lines": 3076
+    },
+    {
+      "domain": "Development.AutomorphicArithmetic.AutomorphicVarieties.ModularityArgument",
+      "files": 2293,
+      "lines": 270010,
+      "proof_lines": 178372,
+      "dump_lines": 2025
+    },
+    {
+      "domain": "Development.AutomorphicArithmetic.Foundations.GaloisRepresentations",
+      "files": 2879,
+      "lines": 248366,
+      "proof_lines": 152363,
+      "dump_lines": 6801
+    },
+    {
+      "domain": "Development.AbelianVarietyTheory.Proofs.SatakeParameters",
+      "files": 3170,
+      "lines": 226334,
+      "proof_lines": 133065,
+      "dump_lines": 1709
+    },
+    {
+      "domain": "Development.AutomorphicSpectrum.Proofs.GeometryProofs",
+      "files": 2963,
+      "lines": 219873,
+      "proof_lines": 131596,
+      "dump_lines": 1540
+    },
+    {
+      "domain": "Development.AbelianVarietyTheory.Proofs.ModuliProofs",
+      "files": 1484,
+      "lines": 164694,
+      "proof_lines": 101956,
+      "dump_lines": 1177
+    },
+    {
+      "domain": "Development.AutomorphicArithmetic.ThetaCorrespondence.ThetaPairLifts",
+      "files": 2909,
+      "lines": 152777,
+      "proof_lines": 65986,
+      "dump_lines": 14097
+    },
+    {
+      "domain": "Development.AbelianVarietyTheory.Proofs.DegenerationProofs",
+      "files": 1544,
+      "lines": 145031,
+      "proof_lines": 90429,
+      "dump_lines": 1123
+    },
+    {
+      "domain": "Formalism.LocalToGlobal.SiegelLatticeTheory.CokernelGLCounts",
+      "files": 990,
+      "lines": 143968,
+      "proof_lines": 84808,
+      "dump_lines": 3
+    },
+    {
+      "domain": "Development.AbelianVarietyTheory.Proofs.JetHarmonics",
+      "files": 1271,
+      "lines": 120525,
+      "proof_lines": 77304,
+      "dump_lines": 2673
+    },
+    {
+      "domain": "Development.AbelianVarietyTheory.Proofs.GlobalInterpolation",
+      "files": 1207,
+      "lines": 118198,
+      "proof_lines": 79842,
+      "dump_lines": 1425
+    },
+    {
+      "domain": "Development.AutomorphicSpectrum.Proofs.MetricProofs",
+      "files": 1548,
+      "lines": 117017,
+      "proof_lines": 73770,
+      "dump_lines": 760
+    },
+    {
+      "domain": "Development.AutomorphicArithmetic.Foundations.Convolution",
+      "files": 1083,
+      "lines": 113140,
+      "proof_lines": 71823,
+      "dump_lines": 44
+    },
+    {
+      "domain": "Development.AutomorphicArithmetic.IntegralCasts.CapelliIdentities",
+      "files": 796,
+      "lines": 112339,
+      "proof_lines": 32143,
+      "dump_lines": 18310
+    },
+    {
+      "domain": "Development.AbelianVarietyTheory.Definitions.Divisors",
+      "files": 454,
+      "lines": 109212,
+      "proof_lines": 35410,
+      "dump_lines": 387
+    },
+    {
+      "domain": "Development.AbelianVarietyTheory.Proofs.UniformizationProofs",
+      "files": 844,
+      "lines": 97553,
+      "proof_lines": 58165,
+      "dump_lines": 350
+    },
+    {
+      "domain": "Development.WeilBound.CoreStatements.AutomorphicKernels",
+      "files": 849,
+      "lines": 85099,
+      "proof_lines": 47758,
+      "dump_lines": 45
+    },
+    {
+      "domain": "GroundTheory.HeightsAndTheta.Heights.HilbertSamuel",
+      "files": 748,
+      "lines": 82133,
+      "proof_lines": 48436,
+      "dump_lines": 5
+    }
+  ],
+  "proofdistill_d0_in_cone_ge300_count": 275
+}
