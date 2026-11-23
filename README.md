@@ -29,6 +29,21 @@ Comparing all `147,489` live RH modules (`15.22M` lines) against all `8,712` Mat
 
 *(Note: the released RH source archive also contains `0` comments and `0` `/--` docstrings vs. Mathlib's `77,649` docstrings; this reflects the release export / pipeline rather than proof logic itself.)*
 
+## Controlled Single-Module Pilot (`MonoCount.lean`) & Kernel Oracle
+
+To test whether local abstraction lifting inside a **single export-locked file** can break past the ceiling without touching module boundaries, we first validated our two-module kernel equivalence oracle ([`oracle/OracleAudit.lean`](oracle/OracleAudit.lean), verified on Windows Lean `v4.36.0`: accepts a real refactor, rejects `sorryAx`, altered theorem type, altered `def` value, and missing export — see [`oracle/README.md`](oracle/README.md)).
+
+We then ran a matched A/B pilot on `Formalism/PolynomialDimension/MultinomialDepth/MonoCount.lean` (`1,878` lines, `0` dump lines, `228` `have`s, `152` public exports + `24` public `def` values locked via `Kernel.isDefEq` & `Meta.isDefEq`, with all `4` direct downstream importers compiled unchanged — full details in [`experiments/phase-a/README.md`](experiments/phase-a/README.md)):
+
+| Pinned Windows Lean `4.36.0` build | Upstream | Arm A (local cleanup) | Arm B (+4 shared private lemmas) |
+|---|---:|---:|---:|
+| Raw lines | `1,878` | `1,873` | `1,882` |
+| Comment-stripped tokens | `28,806` | `29,299` | `29,472` |
+| Declaration heartbeats (sum) | `167,754` | `168,158` | `167,402` (`-0.45%` vs A) |
+| Warnings (`-DwarningAsError`) | `87` | `0` | `0` |
+
+**Takeaway (an honest null result for single-file locked refactoring):** Even after cleaning 87 warnings and lifting 4 shared private lemmas inside `MonoCount.lean`, locking all `152` public exports at the single-file boundary left total length and elaboration cost virtually unchanged (`+9` lines, `-0.45%` heartbeats). This empirically reinforces the macro finding above: breaking past the ~94% non-mechanical bulk requires **multi-file subtree lifting** (melting intermediate exports and `def : Prop` handoffs across boundaries) or **generation-time consolidation**, not isolated single-file rewrites.
+
 ## Beyond Mechanical Workarounds: Theory-Lifting & Wake–Sleep Consolidation
 
 ![From Wake-Only parallel proving to Theory-Lifting and Wake-Sleep consolidation](figures/fig2_wake_sleep_architecture.png)
