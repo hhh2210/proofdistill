@@ -32,12 +32,14 @@ Scanning all `8,712` modules in Mathlib (`v4.36`) alongside all `147,489` live m
 | Total lines (avg lines / file) | `2,368,060` (`272` L/file) | `15,218,364` (`103` L/file) | `6.4x` lines, `16.9x` files |
 | `class` declarations | **`2,019`** | **`33`** | **`393x` lower density per line** |
 | `structure` vs. `instance` | `1,833` / `11,111` (**`6.06`** inst/struct) | **`6,836`** / `3,915` (**`0.57`** inst/struct) | **`3.7x` more structs, `10.6x` fewer instances/struct** |
-| `@[simp]` density (`simp / thms`) | `51,114` (**`27.84%`**) | `5,973` (**`0.83%`**) | **`33.6x` lower automation density** |
-| `@[ext]` attributes | `1,396` | `104` | **`86x` lower density per line** |
+| `@[simp]` density (`simp / thms`) | `51,114` (**`27.84%`**) | `5,973` (**`0.83%`**) | **`33.7x` lower automation density** |
+| `@[ext]` attributes | `1,396` | `104` | **`86.3x` lower density per line** |
 | `def ... : Prop :=` contract ratio | `3.29%` (`1,073 / 32,565`) | **`37.07%`** (`65,028 / 175,424`) | **`11.3x` frozen handoff contracts** |
 | `have` density (per 1k lines) | `17.1` (`40,574`) | **`124.3`** (`1,891,600`) | **`7.3x` manual step-by-step chaining** |
-| Theorems > 50 lines | `1,013` (`0.55%`) | **`45,941`** (`6.36%`) | **`45x` more long proofs** |
+| Theorems > 50 lines | `1,013` (`0.55%`) | **`45,941`** (`6.36%`) | **`11.5x` share (`45x` count)** |
 | Single-caller modules (`in-degree = 1`) | `29.81%` (median `2`) | `61.35%` (**`56.13%`** excl. `*Statement`/glue, median `1`) | Tree-shaped consumption vs. Mathlib DAG |
+
+![Why mechanical cleanups leave >94% of the 15.22M-line AI RH proof behind](figures/fig1_mathlib_vs_rh.png)
 
 *(Note: the released RH archive contains `0` comment lines and `0` `/--` docstrings vs. Mathlib's `77,649`, likely stripped or omitted during release packaging rather than reflecting proof mechanics.)*
 
@@ -67,6 +69,8 @@ In the rare module where the model actually built a Mathlib-style API layer (`cl
 ---
 
 ## 4. Two Engineering Directions Beyond Surface Workarounds
+
+![From Wake-Only parallel proving to Theory-Lifting and Wake-Sleep consolidation](figures/fig2_wake_sleep_architecture.png)
 
 Deterministic cleanup scripts and interface-frozen single-file tactic golfing (as well as single-repo compression benchmarks such as ETH Zurich's [LeanLean](https://leanleanbench.com) when internal module interfaces stay locked) inevitably run into an **Abstraction Ceiling**: you cannot collapse 6,836 unequipped structures and 65,028 frozen `def : Prop` handoffs one file at a time.
 
