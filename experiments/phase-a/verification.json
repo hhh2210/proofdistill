@@ -1,0 +1,327 @@
+{
+  "oracle_sha256": "8bd30baf3c180df71ccea1eff539e83a28a6eb74f1df8ea66714afe3d9156243",
+  "kernel_replays": {
+    "original": "replaying Formalism.PolynomialDimension.MultinomialDepth.MonoCount",
+    "A": "replaying Formalism.PolynomialDimension.MultinomialDepth.MonoCount",
+    "B": "replaying Formalism.PolynomialDimension.MultinomialDepth.MonoCount"
+  },
+  "comparisons": {
+    "A": "ORACLE_AUDIT_PASSED exports=152 definitions=24 axioms=#[propext, Classical.choice, Quot.sound]",
+    "B": "ORACLE_AUDIT_PASSED exports=152 definitions=24 axioms=#[propext, Classical.choice, Quot.sound]"
+  },
+  "toolchain": "leanprover/lean4:v4.36.0",
+  "full_build_or_comparator_run": false,
+  "mac_importer_rebuild": {
+    "combined_closure_including_target": 561,
+    "baseline_revision": "d4663eed405af528c67a3b1213021373cf8c0a5c",
+    "baseline_manifest_sha256": "0289e5c3d13cebb1dc45eda64ad73571dcf94fbb5a2b5b1799bd22b8825f4d0a",
+    "cache_archives_verified": 506,
+    "target_dependencies_built": 15,
+    "descendants": [
+      {
+        "module": "Formalism.ThetaLogCoordinates.TraceIsometryWeights.HasLatBasis",
+        "seconds": 28.642,
+        "returncode": 0,
+        "warnings": 0,
+        "direct": true
+      },
+      {
+        "module": "Formalism.ThetaLogCoordinates.TraceIsometryWeights.StatementB",
+        "seconds": 10.068,
+        "returncode": 0,
+        "warnings": 0,
+        "direct": false
+      },
+      {
+        "module": "Formalism.ThetaLogCoordinates.TraceIsometryWeights.SchurTraceProofs.SchurTraceOfHomInv",
+        "seconds": 4.995,
+        "returncode": 0,
+        "warnings": 1,
+        "direct": false
+      },
+      {
+        "module": "Formalism.ThetaLogCoordinates.TraceIsometryWeights.SchurTraceProofs.TypeInt",
+        "seconds": 8.44,
+        "returncode": 0,
+        "warnings": 9,
+        "direct": false
+      },
+      {
+        "module": "Formalism.ThetaLogCoordinates.TraceIsometryWeights.StatementD",
+        "seconds": 4.45,
+        "returncode": 0,
+        "warnings": 0,
+        "direct": false
+      },
+      {
+        "module": "Formalism.ThetaLogCoordinates.TraceIsometryWeights.SchurTraceProofs.LatticeBasisPolynomial",
+        "seconds": 3.532,
+        "returncode": 0,
+        "warnings": 1,
+        "direct": false
+      },
+      {
+        "module": "Formalism.ThetaLogCoordinates.TraceIsometryWeights.SchurTraceProofs.WeightCompApply",
+        "seconds": 9.15,
+        "returncode": 0,
+        "warnings": 8,
+        "direct": false
+      },
+      {
+        "module": "Formalism.ThetaLogCoordinates.TraceIsometryWeights.SchurTraceProofs.FischerAdjointnessHolds",
+        "seconds": 10.952,
+        "returncode": 0,
+        "warnings": 14,
+        "direct": false
+      },
+      {
+        "module": "Formalism.ThetaLogCoordinates.TraceIsometryWeights.SchurTraceProofs.OrthogonalIsomorphismHolds",
+        "seconds": 4.272,
+        "returncode": 0,
+        "warnings": 0,
+        "direct": false
+      },
+      {
+        "module": "Formalism.ThetaLogCoordinates.TraceIsometryWeights.SchurTraceProofs.CommProjectionHolds",
+        "seconds": 4.711,
+        "returncode": 0,
+        "warnings": 3,
+        "direct": false
+      },
+      {
+        "module": "Formalism.ThetaLogCoordinates.TraceIsometryWeights.SchurTraceProofs.LatData",
+        "seconds": 5.119,
+        "returncode": 0,
+        "warnings": 0,
+        "direct": false
+      },
+      {
+        "module": "Formalism.ThetaLogCoordinates.TraceIsometryWeights.SchurTraceProofs.PolLeISupIsoW",
+        "seconds": 7.071,
+        "returncode": 0,
+        "warnings": 1,
+        "direct": false
+      },
+      {
+        "module": "Formalism.ThetaLogCoordinates.TraceIsometryWeights.FinalP",
+        "seconds": 22.2,
+        "returncode": 0,
+        "warnings": 0,
+        "direct": false
+      },
+      {
+        "module": "Formalism.ThetaLogCoordinates.TraceIsometryWeights.SchurTraceProofs.WeylInt",
+        "seconds": 6.183,
+        "returncode": 0,
+        "warnings": 6,
+        "direct": false
+      },
+      {
+        "module": "Formalism.ThetaLogCoordinates.TraceIsometryWeights.SchurTraceProofs.ZpClosedToAddSubgroup",
+        "seconds": 4.574,
+        "returncode": 0,
+        "warnings": 1,
+        "direct": false
+      },
+      {
+        "module": "Formalism.ThetaLogCoordinates.TraceIsometryWeights.SchurTraceProofs.CompEqZeroOfNotDle",
+        "seconds": 3.187,
+        "returncode": 0,
+        "warnings": 4,
+        "direct": false
+      },
+      {
+        "module": "Formalism.ThetaLogCoordinates.TraceIsometryWeights.DischargeHeightBound",
+        "seconds": 2.685,
+        "returncode": 0,
+        "warnings": 0,
+        "direct": false
+      },
+      {
+        "module": "Formalism.ThetaLogCoordinates.FockResolutionOnto.StatementG",
+        "seconds": 4.386,
+        "returncode": 0,
+        "warnings": 0,
+        "direct": false
+      },
+      {
+        "module": "Formalism.ThetaLogCoordinates.FockResolutionOnto.StatementH",
+        "seconds": 2.677,
+        "returncode": 0,
+        "warnings": 0,
+        "direct": false
+      },
+      {
+        "module": "Formalism.ThetaLogCoordinates.PartnerMeanCoordinates.TheoremMCB",
+        "seconds": 2.727,
+        "returncode": 0,
+        "warnings": 0,
+        "direct": true
+      },
+      {
+        "module": "Formalism.ThetaLogCoordinates.PartnerMeanCoordinates.PartnerMeanProofs.GamIntC",
+        "seconds": 10.856,
+        "returncode": 0,
+        "warnings": 8,
+        "direct": false
+      },
+      {
+        "module": "Formalism.ThetaLogCoordinates.PartnerMeanCoordinates.PartnerMeanProofs.PartnerConditionHolds",
+        "seconds": 3.557,
+        "returncode": 0,
+        "warnings": 0,
+        "direct": false
+      },
+      {
+        "module": "Formalism.ThetaLogCoordinates.FockResolutionOnto.FockMonomialProofs.LatDefs",
+        "seconds": 2.625,
+        "returncode": 0,
+        "warnings": 0,
+        "direct": false
+      },
+      {
+        "module": "Formalism.ThetaLogCoordinates.FockResolutionOnto.FockMonomialProofs.Vanish",
+        "seconds": 2.852,
+        "returncode": 0,
+        "warnings": 4,
+        "direct": false
+      },
+      {
+        "module": "Formalism.ThetaLogCoordinates.FockResolutionOnto.FockMonomialProofs.DerivativeKillsDegreeZero",
+        "seconds": 3.803,
+        "returncode": 0,
+        "warnings": 11,
+        "direct": false
+      },
+      {
+        "module": "Formalism.ThetaLogCoordinates.FockResolutionOnto.FockMonomialProofs.RestrictedLatticeDividedPower",
+        "seconds": 3.402,
+        "returncode": 0,
+        "warnings": 12,
+        "direct": false
+      },
+      {
+        "module": "Formalism.ThetaLogCoordinates.FockResolutionOnto.FockMonomialProofs.WmMulWmComm",
+        "seconds": 4.131,
+        "returncode": 0,
+        "warnings": 35,
+        "direct": false
+      },
+      {
+        "module": "Formalism.ThetaLogCoordinates.FockResolutionOnto.FockMonomialProofs.DerivativeDividedIntegral",
+        "seconds": 5.254,
+        "returncode": 0,
+        "warnings": 38,
+        "direct": false
+      },
+      {
+        "module": "Formalism.ThetaLogCoordinates.FockResolutionOnto.FockMonomialProofs.RestrictedSaturationHolds",
+        "seconds": 2.652,
+        "returncode": 0,
+        "warnings": 3,
+        "direct": false
+      },
+      {
+        "module": "Formalism.ThetaLogCoordinates.FockResolutionOnto.FockMonomialProofs.HighestVectorProjectionPos",
+        "seconds": 4.554,
+        "returncode": 0,
+        "warnings": 27,
+        "direct": false
+      },
+      {
+        "module": "Formalism.ThetaLogCoordinates.FockResolutionOnto.FockMonomialProofs.GramBoundUnconditionalOfSat",
+        "seconds": 3.896,
+        "returncode": 0,
+        "warnings": 0,
+        "direct": true
+      },
+      {
+        "module": "Formalism.ThetaLogCoordinates.FockResolutionOnto.FockMonomialProofs.GramBoundPosOfProjSat",
+        "seconds": 3.347,
+        "returncode": 0,
+        "warnings": 1,
+        "direct": false
+      },
+      {
+        "module": "Formalism.ThetaLogCoordinates.PartnerMeanCoordinates.TheoremMXB",
+        "seconds": 2.789,
+        "returncode": 0,
+        "warnings": 0,
+        "direct": false
+      },
+      {
+        "module": "Formalism.ThetaLogCoordinates.PartnerMeanCoordinates.PartnerMeanProofs.NatLogLeOfLe",
+        "seconds": 7.349,
+        "returncode": 0,
+        "warnings": 3,
+        "direct": false
+      },
+      {
+        "module": "Formalism.ThetaLogCoordinates.PartnerMeanCoordinates.PartnerMeanProofs.GammaZeroIntegral",
+        "seconds": 5.696,
+        "returncode": 0,
+        "warnings": 7,
+        "direct": false
+      },
+      {
+        "module": "Formalism.ThetaLogCoordinates.PartnerMeanCoordinates.PartnerMeanProofs.TheoremMXBOfPoint",
+        "seconds": 4.818,
+        "returncode": 0,
+        "warnings": 0,
+        "direct": false
+      },
+      {
+        "module": "Formalism.ThetaLogCoordinates.PartnerMeanCoordinates.PartnerMeanProofs.GramHypothesisOfLogBound",
+        "seconds": 6.073,
+        "returncode": 0,
+        "warnings": 0,
+        "direct": false
+      },
+      {
+        "module": "Formalism.ThetaLogCoordinates.PartnerMeanCoordinates.LatticeTheoremEps28Valid",
+        "seconds": 2.927,
+        "returncode": 0,
+        "warnings": 0,
+        "direct": false
+      },
+      {
+        "module": "Formalism.SharpRestriction.GrowthBounds.CountingStatementReduction",
+        "seconds": 31.901,
+        "returncode": 0,
+        "warnings": 68,
+        "direct": true
+      }
+    ],
+    "counting_statement_reduction_diagnostics_sha256_for_both_targets": "cfd90c0298d294531e7e2988894d4f717941217e3c9a5dc9f81ae08c1df7348c"
+  },
+  "windows_direct_importers": [
+    {
+      "module": "Formalism.ThetaLogCoordinates.TraceIsometryWeights.HasLatBasis",
+      "sha256": "89b9742e0d81012456633a6a9cd9a98c66f95936fbc735b1ebf842299cfdb499",
+      "returncode": 0,
+      "warnings": 0,
+      "seconds_including_admission_check": 16.191
+    },
+    {
+      "module": "Formalism.ThetaLogCoordinates.PartnerMeanCoordinates.TheoremMCB",
+      "sha256": "a0f980c8b621a6ec35b27f49af5ace7fffdef18ad16cfc961469181f53c00c2a",
+      "returncode": 0,
+      "warnings": 0,
+      "seconds_including_admission_check": 16.059
+    },
+    {
+      "module": "Formalism.ThetaLogCoordinates.FockResolutionOnto.FockMonomialProofs.GramBoundUnconditionalOfSat",
+      "sha256": "687cbbd4371d1f3ce0be8bad35ecf7fa04cc209b62be1c41184a70c83df7e8bf",
+      "returncode": 0,
+      "warnings": 0,
+      "seconds_including_admission_check": 16.267
+    },
+    {
+      "module": "Formalism.SharpRestriction.GrowthBounds.CountingStatementReduction",
+      "sha256": "50a825930846be4e0924553494b3401e20b3739782ac4038f3fab5e14646de75",
+      "returncode": 0,
+      "warnings": 68,
+      "seconds_including_admission_check": 130.846
+    }
+  ]
+}

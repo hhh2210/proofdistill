@@ -1,0 +1,189 @@
+--- a/Formalism/PolynomialDimension/MultinomialDepth/MonoCount.lean
++++ b/Formalism/PolynomialDimension/MultinomialDepth/MonoCount.lean
+@@ -541,14 +541,21 @@
+   rw [Module.Basis.constr_basis]
+   split_ifs <;> simp [MvPolynomial.smul_monomial]
+
++private theorem split_exponents {g q : MvPolynomial σ K} (hg : IsF fs g) (hq : IsL fs q)
++    {a b : σ →₀ ℕ} (ha : a ∈ g.support) (hb : b ∈ q.support) :
++    frst fs (a + b) = a ∧ ltr fs (a + b) = b := by
++  rw [frst_add, ltr_add, frst_of fs (hg a ha), frst_of' fs (hq b hb),
++    ltr_of fs (hg a ha), ltr_of' fs (hq b hb), add_zero, zero_add]
++  exact ⟨rfl, rfl⟩
++
+ theorem ext_mul (φ : MvPolynomial σ K →ₗ[K] MvPolynomial σ K) {g q : MvPolynomial σ K} (hg : IsF fs g)
+     (hq : IsL fs q) : ext fs φ (g * q) = φ g * q := by
+   rw [g.as_sum, q.as_sum]
+   set_option synthInstance.maxHeartbeats 100000 in
+     simp only [Finset.mul_sum, Finset.sum_mul, map_sum]
+   refine Finset.sum_congr rfl fun m' hm' => Finset.sum_congr rfl fun m hm => ?_
+-  rw [MvPolynomial.monomial_mul_monomial, ext_monomial, frst_add, ltr_add, frst_of fs (hg m hm), frst_of' fs (hq m' hm'),
+-    ltr_of fs (hg m hm), ltr_of' fs (hq m' hm'), add_zero, zero_add,
++  have hs := split_exponents fs hg hq hm hm'
++  rw [MvPolynomial.monomial_mul_monomial, ext_monomial, hs.1, hs.2,
+     show monomial m (AddMonoidAlgebra.coeff g m) = AddMonoidAlgebra.coeff g m • monomial m (1 : K) by rw [MvPolynomial.smul_monomial, smul_eq_mul, mul_one],
+     map_smul,
+     show monomial m' (AddMonoidAlgebra.coeff q m') = AddMonoidAlgebra.coeff q m' • monomial m' (1 : K) by rw [MvPolynomial.smul_monomial, smul_eq_mul, mul_one],
+@@ -562,8 +569,8 @@
+   have key : ∀ a ∈ g.support, ∀ b ∈ q.support,
+       slc fs m (monomial a (AddMonoidAlgebra.coeff g a) * monomial b (AddMonoidAlgebra.coeff q b)) = if b = m then AddMonoidAlgebra.coeff q m • monomial a (AddMonoidAlgebra.coeff g a) else 0 := by
+     intro a ha b hb
+-    rw [MvPolynomial.monomial_mul_monomial, sl_monomial, frst_add, ltr_add, frst_of fs (hg a ha), frst_of' fs (hq b hb),
+-      ltr_of fs (hg a ha), ltr_of' fs (hq b hb), add_zero, zero_add]
++    have hs := split_exponents fs hg hq ha hb
++    rw [MvPolynomial.monomial_mul_monomial, sl_monomial, hs.1, hs.2]
+     split_ifs with h
+     · subst h
+       rw [MvPolynomial.smul_monomial, smul_eq_mul, mul_comm]
+@@ -602,19 +609,33 @@
+   refine Finset.sum_congr rfl fun m' hm' => ?_
+   rw [Finset.sum_ite_eq, ite_eq_left (hS m' hm'), MvPolynomial.monomial_mul_monomial, frst_add_ltr, mul_one]
+
+-theorem isL_monomial_ltr (m : σ →₀ ℕ) (a : K) : IsL fs (monomial (ltr fs m) a) := by
+-  intro d hd
+-  obtain rfl := Finset.mem_singleton.mp (MvPolynomial.support_monomial_subset hd)
+-  exact ltr_isL fs m
+-
+-theorem isF_monomial_frst (m : σ →₀ ℕ) (a : K) : IsF fs (monomial (frst fs m) a) := by
+-  intro d hd
+-  obtain rfl := Finset.mem_singleton.mp (MvPolynomial.support_monomial_subset hd)
+-  exact frst_isF fs m
++omit [DecidableEq σ] [DecidablePred fs] in
++private theorem isF_monomial_of {d : σ →₀ ℕ} (hd : ∀ v, d v ≠ 0 → fs v) (a : K) :
++    IsF fs (monomial d a) := by
++  intro m hm
++  obtain rfl := Finset.mem_singleton.mp (MvPolynomial.support_monomial_subset hm)
++  exact hd
++
++theorem isL_monomial_ltr (m : σ →₀ ℕ) (a : K) : IsL fs (monomial (ltr fs m) a) :=
++  isF_monomial_of (fun v => ¬ fs v) (ltr_isL fs m) a
++
++theorem isF_monomial_frst (m : σ →₀ ℕ) (a : K) : IsF fs (monomial (frst fs m) a) :=
++  isF_monomial_of fs (frst_isF fs m) a
+
+ theorem monomial_split (m : σ →₀ ℕ) (a : K) :
+     monomial m a = monomial (frst fs m) a * monomial (ltr fs m) 1 := by
+   rw [MvPolynomial.monomial_mul_monomial, frst_add_ltr, mul_one]
++
++/-- A monomial splits into factors on complementary variable sets; equality on these
++products therefore determines a linear map on the entire polynomial ring. -/
++private theorem agree_on_products (A B : MvPolynomial σ K →ₗ[K] MvPolynomial σ K)
++    (h : ∀ g q, IsF fs g → IsL fs q → A (g * q) = B (g * q)) (x : MvPolynomial σ K) :
++    A x = B x := by
++  induction x using MvPolynomial.induction_on' with
++  | monomial m a =>
++    rw [monomial_split fs m a]
++    exact h _ _ (isF_monomial_frst fs m a) (isL_monomial_ltr fs m 1)
++  | add x y hx hy => simp only [map_add (f := _), hx, hy]
+
+ end Ext
+
+@@ -646,35 +667,24 @@
+   · intro h v hv
+     rw [h v (Finsupp.mem_support_iff.mp hv), smul_zero]
+
+-theorem isF_iff (j0 : ℕ) (g : MvPolynomial (Fin N × Fin r) ℚ_[p]) :
+-    IsF (fsj N r j0) g ↔ g ∈ weightedHomogeneousSubmodule ℚ_[p] (wlat N r j0) 0 := by
+-  rw [mem_weightedHomogeneousSubmodule]
++private theorem support_iff_weight_zero {σ K : Type} [Field K] (S : σ → Prop) (w : σ → ℤ)
++    (hw : ∀ v, 0 ≤ w v) (hS : ∀ v, w v = 0 ↔ S v) (g : MvPolynomial σ K) :
++    IsF S g ↔ g ∈ weightedHomogeneousSubmodule K w 0 := by
+   constructor
+   · intro h m hm
+-    refine (weight_eq_zero_iff _ (fun v => by unfold wlat; split_ifs <;> omega) m).mpr fun v hv => ?_
+-    have := h m (mem_support_iff.mpr hm) v hv
+-    simp [wlat, fsj] at this ⊢; omega
++    exact (weight_eq_zero_iff w hw m).2 fun v hv => (hS v).2 (h m (mem_support_iff.2 hm) v hv)
+   · intro h m hm v hv
+-    have := (weight_eq_zero_iff _ (fun v => by unfold wlat; split_ifs <;> omega) m).mp
+-      (h (mem_support_iff.mp hm)) v hv
+-    unfold wlat at this; unfold fsj; split_ifs at this with h1
+-    · exact h1
+-    · omega
++    exact (hS v).1 ((weight_eq_zero_iff w hw m).1 (h (mem_support_iff.1 hm)) v hv)
++
++theorem isF_iff (j0 : ℕ) (g : MvPolynomial (Fin N × Fin r) ℚ_[p]) :
++    IsF (fsj N r j0) g ↔ g ∈ weightedHomogeneousSubmodule ℚ_[p] (wlat N r j0) 0 :=
++  support_iff_weight_zero _ _ (fun v => by unfold wlat; split <;> decide)
++    (fun v => by simp [wlat, fsj]) g
+
+ theorem isL_iff (j0 : ℕ) (g : MvPolynomial (Fin N × Fin r) ℚ_[p]) :
+-    IsL (fsj N r j0) g ↔ g ∈ weightedHomogeneousSubmodule ℚ_[p] (wfir N r j0) 0 := by
+-  rw [mem_weightedHomogeneousSubmodule]
+-  constructor
+-  · intro h m hm
+-    refine (weight_eq_zero_iff _ (fun v => by unfold wfir; split_ifs <;> omega) m).mpr fun v hv => ?_
+-    have := h m (mem_support_iff.mpr hm) v hv
+-    simp [wfir, fsj] at this ⊢; omega
+-  · intro h m hm v hv
+-    have := (weight_eq_zero_iff _ (fun v => by unfold wfir; split_ifs <;> omega) m).mp
+-      (h (mem_support_iff.mp hm)) v hv
+-    unfold wfir at this; unfold fsj; split_ifs at this with h1
+-    · omega
+-    · exact h1
++    IsL (fsj N r j0) g ↔ g ∈ weightedHomogeneousSubmodule ℚ_[p] (wfir N r j0) 0 :=
++  support_iff_weight_zero (fun v => ¬ fsj N r j0 v) _ (fun v => by unfold wfir; split <;> decide)
++    (fun v => by simp [wfir, fsj]) g
+
+ theorem glAct_isF (L : Letters N) (j0 J : ℕ) (c d : Fin r) {g : MvPolynomial (Fin N × Fin r) ℚ_[p]}
+     (hg : IsF (fsj N r j0) g) : IsF (fsj N r j0) (glAct p L J c d g) := by
+@@ -706,13 +716,13 @@
+ theorem slc_glAct (L : Letters N) {j0 J : ℕ} (hJ : J ≤ j0) (c d : Fin r) (m : Fin N × Fin r →₀ ℕ)
+     (x : MvPolynomial (Fin N × Fin r) ℚ_[p]) :
+     slc (fsj N r j0) m (glAct p L J c d x) = glAct p L J c d (slc (fsj N r j0) m x) := by
+-  induction x using MvPolynomial.induction_on' with
+-  | monomial m' a =>
+-    rw [monomial_split (fsj N r j0) m' a,
+-      glAct_mul_kill L J c d _ (killL_of_isL hJ (isL_monomial_ltr _ m' 1)),
+-      sl_mul _ m (glAct_isF L j0 J c d (isF_monomial_frst _ m' a)) (isL_monomial_ltr _ m' 1),
+-      sl_mul _ m (isF_monomial_frst _ m' a) (isL_monomial_ltr _ m' 1), map_smul]
+-  | add x y hx hy => rw [map_add (f := _), map_add (f := _), hx, hy, map_add (f := _), map_add (f := _)]
++  let slice := slc (K := ℚ_[p]) (fsj N r j0) m
++  let act := glAct p L J c d
++  apply agree_on_products (fsj N r j0) (slice ∘ₗ act) (act ∘ₗ slice) _ x
++  intro g q hg hq
++  simp only [slice, act, LinearMap.comp_apply, glAct_mul_kill L J c d _ (killL_of_isL hJ hq),
++    sl_mul _ m (glAct_isF L j0 J c d hg) hq, sl_mul _ m hg hq, map_smul]
++
+
+ theorem weight_wv_zero (L : Letters N) {j0 J : ℕ} (hJ : J ≤ j0) (m : Fin N × Fin r →₀ ℕ)
+     (hm : ∀ v, m v ≠ 0 → ¬ fsj N r j0 v) : Finsupp.weight (wv L J) m = 0 := by
+@@ -823,15 +833,16 @@
+     (hφ1 : ∀ c d x, φ (glAct p L j0 c d x) = glAct p L j0 c d (φ x)) (hφF : ∀ x, IsF (fsj N r j0) (φ x))
+     (c d : Fin r) (x : MvPolynomial (Fin N × Fin r) ℚ_[p]) :
+     ext (fsj N r j0) φ (glAct p L J c d x) = glAct p L J c d (ext (fsj N r j0) φ x) := by
+-  induction x using MvPolynomial.induction_on' with
+-  | monomial m' a =>
+-    have hg := isF_monomial_frst (fsj N r j0) m' a
+-    have hq := isL_monomial_ltr (fsj N r j0) m' (1 : ℚ_[p])
+-    rw [monomial_split (fsj N r j0) m' a, ext_mul _ φ hg hq, glAct_split L hJ c d, LinearMap.add_apply,
+-      LinearMap.add_apply, glAct_mul_kill L j0 c d _ (killL_of_isL le_rfl hq), midAct_mul_F L hJ c d hg,
+-      glAct_mul_kill L j0 c d _ (killL_of_isL le_rfl hq), midAct_mul_F L hJ c d (hφF _), map_add,
+-      ext_mul _ φ (glAct_isF L j0 j0 c d hg) hq, ext_mul _ φ hg (midAct_isL L hJ c d hq), hφ1]
+-  | add x y hx hy => simp only [map_add (f := _), hx, hy]
++  let extend := ext (fsj N r j0) φ
++  let act := glAct p L J c d
++  apply agree_on_products (fsj N r j0) (extend ∘ₗ act) (act ∘ₗ extend) _ x
++  intro g q hg hq
++  simp only [extend, act, LinearMap.comp_apply]
++  rw [ext_mul _ φ hg hq, glAct_split L hJ c d, LinearMap.add_apply,
++    LinearMap.add_apply, glAct_mul_kill L j0 c d _ (killL_of_isL le_rfl hq), midAct_mul_F L hJ c d hg,
++    glAct_mul_kill L j0 c d _ (killL_of_isL le_rfl hq), midAct_mul_F L hJ c d (hφF _), map_add,
++    ext_mul _ φ (glAct_isF L j0 j0 c d hg) hq, ext_mul _ φ hg (midAct_isL L hJ c d hq), hφ1]
++
+
+ theorem weight_first (L : Letters N) {j0 J : ℕ} (hJ : j0 ≤ J) (m : Fin N × Fin r →₀ ℕ)
+     (hm : ∀ v, m v ≠ 0 → fsj N r j0 v) : Finsupp.weight (wv L J) m = Finsupp.weight (wv L j0) m := by
+@@ -1143,10 +1154,8 @@
+   exact Submodule.subset_span ⟨_, hφ _, _, monomial_ltr_supported j0 m', rfl⟩
+
+ theorem isL_monomial_of (j0 : ℕ) (b : Fin N × Fin r →₀ ℕ) (hb : ∀ v : Fin N × Fin r, (v.1 : ℕ) < j0 → b v = 0) (a : ℚ_[p]) :
+-    IsL (fsj N r j0) (monomial b a) := by
+-  intro d hd
+-  obtain rfl := Finset.mem_singleton.mp (MvPolynomial.support_monomial_subset hd)
+-  exact fun v hv hlt => hv (hb v hlt)
++    IsL (fsj N r j0) (monomial b a) :=
++  isF_monomial_of (fun v => ¬ fsj N r j0 v) (fun v hv hlt => hv (hb v hlt)) a
+
+ theorem ext_rep (L : Letters N) (j0 : ℕ) (U : Submodule ℚ_[p] (MvPolynomial (Fin N × Fin r) ℚ_[p]))
+     (hU : U ≤ Pol p r (Lz L j0)) {x : MvPolynomial (Fin N × Fin r) ℚ_[p]}

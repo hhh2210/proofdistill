@@ -33,6 +33,8 @@ Comparing all `147,489` live RH modules (`15.22M` lines) against all `8,712` Mat
 
 ![From Wake-Only parallel proving to Theory-Lifting and Wake-Sleep consolidation](figures/fig2_wake_sleep_architecture.png)
 
+The first controlled experiment compares local proof simplification with private lemmas for splitting polynomial variables in one live RH module. Both variants preserve its 152 public declarations. The shared-lemma variant added 173 normalized tokens over the local baseline. [Phase A results and reproduction instructions](experiments/phase-a/README.md)
+
 ## Full Write-up & Related Work
 
 - **[`ANALYSIS.md`](ANALYSIS.md)** — Full empirical write-up: the three-layer decomposition (orchestrator exhaust vs. "Theory-less, Contract-Frozen" abstraction tax vs. genuine Mathlib-missing frontier math), the within-corpus natural experiment (`MemUnitaryGroupIffIsIsometry.lean` vs. `StationaryPhaseModel.lean`), and the **Theory-Lifting** & **Wake–Sleep** engineering directions.
