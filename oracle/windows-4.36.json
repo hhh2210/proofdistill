@@ -1,0 +1,13 @@
+{
+  "lean": "Lean (version 4.36.0, x86_64-w64-windows-gnu, commit 611c117bfaf7b7ae1cfcf246ce6fba31e8f509e9, Release)",
+  "oracle_sha256": "8bd30baf3c180df71ccea1eff539e83a28a6eb74f1df8ea66714afe3d9156243",
+  "cases": {
+    "sorry": "uncaught exception: Forbidden axiom sorryAx in stable",
+    "type": "uncaught exception: Kernel type mismatch: stable",
+    "value": "uncaught exception: Kernel value mismatch: weight",
+    "missing": "uncaught exception: Export mismatch; missing=#[stable], added=#[]",
+    "real_refactor": "ORACLE_AUDIT_PASSED exports=1 definitions=0 axioms=#[propext, Classical.choice, Quot.sound]"
+  },
+  "reference_control": "ORACLE_AUDIT_PASSED exports=1 definitions=0 axioms=#[propext, Classical.choice, Quot.sound]",
+  "kernel_replay": "replaying ExistsBasisIn"
+}

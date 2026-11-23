@@ -1,127 +1,140 @@
+module
+
 import Lean
+import all Lean.Util.CollectAxioms
 
 /-!
-# ProofDistill Generic Kernel-Level Module Equivalence Oracle
+Compare independently compiled versions of the same module against identical imported dependencies.
+The optional namespace-prefix mode checks a reference already compiled under a fresh namespace.
+Compile and replay artifacts separately.
 
-Loads a reference module (`refMod`, containing the published archive declarations
-under prefix `refPrefix`) and a candidate compressed module (`candMod`) as pure data
-via `withImportModules` (`loadExts := false`), so candidate code cannot execute
-initializers or override elaborators/commands.
-
-Verifies all 4 benchmark gates:
-  1. Complete two-sided public declaration coverage (no omitted public decls)
-  2. Identical declaration kind, universe `levelParams`, and binder `(Name × BinderInfo)` list
-  3. Kernel definitional equality (`Kernel.isDefEq`) on types (all decls) and values (`defnInfo`)
-  4. Raw kernel transitive axiom walk strictly ⊆ {propext, Classical.choice, Quot.sound}
+Read the exported object for coverage and the private object for kernel bodies. Inductive
+metadata and recursor rules must match structurally. The audit loads both environments with
+extension initialization disabled.
 -/
+
 open Lean
 
-def extractBinders : Expr → List (Name × BinderInfo)
-  | .forallE n _ body bi => (n.eraseMacroScopes, bi) :: extractBinders body
+private def binders : Expr → List (Name × BinderInfo)
+  | .forallE n _ body bi => (n.eraseMacroScopes, bi) :: binders body
   | _ => []
 
-def stripPrefix (pfx name : Name) : Option Name :=
-  let rec go : List Name → List Name → Option (List Name)
-    | [], rest => some rest
-    | p :: ps, n :: ns => if p == n then go ps ns else none
-    | _, [] => none
-  let pComps := pfx.components
-  let nComps := name.components
-  (go pComps nComps).map fun comps =>
-    comps.foldl (fun acc c => match c with
-      | .str _ s => Name.str acc s
-      | .num _ k => Name.num acc k
-      | .anonymous => acc) .anonymous
+private def checkEq (env : Environment) (n : Name) (field : String) (a b : Expr) : IO Unit := do
+  unless Kernel.isDefEq env {} a b matches .ok true do
+    throw <| IO.userError s!"Kernel {field} mismatch: {n}"
+  let (same, _, _) ← (Meta.withTransparency .all (Meta.isDefEq a b)).toIO
+    { fileName := "<oracle>", fileMap := default } { env }
+  unless same do throw <| IO.userError s!"Meta {field} mismatch: {n}"
 
-def publicDeclsInModule (env : Environment) (modName : Name) : IO (Array Name) := do
-  let some idx := env.getModuleIdx? modName
-    | throw <| IO.userError s!"Missing module in environment: {modName}"
-  let mut out : Array Name := #[]
-  for n in env.header.moduleData[idx]!.constNames do
-    unless n.isInternalDetail || isPrivateName n do
-      out := out.push n
-  return out
-
-def rawAxioms (env : Environment) (roots : Array Name) : Except String (Array Name × Nat) := do
-  let mut seen : Std.HashSet Name := {}
-  let mut axioms : NameSet := {}
-  let mut todo := roots
-  while !todo.isEmpty do
-    let name := todo.back!
-    todo := todo.pop
-    if seen.contains name then continue
-    seen := seen.insert name
-    let some info := env.checked.get.find? name
-      | throw s!"Unknown proof dependency: {name}"
-    if info matches .axiomInfo _ then axioms := axioms.insert name
-    todo := todo ++ info.type.getUsedConstants
-    if let some value := info.value? (allowOpaque := true) then
-      todo := todo ++ value.getUsedConstants
-    if let .inductInfo value := info then
-      todo := todo ++ value.ctors.toArray
-  return (axioms.toArray.qsort Name.lt, seen.size)
-
-def sameKind (a b : ConstantInfo) : Bool :=
+private def auditPair (env : Environment) (a b : ConstantInfo) : IO Bool := do
+  let c := b.name
+  unless a.levelParams == b.levelParams && binders a.type == binders b.type do
+    throw <| IO.userError s!"Universe or binder mismatch: {c}"
+  checkEq env c "type" a.type b.type
   match a, b with
-  | .thmInfo _, .thmInfo _ => true
-  | .defnInfo _, .defnInfo _ => true
-  | .opaqueInfo _, .opaqueInfo _ => true
-  | .inductInfo _, .inductInfo _ => true
-  | .ctorInfo _, .ctorInfo _ => true
-  | .recInfo _, .recInfo _ => true
-  | _, _ => false
+  | .thmInfo _, .thmInfo _ => return false
+  | .defnInfo x, .defnInfo y =>
+    unless x.hints == y.hints && x.safety == y.safety do
+      throw <| IO.userError s!"Definition metadata mismatch: {c}"
+    checkEq env c "value" x.value y.value
+    return true
+  | .opaqueInfo x, .opaqueInfo y =>
+    unless x.isUnsafe == y.isUnsafe do throw <| IO.userError s!"Opaque safety mismatch: {c}"
+    checkEq env c "opaque value" x.value y.value
+    return false
+  | .inductInfo _, .inductInfo _ | .ctorInfo _, .ctorInfo _ | .recInfo _, .recInfo _ =>
+    unless a == b do throw <| IO.userError s!"Inductive family mismatch: {c}"
+    return false
+  | _, _ => throw <| IO.userError s!"Different or unsupported declaration kind: {c}"
 
-def auditOnePair (env : Environment) (refName candName : Name) : IO Unit := do
-  let some refInfo := env.checked.get.find? refName
-    | throw <| IO.userError s!"Missing reference constant: {refName}"
-  let some candInfo := env.checked.get.find? candName
-    | throw <| IO.userError s!"Missing candidate constant: {candName}"
-  unless sameKind refInfo candInfo do
-    throw <| IO.userError s!"Declaration kind mismatch for {candName}"
-  unless refInfo.levelParams == candInfo.levelParams do
-    throw <| IO.userError s!"Universe parameter mismatch for {candName}: {refInfo.levelParams} vs {candInfo.levelParams}"
-  unless extractBinders refInfo.type == extractBinders candInfo.type do
-    throw <| IO.userError s!"Binder mismatch for {candName}: {repr (extractBinders refInfo.type)} vs {repr (extractBinders candInfo.type)}"
-  match Kernel.isDefEq env {} refInfo.type candInfo.type with
-  | .ok true => pure ()
-  | _ => throw <| IO.userError s!"Type isDefEq failed for {candName}"
-  if let (.defnInfo rDef, .defnInfo cDef) := (refInfo, candInfo) then
-    match Kernel.isDefEq env {} rDef.value cDef.value with
-    | .ok true => pure ()
-    | _ => throw <| IO.userError s!"Definition value isDefEq failed for {candName}"
+/-- Dependencies whose meaning can affect conversion. Proof bodies are audited for axioms. -/
+private def conversionDeps (a : ConstantInfo) : Array Name := Id.run do
+  let deps := a.type.getUsedConstants
+  match a with
+  | .defnInfo v => return deps ++ v.value.getUsedConstants
+  | .opaqueInfo v => return deps ++ v.value.getUsedConstants
+  | .inductInfo v => return deps ++ v.all.toArray ++ v.ctors.toArray
+  | .ctorInfo v => return deps.push v.induct
+  | .recInfo v =>
+    return v.rules.foldl (fun ds r => ds.push r.ctor ++ r.rhs.getUsedConstants) (deps ++ v.all.toArray)
+  | _ => return deps
 
-unsafe def main (args : List String) : IO UInt32 := do
-  let (refMod, candMod, refPrefix) ← match args with
-    | [r, c, p] => pure (r.toName, c.toName, p.toName)
-    | _ => throw <| IO.userError "usage: OracleAudit <RefModule> <CandModule> <RefNamespacePrefix>"
+/-- Use Lean's kernel-body walk, sharing its dependency cache across roots. The callback
+always misses, so extension-provided axiom summaries cannot influence the result. -/
+private def axiomSets (env : Environment) (names : Array Name) : Array (Array Name) :=
+  CollectAxioms.runM env <| names.mapM <| CollectAxioms.collectAndGet fun _ _ => none
+
+private def exports (m : ModuleData) := (m.constNames.filter (!isPrivateName ·)).qsort Name.lt
+
+private def info (env : Environment) (n : Name) : IO ConstantInfo := do
+  let some i := env.checked.get.find? n | throw <| IO.userError s!"Missing declaration: {n}"
+  return i
+
+private def compareModules (refEnv env : Environment) (ref cand : ModuleData)
+    (rename : Name → Name) (sameName : Bool) (modName : Name) : IO UInt32 := do
+  unless ref.imports == cand.imports && ref.isModule == cand.isModule do
+    throw <| IO.userError "Direct import mismatch"
+  let names := exports ref
+  let mapped := names.map rename
+  let actual := exports cand
+  unless mapped.qsort Name.lt == actual do
+    throw <| IO.userError s!"Export mismatch; missing={mapped.filter (!actual.contains ·)}, added={actual.filter (!mapped.contains ·)}"
+  let publicInfo := cand.constants.foldl (init := ({} : NameMap ConstantInfo))
+    fun m c => m.insert c.name c
+  for a in ref.constants do
+    if isPrivateName a.name then continue
+    let some b := publicInfo.find? (rename a.name) | throw <| IO.userError "Missing public entry"
+    unless a.ctorIdx == b.ctorIdx do throw <| IO.userError s!"Public visibility mismatch: {b.name}"
+  let refAx := axiomSets refEnv names
+  let candAx := axiomSets env mapped
+  let mut allAx : NameSet := {}
+  let mut defs := 0
+  let mut todo := #[]
+  for n in names, m in mapped, expected in refAx, observed in candAx do
+    for ax in observed do
+      unless #[`propext, `Classical.choice, `Quot.sound].contains ax do
+        throw <| IO.userError s!"Forbidden axiom {ax} in {m}"
+      allAx := allAx.insert ax
+    -- Test equality of types and values even when both expressions have the same head symbol.
+    let a ← info refEnv n
+    if ← auditPair env a (← info env m) then defs := defs + 1
+    unless expected == observed do throw <| IO.userError s!"Axiom set mismatch for {m}"
+    if sameName then
+      todo := todo ++ conversionDeps a
+  -- A reference expression may mention a private helper. Its original meaning must also
+  -- be valid in the candidate environment. The imported dependency artifacts are shared.
+  let mut seen := names.foldl (init := ({} : NameSet)) fun s n => s.insert n
+  let some idx := refEnv.getModuleIdx? modName | throw <| IO.userError "Missing reference module"
+  while let some n := todo.back? do
+    todo := todo.pop
+    if seen.contains n || refEnv.getModuleIdxFor? n != some idx then continue
+    seen := seen.insert n
+    let a ← info refEnv n
+    discard <| auditPair env a (← info env n)
+    todo := todo ++ conversionDeps a
+  IO.println s!"ORACLE_AUDIT_PASSED exports={names.size} definitions={defs} axioms={allAx.toArray.qsort Name.lt}"
+  return 0
+
+public unsafe def main (args : List String) : IO UInt32 := do
   initSearchPath (← findSysroot)
-  withImportModules #[{module := refMod}, {module := candMod}] {} fun env => do
-    let refDecls ← publicDeclsInModule env refMod
-    let candDecls ← publicDeclsInModule env candMod
-    let mut pairs : Array (Name × Name) := #[]
-    for rn in refDecls do
-      let some cn := stripPrefix refPrefix rn
-        | throw <| IO.userError s!"Reference decl {rn} does not start with prefix {refPrefix}"
-      pairs := pairs.push (rn, cn)
-    -- Two-sided public declaration coverage check
-    let candSet : Std.HashSet Name := candDecls.foldl (fun s n => s.insert n) {}
-    let pairCandSet : Std.HashSet Name := pairs.foldl (fun s p => s.insert p.2) {}
-    for (_, cn) in pairs do
-      unless candSet.contains cn do
-        throw <| IO.userError s!"Candidate omitted public declaration: {cn}"
-    for cn in candDecls do
-      unless pairCandSet.contains cn do
-        throw <| IO.userError s!"Candidate added unexpected public declaration: {cn}"
-    -- Pairwise kernel equality + binder/universe checks
-    for (rn, cn) in pairs do
-      auditOnePair env rn cn
-    -- Raw kernel transitive axiom walk on all candidate public declarations
-    let (axioms, visited) ← match rawAxioms env (pairs.map Prod.snd) with
-      | .ok r => pure r
-      | .error e => throw <| IO.userError e
-    let allowed : Array Name := #[`propext, `Classical.choice, `Quot.sound]
-    for ax in axioms do
-      unless allowed.contains ax do
-        throw <| IO.userError s!"Forbidden axiom {ax}"
-    IO.println s!"ORACLE_AUDIT_PASSED {pairs.size} public_decls; raw_axioms={axioms}; visited={visited}"
-    return 0
+  match args with
+  | ["--same", refRoot, candRoot, modStr] =>
+    let base ← searchPathRef.get
+    let modName := modStr.toName
+    searchPathRef.set (System.FilePath.mk refRoot :: base)
+    let (ref, _) ← readModuleData (modToFilePath refRoot modName "olean")
+    withImportModules #[{module := modName}] {} fun refEnv => do
+      searchPathRef.set (System.FilePath.mk candRoot :: base)
+      let (cand, _) ← readModuleData (modToFilePath candRoot modName "olean")
+      withImportModules #[{module := modName}] {} fun env =>
+        compareModules refEnv env ref cand id true modName
+  | [refStr, candStr, prefixStr] =>
+    let r := refStr.toName
+    let c := candStr.toName
+    let ns := prefixStr.toName
+    let (ref, _) ← readModuleData (← findOLean r)
+    let (cand, _) ← readModuleData (← findOLean c)
+    unless (exports ref).all ns.isPrefixOf do throw <| IO.userError "Unprefixed reference export"
+    withImportModules #[{module := r}, {module := c}] {} fun env =>
+      compareModules env env ref cand (·.replacePrefix ns .anonymous) false r
+  | _ => throw <| IO.userError "usage: OracleAudit --same REF_ROOT CAND_ROOT MODULE, or REF_MODULE CAND_MODULE REF_NAMESPACE"
