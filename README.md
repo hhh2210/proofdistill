@@ -27,8 +27,17 @@ Comparing all `147,489` live RH modules (`15.22M` lines) against all `8,712` Mat
 
 *(Note: the released RH source archive also contains `0` comments and `0` `/--` docstrings vs. Mathlib's `77,649` docstrings; this reflects the release export / pipeline rather than proof logic itself.)*
 
+## Full Write-up & Related Work
+
+- **[`ANALYSIS.md`](ANALYSIS.md)** — Full empirical write-up: the three-layer decomposition (orchestrator exhaust vs. "Theory-less, Contract-Frozen" abstraction tax vs. genuine Mathlib-missing frontier math), the within-corpus natural experiment (`MemUnitaryGroupIffIsIsometry.lean` vs. `StationaryPhaseModel.lean`), and the **Theory-Lifting** & **Wake–Sleep** engineering directions.
+- **Related Lean 4 / Mathlib contributions:**
+  - [`leanprover-community/riemann-hypothesis` commit `8071ca2be8`](https://github.com/leanprover-community/riemann-hypothesis/commit/8071ca2be8) (from [PR #94](https://github.com/leanprover-community/riemann-hypothesis/pull/94), merged via [#150](https://github.com/leanprover-community/riemann-hypothesis/pull/150)): reusing the quadratic Hasse norm theorem (`+34 / -1,703` lines).
+  - [`leanprover-community/mathlib4#46371`](https://github.com/leanprover-community/mathlib4/pull/46371): `feat(NumberTheory/Chebyshev): transfer von Koch's bound to prime counting`.
+  - [`hhh2210/rh-grh-consequences`](https://github.com/hhh2210/rh-grh-consequences): machine-checked Lean 4 consequences of RH and Dirichlet GRH (von Koch, Cramér short intervals, zero-density window, conditional Miller primality test).
+
 ## Repository Structure
 
+- `ANALYSIS.md` — Full LLM-systems analysis of the 17.37M-line RH archive vs. Mathlib.
 - `src/anatomy.py` — Full 175,187-file structural & tactic anatomy aligned against `cut-modules.txt.xz`.
 - `src/compare_mathlib.py` — Side-by-side comparison of Mathlib vs. live RH cone (`class`, `structure`, `instance`, `@[simp]`, `@[ext]`, `def : Prop`, import in-degree, proof length).
 - `src/lexer_metrics.py` — Comment-stripped, whitespace-normalized Lean 4 token counter (prevents single-line packing cheats).
