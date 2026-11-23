@@ -223,6 +223,150 @@ def make_fig1_anatomy() -> None:
     print("Saved figures/fig1_mathlib_vs_rh.{png,svg}")
 
 
+def make_fig1_three_factor() -> None:
+    """Publication-grade 3x3 small-multiples figure: Orthogonal 3-Factor Decomposition
+    across Mathlib, Pure Human Research (3 repos), FLT (Human-Curated + AI), PNT+ Core,
+    PNT+/IEANTN (2026 AI PRs), and Alpöge RH Live Cone.
+    """
+    tw = json.loads((ROOT / "data" / "three_way_comparison.json").read_text())
+    by_name = {r["name"]: r for r in tw["summary_table"]}
+
+    corpora = [
+        ("Mathlib v4.36 (StdLib)", "Mathlib v4.36\n(StdLib)", "#7D8590"),
+        ("Pure Human Research (3 repos)", "Pure Human (3)\n(0 AI mentions)", "#246B4F"),
+        ("FLT", "FLT\n(Human + 26 AI)", "#0F4D92"),
+        ("PNT+ Core (excl. IEANTN)", "PNT+ Core\n(Analytic NT)", "#5B8EC9"),
+        ("PNT+/IEANTN (2026 AI PRs)", "PNT+/IEANTN\n(2026 AI PRs)", "#D0831A"),
+        ("Alpöge RH Live Cone (AI)", "Alpöge RH\n(Parallel AI)", "#B64342"),
+    ]
+    rows_data = [by_name[k] for k, _, _ in corpora]
+    y_labels = [lbl for _, lbl, _ in corpora]
+    colors = [c for _, _, c in corpora]
+    y_pos = np.arange(len(corpora))[::-1]
+
+    row_specs = [
+        (
+            "Factor 1 · StdLib vs. Frontier Research  (Falsified as AI-Only — Human Research Matches RH)",
+            "#F6F8FA",
+            "#D0D7DE",
+            SLATE_DARK,
+            [
+                ("Theorems >50 lines (%)", "long50_pct_of_thms", lambda v: f"{v:.1f}%", 12.2),
+                ("Single-caller files (in-deg = 1, %)", "indeg_eq_1_pct", lambda v: f"{v:.1f}%", 86.0),
+                ("Manual have rate (per 1k lines)", "have_per_1k_lines", lambda v: f"{v:.0f}", 162.0),
+            ],
+        ),
+        (
+            "Factor 2 · Autonomous LLM Abstraction Collapse  (Prevented by Human Curation in FLT)",
+            "#F3F8FD",
+            "#BDD3EA",
+            BLUE_DARK,
+            [
+                ("class density (per 1M lines)", "class_per_1m_lines", lambda v: f"{v:.1f}" if v < 50 else f"{v:.0f}", 1130.0),
+                ("@[simp] share (% of theorems)", "simp_pct_of_thms", lambda v: f"{v:.2f}%" if v < 1 else f"{v:.1f}%", 36.5),
+                ("instance / structure ratio", "inst_per_struct", lambda v: f"{v:.2f}", 7.9),
+            ],
+        ),
+        (
+            "Factor 3 · Parallel Multi-Agent Orchestrator Signatures  (Unique to Alpöge RH)",
+            "#FDF6F6",
+            "#E6C9C8",
+            RED_DARK,
+            [
+                ("Monolithic import Mathlib (% files)", "import_mathlib_root_pct", lambda v: f"{v:.1f}%", 102.0),
+                ("Frozen def : Prop (% of defs)", "def_prop_pct", lambda v: f"{v:.1f}%", 49.5),
+                ("Avg file size (lines / file; ↓ = fragmented)", "avg_lines_per_file", lambda v: f"{v:.0f} L", 1240.0),
+            ],
+        ),
+    ]
+
+    fig = plt.figure(figsize=(13.4, 11.6), dpi=300)
+
+    # Background axes at zorder=0 so rounded row bands ALWAYS render behind all data axes
+    bg_ax = fig.add_axes([0.0, 0.0, 1.0, 1.0], zorder=0)
+    bg_ax.set_xlim(0.0, 1.0)
+    bg_ax.set_ylim(0.0, 1.0)
+    bg_ax.axis("off")
+
+    # Global title & subtitle
+    bg_ax.text(
+        0.025, 0.978,
+        "Separating StdLib Confounds, LLM Abstraction Collapse, and Parallel-Agent Signatures",
+        fontsize=15.4, fontweight="bold", color=SLATE_DARK, ha="left", va="top",
+    )
+    bg_ax.text(
+        0.025, 0.949,
+        "Identical full-corpus analyzer run across Mathlib v4.36 (8,712 files), 3 pure-human research repos (Carleson, SphereEversion, PFR; 259 files, 0 AI mentions), "
+        "FLT (260 files; human-curated w/ 26 AI-credit files),\nPrimeNumberTheoremAnd split (Core 107 files vs. IEANTN 126 files), and Alpöge RH live kernel cone (147,489 files; post-#150 v4.36 main: 77.6% import Mathlib).",
+        fontsize=8.9, color=SLATE_MID, ha="left", va="top", linespacing=1.38,
+    )
+
+    row_bottoms = [0.642, 0.340, 0.038]
+    row_height = 0.194
+    col_lefts = [0.165, 0.445, 0.725]
+    col_width = 0.242
+
+    for r_idx, (row_title, bg_fc, bg_ec, title_col, panels) in enumerate(row_specs):
+        rb = row_bottoms[r_idx]
+        band = FancyBboxPatch(
+            (0.022, rb - 0.024), 0.958, row_height + 0.080,
+            boxstyle="round,pad=0.004,rounding_size=0.012",
+            facecolor=bg_fc, edgecolor=bg_ec, linewidth=1.05, zorder=1,
+        )
+        bg_ax.add_patch(band)
+        bg_ax.text(
+            0.036, rb + row_height + 0.036,
+            row_title,
+            fontsize=10.6, fontweight="bold", color=title_col, ha="left", va="center", zorder=2,
+        )
+
+        for c_idx, (ptitle, key, fmt, xmax) in enumerate(panels):
+            ax = fig.add_axes([col_lefts[c_idx], rb, col_width, row_height], zorder=5)
+            ax.set_facecolor("white")
+            vals = [row[key] if row[key] is not None else 0.0 for row in rows_data]
+
+            ax.barh(y_pos, vals, height=0.62, color=colors, edgecolor="none", zorder=3)
+            ax.set_xlim(0, xmax)
+            ax.set_ylim(-0.62, len(corpora) - 0.38)
+            ax.grid(axis="x", linestyle=":", linewidth=0.75, color="#DCE2E8", zorder=1)
+            ax.set_axisbelow(True)
+
+            for y, v, col in zip(y_pos, vals, colors):
+                is_hi = (
+                    (r_idx == 1 and col in ("#D0831A", "#B64342", "#0F4D92"))
+                    or (r_idx == 2 and col == "#B64342")
+                )
+                txt_col = col if is_hi else SLATE_DARK
+                fw = "bold" if is_hi else "normal"
+                ax.text(
+                    v + xmax * 0.022, y, fmt(v),
+                    ha="left", va="center", fontsize=8.3, fontweight=fw, color=txt_col, zorder=4,
+                )
+
+            ax.set_title(ptitle, fontsize=9.1, fontweight="bold", color=SLATE_DARK, loc="left", pad=5)
+            ax.spines["top"].set_visible(False)
+            ax.spines["right"].set_visible(False)
+            ax.spines["left"].set_color(SLATE_LIGHT)
+            ax.spines["bottom"].set_color(SLATE_LIGHT)
+            ax.tick_params(axis="x", labelsize=7.7, colors=SLATE_MID, length=2.5)
+            ax.xaxis.set_major_locator(plt.MaxNLocator(4))
+
+            if c_idx == 0:
+                ax.set_yticks(y_pos)
+                ax.set_yticklabels(y_labels, fontsize=8.0, color=SLATE_DARK, linespacing=1.08)
+                ax.tick_params(axis="y", length=0, pad=6)
+            else:
+                ax.set_yticks(y_pos)
+                ax.set_yticklabels([])
+                ax.tick_params(axis="y", length=0)
+
+    for ext in ("png", "svg"):
+        out = FIG_DIR / f"fig1_three_factor_anatomy.{ext}"
+        fig.savefig(out, dpi=300, bbox_inches="tight", pad_inches=0.14)
+    plt.close(fig)
+    print("Saved figures/fig1_three_factor_anatomy.{png,svg}")
+
+
 def make_fig2_architecture() -> None:
     """Crisp minimalist vector schematic contrasting Wake-Only vs Theory-Lifting / Wake-Sleep."""
     fig, ax = plt.subplots(figsize=(12.0, 6.2), dpi=300)
@@ -230,7 +374,7 @@ def make_fig2_architecture() -> None:
     ax.set_ylim(0, 6.2)
     ax.axis("off")
 
-    def draw_box(x, y, w, h, title, body, fc, ec, tc=SLATE_DARK, title_size=10.0, body_size=8.6, lw=1.4):
+    def draw_box(x, y, w, h, title, body, fc, ec, tc=SLATE_DARK, title_size=10.0, body_size=8.5, lw=1.4):
         box = FancyBboxPatch(
             (x, y), w, h,
             boxstyle="round,pad=0.04,rounding_size=0.12",
@@ -253,53 +397,53 @@ def make_fig2_architecture() -> None:
         ax.add_patch(arr)
 
     # Title
-    ax.text(0.25, 5.88, "From 'Wake-Only' Parallel Proving to Theory-Lifting & Wake–Sleep Consolidation",
-            fontsize=14.0, fontweight="bold", color=SLATE_DARK, ha="left", va="center")
-    ax.text(0.25, 5.54, "Minimalist systems view of why frozen subgoal contracts inflate formal proofs and how cross-module lifting breaks the ceiling",
-            fontsize=9.4, color=SLATE_MID, ha="left", va="center")
+    ax.text(0.25, 5.88, "From 'Wake-Only' Parallel Proving to Subtree Theory-Lifting & Wake–Sleep Consolidation",
+            fontsize=13.8, fontweight="bold", color=SLATE_DARK, ha="left", va="center")
+    ax.text(0.25, 5.54, "Why single-file export-locked edits hit an abstraction ceiling — and why unlocking dominated subtree interiors breaks it",
+            fontsize=9.3, color=SLATE_MID, ha="left", va="center")
 
     # ---- TOP LANE: Current Wake-Only Architecture ----
     top_bg = FancyBboxPatch((0.2, 3.18), 11.6, 2.08, boxstyle="round,pad=0.04,rounding_size=0.14",
                             facecolor="#FDF8F8", edgecolor="#E6C9C8", linewidth=1.1, zorder=1)
     ax.add_patch(top_bg)
-    ax.text(0.42, 5.02, "1.  Observed Paradigm: 'Wake-Only' Contract-Frozen Parallel Synthesis",
-            fontsize=10.6, fontweight="bold", color=RED_DARK, ha="left", va="center", zorder=2)
+    ax.text(0.42, 5.02, "1.  Observed Paradigm: 'Wake-Only' Contract-Frozen Parallel Synthesis  (Verified Factor 2 & 3 Signatures)",
+            fontsize=10.5, fontweight="bold", color=RED_DARK, ha="left", va="center", zorder=2)
 
     y_top, bh = 3.72, 1.02
-    draw_box(0.42, y_top, 2.25, bh, "Freeze Interfaces Up Front",
-             "65,028 def : Prop handoffs\n(37.1% of all defs)", "white", RED_MID, RED_DARK)
-    draw_box(3.15, y_top, 2.45, bh, "Isolated Parallel Workers",
-             "6,836 bare structures, 33 classes\n0.57 inst/struct · 0.83% @[simp]", "white", RED_MID, RED_DARK)
-    draw_box(6.08, y_top, 2.45, bh, "Automation Starved",
-             "simp/aesop cannot fire\n1.89M manual have lines (7.3×)", "white", RED_MID, RED_DARK)
-    draw_box(9.00, y_top, 2.58, bh, "15.22M-Line Consumption Tree",
-             "56.1% single-caller modules\n45,941 proofs >50 lines", RED_LIGHT, RED_DARK, RED_DARK, lw=1.7)
+    draw_box(0.42, y_top, 2.35, bh, "Freeze Interfaces Up Front",
+             "65,028 def : Prop handoffs\n(37.1% vs 7.4% pure human)", "white", RED_MID, RED_DARK)
+    draw_box(3.22, y_top, 2.45, bh, "Isolated Parallel Workers",
+             "6,836 bare structs · 2.2 class/M\n0.57 inst/struct · 0.83% @[simp]", "white", RED_MID, RED_DARK)
+    draw_box(6.12, y_top, 2.42, bh, "Import & Micro-File Tax",
+             "76.0% monolithic import Mathlib\n103 L/file (3.2× smaller vs human)", "white", RED_MID, RED_DARK)
+    draw_box(8.98, y_top, 2.60, bh, "15.22M-Line Brittle Tree",
+             "Automation starved (1.89M have)\n95× fewer classes/M vs human", RED_LIGHT, RED_DARK, RED_DARK, lw=1.7)
 
-    draw_arrow(2.71, y_top + bh / 2, 3.11, y_top + bh / 2, RED_DARK)
-    draw_arrow(5.64, y_top + bh / 2, 6.04, y_top + bh / 2, RED_DARK)
-    draw_arrow(8.57, y_top + bh / 2, 8.96, y_top + bh / 2, RED_DARK)
+    draw_arrow(2.81, y_top + bh / 2, 3.18, y_top + bh / 2, RED_DARK)
+    draw_arrow(5.71, y_top + bh / 2, 6.08, y_top + bh / 2, RED_DARK)
+    draw_arrow(8.58, y_top + bh / 2, 8.94, y_top + bh / 2, RED_DARK)
 
     # Bottom caption bar inside top lane
     ax.text(0.42, 3.38,
-            "Why post-hoc workarounds hit a wall:  mechanical PRs trim ~5.3% exhaust; interface-frozen per-file golfing cannot refactor bare structures or frozen contracts.",
-            fontsize=8.6, style="italic", color=SLATE_MID, ha="left", va="center", zorder=4)
+            "Why post-hoc single-file cleanups hit a wall: mechanical PRs trim ~5.3% exhaust; Phase A export-locked single-file edits (+9L, -0.45% hb) cannot melt cross-file boundaries.",
+            fontsize=8.4, style="italic", color=SLATE_MID, ha="left", va="center", zorder=4)
 
     # ---- BOTTOM LANE: Proposed Theory-Lifting / Wake-Sleep ----
     bot_bg = FancyBboxPatch((0.2, 0.22), 11.6, 2.66, boxstyle="round,pad=0.04,rounding_size=0.14",
                             facecolor="#F5F9FC", edgecolor="#BDD3EA", linewidth=1.1, zorder=1)
     ax.add_patch(bot_bg)
-    ax.text(0.42, 2.64, "2.  Next Solution: Kernel-Guarded Theory-Lifting  (Post-Hoc)  &  Wake–Sleep Gate  (Generation-Time)",
-            fontsize=10.6, fontweight="bold", color=BLUE_DARK, ha="left", va="center", zorder=2)
+    ax.text(0.42, 2.64, "2.  Next Solution: Subtree-Boundary Theory-Lifting  (Phase B)  &  Human/Wake–Sleep Curation  (FLT Pattern)",
+            fontsize=10.5, fontweight="bold", color=BLUE_DARK, ha="left", va="center", zorder=2)
 
     y_bot, bh2 = 1.24, 1.10
-    draw_box(0.42, y_bot, 2.35, bh2, "Connected Subtree Unit",
-             "Lock ONLY top-level exports\nvia Kernel.isDefEq + 3 axioms", "white", BLUE_MID, BLUE_DARK)
+    draw_box(0.42, y_bot, 2.35, bh2, "Dominated Subtree Unit",
+             "Lock ONLY root exit exports\nvia Kernel.isDefEq + 3 axioms", "white", BLUE_MID, BLUE_DARK)
     draw_box(3.25, y_bot, 2.75, bh2, "Retroactive API & Lifting",
-             "• Synthesize instance / @[simp] / @[ext]\n• Melt internal def : Prop contracts", "white", BLUE_MID, BLUE_DARK)
+             "• Synthesize instance / @[simp] / @[ext]\n• Melt internal def : Prop & micro-files", "white", BLUE_MID, BLUE_DARK)
     draw_box(6.48, y_bot, 2.35, bh2, "Cross-Branch Reuse",
-             "Anti-unify in-deg=1 clones\nRe-run simp / grind / fun_prop", "white", BLUE_MID, BLUE_DARK)
-    draw_box(9.30, y_bot, 2.28, bh2, "Mathlib-Grade DAG",
-             "Higher fan-in & automation\nFewer lines & heartbeats", GREEN_LIGHT, GREEN_DARK, GREEN_DARK, lw=1.7)
+             "Anti-unify sibling proofs\nTrim monolithic Mathlib imports", "white", BLUE_MID, BLUE_DARK)
+    draw_box(9.30, y_bot, 2.28, bh2, "Mathlib-Grade Subtree",
+             "Fewer files, tokens & heartbeats\nUnedited callers compile clean", GREEN_LIGHT, GREEN_DARK, GREEN_DARK, lw=1.7)
 
     draw_arrow(2.81, y_bot + bh2 / 2, 3.21, y_bot + bh2 / 2, BLUE_DARK)
     draw_arrow(6.04, y_bot + bh2 / 2, 6.44, y_bot + bh2 / 2, BLUE_DARK)
@@ -311,8 +455,8 @@ def make_fig2_architecture() -> None:
     draw_arrow(1.60, 0.92, 1.60, 1.22, GREEN_DARK, ls="--", lw=1.35)
     ax.text(
         6.02, 0.56,
-        "  Sleep Consolidation Gate (Generation-Time): enforce Mathlib health invariants (inst/struct, @[simp]%, fan-in) before expanding deeper subgoals  ",
-        fontsize=8.5, fontweight="bold", color=GREEN_DARK, ha="center", va="center",
+        "  Sleep Consolidation Gate (Generation-Time): enforce FLT/Mathlib invariants (class/M, inst/struct, @[simp]%, targeted imports) before spawning deeper workers  ",
+        fontsize=8.3, fontweight="bold", color=GREEN_DARK, ha="center", va="center",
         bbox=dict(boxstyle="round,pad=0.25", facecolor="#F5F9FC", edgecolor="none"), zorder=5,
     )
 
@@ -326,4 +470,5 @@ def make_fig2_architecture() -> None:
 
 if __name__ == "__main__":
     make_fig1_anatomy()
+    make_fig1_three_factor()
     make_fig2_architecture()

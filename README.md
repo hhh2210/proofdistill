@@ -1,39 +1,30 @@
-# ProofDistill — Empirical Anatomy of Million-Line AI Formal Proofs
+# ProofDistill — Empirical Anatomy & Subtree Distillation of Million-Line AI Formal Proofs
 
-An LLM-systems analysis of the 17.37M-line, 175,187-file Lean 4 formalization of the Riemann Hypothesis (`alpo.ge`), aligned against the exact kernel dependency cone (`147,489` live modules) and contrasted side-by-side with Mathlib (`8,712` modules, `2.37M` lines).
+An LLM-systems study of the 17.37M-line, 175,187-file Lean 4 formalization of the Riemann Hypothesis (`alpo.ge`), aligned against its exact kernel dependency cone (`147,489` live modules, `15.22M` lines) and benchmarked side-by-side against **Mathlib v4.36** (`8,712` files) and **five flagship Lean 4 frontier research repositories** (`Carleson`, `SphereEversion`, `PFR`, `FLT`, and `PrimeNumberTheoremAnd` split into Core vs. IEANTN).
 
-![Why mechanical cleanups leave >94% of the 15.22M-line AI RH proof behind](figures/fig1_mathlib_vs_rh.png)
+![Separating StdLib confounds, LLM abstraction collapse, and parallel-agent signatures](figures/fig1_three_factor_anatomy.png)
 
-## Core Empirical Finding: Why Mechanical Cleanups Leave >94% of Live Lines Untouched
+## Key Empirical Finding: An Orthogonal 3-Factor Decomposition
 
-Surface orchestrator exhaust (dead modules, `*Statement.lean` thin glue wrappers, `maxHeartbeats` overrides, and explicit typeclass dumps) is already being cleaned up by community PRs in `leanprover-community/riemann-hypothesis` (#45, #55, #57, #58, #60, #61, #63, #65, #79). Quantifying each layer strictly across the `147,489` live in-cone modules (`15,218,364` lines):
+Mechanical cleanups (dead-module pruning, `*Statement.lean` wrappers `4.54%`, strict explicit machine dumps `0.75%`, `maxHeartbeats` overrides `~0.50%`) leave **`14,412,450` lines (`94.70%` of the live kernel cone)** untouched. Benchmarking all `147,489` live RH modules against both Mathlib **and** five human frontier research repositories ([`data/three_way_comparison.json`](data/three_way_comparison.json)) separates three distinct effects — **and falsifies two claims from our initial Mathlib-only comparison**:
 
-- `*Statement.lean` & `first | exact @...` glue files: **`691,632` lines (`4.54%`)**
-- Strict explicit machine-dump files (`inst_\d+` / `.{u_\d+` / `Eq.{`, `717` files): **`114,282` lines (`0.75%`)**
-- `maxHeartbeats` override lines across the cone: **`~76,000` lines (`~0.50%`)**
-- **Remaining clean, non-wrapper, non-dump live code**: **`14,412,450` lines (`94.70%` of the live cone)**
+| Corpus | Files | Lines | L/file | `class`/1M | `inst`/`struct` | `@[simp]`% | `@[ext]`/1M | `def:Prop`% | `have`/1k | `>50L`% | `in=1`% | `import Mathlib`% |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| **Mathlib v4.36 (StdLib)** | 8,712 | 2,368,060 | 272 | 852.6 | 6.06 | 27.84% | 589.5 | 3.29% | 17.1 | 0.55% | 29.8% | 0.0% |
+| **Pure Human Research (`3` repos, `0` AI)** | **259** | **85,921** | **332** | **209.5** | **1.23** | **7.85%** | **151.3** | **7.41%** | **58.7** | **6.59%** | **55.2%** | **0.0%** |
+| **`FLT` *(human-curated, 26 AI files)*** | 260 | 58,042 | 223 | **499.6** | **5.45** | **16.84%** | **241.2** | **1.55%** | 52.4 | 5.57% | 49.2% | 0.8% |
+| `PNT+ Core` *(excl. IEANTN)* | 107 | 51,898 | 485 | 38.5 | 1.00 | 3.39% | 19.3 | 20.36% | 118.2 | 9.18% | 49.5% | 2.8% |
+| **`PNT+/IEANTN` *(2026 AI PRs)*** | 126 | 120,296 | 955 | **16.6** | **0.00** | **0.06%** | **0.0** | 8.81% | 92.9 | 4.41% | 65.1% | 0.0% |
+| **Alpöge RH Live Cone (Parallel AI)** | **147,489** | **15,218,364** | **103** | **2.2** | **0.57** | **0.83%** | **6.8** | **37.07%** | **124.3** | **6.36%** | **56.1%** | **76.0%** |
 
-Comparing all `147,489` live RH modules (`15.22M` lines) against all `8,712` Mathlib modules (`2.37M` lines) surfaces four order-of-magnitude structural gaps that explain this post-mechanical bloat from an LLM-systems perspective (**Theory-less, Contract-Frozen Synthesis**):
+1. **Factor 1 — StdLib vs. Frontier Research (*falsified as AI-only*):** Theorems `>50` lines (`6.36%` RH vs. `6.59%` Pure Human) and single-caller modules (`56.1%` RH vs. `55.2%` Pure Human) are normal properties of end-point research formalizations, not AI pathologies.
+2. **Factor 2 — Autonomous LLM Abstraction Collapse (*prevented by human curation in `FLT`*):** Both single-agent `PNT+/IEANTN` (`16.6` classes/1M, `0.06%` `@[simp]`, `0.00` inst/struct) and parallel `Alpöge RH` (`2.2` classes/1M, `0.83%` `@[simp]`, `0.57` inst/struct, `6.8` `@[ext]`/1M) collapse an order of magnitude below Pure Human Research (`209.5` classes/1M, `7.85%` `@[simp]`, `151.3` `@[ext]`/1M). Crucially, **`FLT` credits Claude/Codex in `26` files yet preserves Mathlib-grade metrics (`499.6` classes/1M, `5.45` inst/struct, `16.84%` `@[simp]`)** — showing that human architectural curation ("human-in-the-loop Sleep") prevents abstraction collapse.
+3. **Factor 3 — Parallel Multi-Agent Orchestrator Signatures (*unique to Alpöge RH*):** Monolithic `import Mathlib` (`76.0%` live cone; `77.6%` on post-#150 v4.36 `main` `c592e91eb8` vs. `0.0%–2.8%` in all other repos), frozen `def : Prop` handoff contracts (`37.07%` vs. `1.55%–8.81%`), and micro-file fragmentation (`103` L/file vs. `223–955` L/file) appear only in the parallel multi-agent pipeline.
 
-| Metric (exact full-corpus scan) | Human Mathlib (`8,712` files) | AI RH In-Cone (`147,489` files) | Contrast |
-|---|---:|---:|---|
-| Total lines (avg / file) | `2,368,060` (`272` L/file) | `15,218,364` (`103` L/file) | `6.4x` lines, `16.9x` files |
-| `class` declarations | `2,019` | `33` | **`393x` lower density / line** |
-| `structure` vs `instance` | `1,833` / `11,111` (`6.06` inst/struct) | `6,836` / `3,915` (`0.57` inst/struct) | **`3.7x` structs, `10.6x` fewer instances/struct** |
-| `@[simp]` density (`simp / thms`) | `51,114` (`27.84%`) | `5,973` (`0.83%`) | **`33.7x` lower automation density** |
-| `@[ext]` attributes | `1,396` | `104` | **`86.3x` lower density / line** |
-| `def ... : Prop :=` ratio | `3.29%` (`1,073 / 32,565`) | `37.07%` (`65,028 / 175,424`) | **`11.3x` frozen handoff contracts** |
-| `have` density (per 1k lines) | `17.1` (`40,574`) | `124.3` (`1,891,600`) | **`7.3x` manual step-by-step chaining** |
-| Theorems > 50 lines | `1,013` (`0.55%`) | `45,941` (`6.36%`) | **`11.5x` share (`45x` count)** |
-| Single-caller modules (`in-deg = 1`) | `29.81%` (median `2`) | `61.35%` (`56.13%` excl. `*Statement`/glue, median `1`) | Tree-shaped consumption vs. Mathlib DAG |
+## Controlled Experiments: Phase A (Single-File Null) → Phase B (Multi-File Subtrees)
 
-*(Note: the released RH source archive also contains `0` comments and `0` `/--` docstrings vs. Mathlib's `77,649` docstrings; this reflects the release export / pipeline rather than proof logic itself.)*
-
-## Controlled Single-Module Pilot (`MonoCount.lean`) & Kernel Oracle
-
-To test whether local abstraction lifting inside a **single export-locked file** can break past the ceiling without touching module boundaries, we first validated our two-module kernel equivalence oracle ([`oracle/OracleAudit.lean`](oracle/OracleAudit.lean), verified on Windows Lean `v4.36.0`: accepts a real refactor, rejects `sorryAx`, altered theorem type, altered `def` value, and missing export — see [`oracle/README.md`](oracle/README.md)).
-
-We then ran a matched A/B pilot on `Formalism/PolynomialDimension/MultinomialDepth/MonoCount.lean` (`1,878` lines, `0` dump lines, `228` `have`s, `152` public exports + `24` public `def` values locked via `Kernel.isDefEq` & `Meta.isDefEq`, with all `4` direct downstream importers compiled unchanged — full details in [`experiments/phase-a/README.md`](experiments/phase-a/README.md)):
+### Phase A · Single-File Export-Locked Pilot (`MonoCount.lean`)
+Using our kernel equivalence oracle ([`oracle/OracleAudit.lean`](oracle/OracleAudit.lean), verified on Windows Lean `v4.36.0`: accepts a real refactor, rejects `sorryAx`, altered theorem type, altered `def` value, and missing export — [`oracle/README.md`](oracle/README.md)), we ran a matched A/B on `MonoCount.lean` (`1,878`L, `28,806` normalized tokens, `152` locked public exports, `24` locked public `def`s, all `4` direct downstream importers compiled unchanged — [`experiments/phase-a/README.md`](experiments/phase-a/README.md)):
 
 | Pinned Windows Lean `4.36.0` build | Upstream | Arm A (local cleanup) | Arm B (+4 shared private lemmas) |
 |---|---:|---:|---:|
@@ -42,31 +33,40 @@ We then ran a matched A/B pilot on `Formalism/PolynomialDimension/MultinomialDep
 | Declaration heartbeats (sum) | `167,754` | `168,158` | `167,402` (`-0.45%` vs A) |
 | Warnings (`-DwarningAsError`) | `87` | `0` | `0` |
 
-**Takeaway (an honest null result for single-file locked refactoring):** Even after cleaning 87 warnings and lifting 4 shared private lemmas inside `MonoCount.lean`, locking all `152` public exports at the single-file boundary left total length and elaboration cost virtually unchanged (`+9` lines, `-0.45%` heartbeats). This empirically reinforces the macro finding above: breaking past the ~94% non-mechanical bulk requires **multi-file subtree lifting** (melting intermediate exports and `def : Prop` handoffs across boundaries) or **generation-time consolidation**, not isolated single-file rewrites.
+**Honest takeaway:** Locking all `152` exports of a single file leaves proof size and elaboration cost virtually unchanged (`+9`L, `+173` tokens, `-0.45%` heartbeats).
 
-## Beyond Mechanical Workarounds: Theory-Lifting & Wake–Sleep Consolidation
+### Phase B · Pre-Registered Multi-File Dominated Subtree Theory-Lifting *(Running)*
+To test whether unlocking the interior of a **dominated multi-file subtree** (while locking ONLY the top-level exit contract via `OracleAudit --subtree-boundary`, `lean4checker` replay, and unedited external caller compilation) breaks past Phase A's ceiling, we pre-registered three strictly dominated subtrees in [`experiments/phase-b/manifest.json`](experiments/phase-b/manifest.json) (commit `bfcc50a`, verified `0` external callers to non-root internal modules across all `149,098` files at `c592e91eb8`, each ~28k–30k tokens):
 
-![From Wake-Only parallel proving to Theory-Lifting and Wake-Sleep consolidation](figures/fig2_wake_sleep_architecture.png)
+| Subtree ID | Root Module | Files | Lines | Norm. Tokens | `import Mathlib` | External Callers | Targeted Pathology |
+|---|---|---:|---:|---:|---:|---:|---|
+| `B3_alexander_whitney` | `...ProductLevelwiseOfAlexanderWhitney` | 15 | 1,733 | 29,227 | 15 / 15 | 1 (`PurTop`, 0 internal refs) | 7 bare `structure`s (`0` simp/ext) + 15× `import Mathlib` behind 1 sealed theorem |
+| `B1_final_har` | `...PolynomialDimension.FinalHar` | 6 | 2,101 | 27,884 | 1 / 6 | 2 | `0` ext RH deps (pure Mathlib) + `def : Prop` contracts + `21` `set_option`s |
+| `B2_real_metaplectic` | `...RealMetaplecticRepresentationHolds` | 13 | 2,147 | 30,029 | 0 / 13 | 2 | 13 fragmented micro-files (`19L–341L`) + `17` `def : Prop` + 33-file total closure |
 
-The first controlled experiment compares local proof simplification with private lemmas for splitting polynomial variables in one live RH module. Both variants preserve its 152 public declarations. The shared-lemma variant added 173 normalized tokens over the local baseline. [Phase A results and reproduction instructions](experiments/phase-a/README.md)
+Each subtree compares **Upstream** vs. **Arm A (export-locked per-file)** vs. **Arm B (subtree-boundary theory-lifting)** with both matched-import and minimal-import wall-clock runs plus import-independent `#count_heartbeats` and normalized token metrics.
 
-## Full Write-up & Related Work
+![From Wake-Only parallel proving to Subtree Theory-Lifting and Wake-Sleep consolidation](figures/fig2_wake_sleep_architecture.png)
 
-- **[`ANALYSIS.md`](ANALYSIS.md)** — Full empirical write-up: the three-layer decomposition (orchestrator exhaust vs. "Theory-less, Contract-Frozen" abstraction tax vs. genuine Mathlib-missing frontier math), the within-corpus natural experiment (`MemUnitaryGroupIffIsIsometry.lean` vs. `StationaryPhaseModel.lean`), and the **Theory-Lifting** & **Wake–Sleep** engineering directions.
+## Full Write-up & Related Contributions
+
+- **[`ANALYSIS.md`](ANALYSIS.md)** — Full empirical write-up: 3-factor orthogonal decomposition across Mathlib, 5 research repos, and RH; natural within-corpus experiments (`FLT` vs. `PNT+/IEANTN`, `MemUnitaryGroupIffIsIsometry` vs. `StationaryPhaseModel`); Phase A & Phase B design.
 - **Related Lean 4 / Mathlib contributions:**
   - [`leanprover-community/riemann-hypothesis` commit `8071ca2be8`](https://github.com/leanprover-community/riemann-hypothesis/commit/8071ca2be8) (from [PR #94](https://github.com/leanprover-community/riemann-hypothesis/pull/94), merged via [#150](https://github.com/leanprover-community/riemann-hypothesis/pull/150)): reusing the quadratic Hasse norm theorem (`+34 / -1,703` lines).
   - [`leanprover-community/mathlib4#46371`](https://github.com/leanprover-community/mathlib4/pull/46371): `feat(NumberTheory/Chebyshev): transfer von Koch's bound to prime counting` (CI green).
   - [`leanprover-community/mathlib4#46372`](https://github.com/leanprover-community/mathlib4/pull/46372): `feat(NumberTheory/MillerPrimality): strong probable-prime test and Miller's criterion` (CI green).
-  - [`hhh2210/rh-grh-consequences`](https://github.com/hhh2210/rh-grh-consequences): machine-checked Lean 4 consequences of RH and Dirichlet GRH (von Koch, Cramér short intervals, zero-density window, conditional Miller primality test).
+  - [`hhh2210/rh-grh-consequences`](https://github.com/hhh2210/rh-grh-consequences): machine-checked Lean 4 consequences of RH and Dirichlet GRH.
 
 ## Repository Structure
 
-- `ANALYSIS.md` — Full LLM-systems analysis of the 17.37M-line RH archive vs. Mathlib.
+- `ANALYSIS.md` — Full LLM-systems analysis across Mathlib, 5 frontier research repos, and the RH live cone.
 - `src/anatomy.py` — Full 175,187-file structural & tactic anatomy aligned against `cut-modules.txt.xz`.
-- `src/compare_mathlib.py` — Side-by-side comparison of Mathlib vs. live RH cone (`class`, `structure`, `instance`, `@[simp]`, `@[ext]`, `def : Prop`, import in-degree, proof length).
-- `src/lexer_metrics.py` — Comment-stripped, whitespace-normalized Lean 4 token counter (prevents single-line packing cheats).
-- `oracle/OracleAudit.lean` — Generic Lean 4 kernel equivalence verifier (`loadExts := false`, exported decl coverage, kind, `levelParams`, binders, `Kernel.isDefEq` on types & `def` values, transitive axioms ⊆ standard 3).
-- `data/anatomy_report.json` & `data/deep_causal_anatomy.json` — Measured outputs.
+- `src/compare_mathlib.py` & `src/compare_human_baselines.py` — Reproducible cross-corpus analyzer (`Mathlib`, `Carleson`, `SphereEversion`, `PFR`, `FLT`, `PrimeNumberTheoremAnd` Core vs. IEANTN, and RH).
+- `src/lexer_metrics.py` — Comment-stripped, whitespace-normalized Lean 4 token counter.
+- `src/make_figures.py` — Reproduces all vector SVG + 300 DPI PNG figures in `figures/`.
+- `oracle/OracleAudit.lean` — Generic Lean 4 kernel equivalence verifier (`Kernel.isDefEq` on types & `def` values, transitive axioms ⊆ standard 3).
+- `experiments/phase-a/` & `experiments/phase-b/` — Controlled A/B manifests, patches, and verification receipts.
+- `data/` — Measured JSON outputs (`anatomy_report.json`, `deep_causal_anatomy.json`, `three_way_comparison.json`, `subtree_candidates.json`).
 - `tests/test_lexer_metrics.py` — Unit tests (`python3 -m unittest`).
 
 ## License
