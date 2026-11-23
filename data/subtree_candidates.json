@@ -1,0 +1,576 @@
+[
+  {
+    "root": "GroundTheory.PAdicHodge.BCrisNewtonApprox",
+    "n_files": 6,
+    "n_stmt": 0,
+    "tot_lines": 2912,
+    "ext_deps": 14,
+    "ext_callers": 2,
+    "def_props": 2,
+    "structs": 1,
+    "haves": 378,
+    "simp": 9,
+    "files": [
+      "GroundTheory.PAdicHodge.BCrisNewtonApprox",
+      "GroundTheory.PAdicHodge.BCrisNewtonLift",
+      "GroundTheory.PAdicHodge.BCrisNewtonNorm",
+      "GroundTheory.PAdicHodge.ExtRobbaBounded",
+      "GroundTheory.PAdicHodge.ExtRobbaTeich",
+      "GroundTheory.PAdicHodge.RobbaSeries"
+    ],
+    "callers": [
+      "GroundTheory.PAdicHodge.BCrisNewtonDom",
+      "GroundTheory.PAdicHodge.BCrisNewtonSlope"
+    ]
+  },
+  {
+    "root": "Formalism.ThetaLogCoordinates.ResidueClassEstimates.FinalT",
+    "n_files": 10,
+    "n_stmt": 0,
+    "tot_lines": 2859,
+    "ext_deps": 3,
+    "ext_callers": 2,
+    "def_props": 27,
+    "structs": 1,
+    "haves": 500,
+    "simp": 0,
+    "files": [
+      "Formalism.ThetaLogCoordinates.ResidueClassEstimates.FinalT",
+      "Formalism.ThetaLogCoordinates.ResidueClassEstimates.Letters",
+      "Formalism.ThetaLogCoordinates.ResidueClassEstimates.StatementT",
+      "Formalism.ThetaLogCoordinates.ResidueClassEstimates.StatementW",
+      "Formalism.ThetaLogCoordinates.ResidueClassEstimates.VandermondeRankEstimates.AtypicalWeightBoundOf",
+      "Formalism.ThetaLogCoordinates.ResidueClassEstimates.VandermondeRankEstimates.Branch",
+      "Formalism.ThetaLogCoordinates.ResidueClassEstimates.VandermondeRankEstimates.LogBinomialProperties",
+      "Formalism.ThetaLogCoordinates.ResidueClassEstimates.VandermondeRankEstimates.LogWeylDimensionEstimate",
+      "Formalism.ThetaLogCoordinates.ResidueClassEstimates.VandermondeRankEstimates.N0LeNs",
+      "Formalism.ThetaLogCoordinates.ResidueClassEstimates.VandermondeRankEstimates.WeylGT"
+    ],
+    "callers": [
+      "Formalism.SharpRestriction.GrowthBounds.SegmentDegree.CountFromEqFilterLength",
+      "Formalism.PeriodIntegrals.AdmissibleModel.WeylDim"
+    ]
+  },
+  {
+    "root": "Formalism.PolynomialDimension.FinalHar",
+    "n_files": 6,
+    "n_stmt": 0,
+    "tot_lines": 2365,
+    "ext_deps": 0,
+    "ext_callers": 2,
+    "def_props": 24,
+    "structs": 0,
+    "haves": 226,
+    "simp": 0,
+    "files": [
+      "Formalism.PolynomialDimension.FinalHar",
+      "Formalism.PolynomialDimension.MultinomialDepth.DiagLaplacianDivPowMemSqrtFockLattice",
+      "Formalism.PolynomialDimension.MultinomialDepth.HarmonicDecompositionHolds",
+      "Formalism.PolynomialDimension.MultinomialDepth.PairingAdjointLaplacianHolds",
+      "Formalism.PolynomialDimension.MultinomialDepth.SqrtFockGaussLatticeComparisonHolds",
+      "Formalism.PolynomialDimension.StatementHar"
+    ],
+    "callers": [
+      "Formalism.SharpRestriction.GrowthBounds.ColumnSpanDensity.HarProjEqZeroIff",
+      "Formalism.SharpRestriction.GrowthBounds.HermitianTensor.MemInvariantSectionsTwoWeightIff"
+    ]
+  },
+  {
+    "root": "CompanionTheory.ThickeningEstimates.LieGroupReduction.MetaplecticRepresentation.RealMetaplecticRepresentationHolds",
+    "n_files": 13,
+    "n_stmt": 0,
+    "tot_lines": 2247,
+    "ext_deps": 1,
+    "ext_callers": 2,
+    "def_props": 17,
+    "structs": 1,
+    "haves": 365,
+    "simp": 0,
+    "files": [
+      "CompanionTheory.ThickeningEstimates.LieGroupReduction.HasDerivAtSchwartzToL2",
+      "CompanionTheory.ThickeningEstimates.LieGroupReduction.IsoOfIntegral",
+      "CompanionTheory.ThickeningEstimates.LieGroupReduction.LocalLift",
+      "CompanionTheory.ThickeningEstimates.LieGroupReduction.MetaplecticRepresentation.ContinuousOm",
+      "CompanionTheory.ThickeningEstimates.LieGroupReduction.MetaplecticRepresentation.ContinuousTo",
+      "CompanionTheory.ThickeningEstimates.LieGroupReduction.MetaplecticRepresentation.HasFDerivAtOfCurves",
+      "CompanionTheory.ThickeningEstimates.LieGroupReduction.MetaplecticRepresentation.HasFDerivAtOrb",
+      "CompanionTheory.ThickeningEstimates.LieGroupReduction.MetaplecticRepresentation.MapOfRealMul",
+      "CompanionTheory.ThickeningEstimates.LieGroupReduction.MetaplecticRepresentation.MetaplecticGroupT2Space",
+      "CompanionTheory.ThickeningEstimates.LieGroupReduction.MetaplecticRepresentation.MetaplecticUnipotentBlockSecondDiag",
+      "CompanionTheory.ThickeningEstimates.LieGroupReduction.MetaplecticRepresentation.MpFOne",
+      "CompanionTheory.ThickeningEstimates.LieGroupReduction.MetaplecticRepresentation.RealMetaplecticRepresentationHolds",
+      "CompanionTheory.ThickeningEstimates.LieGroupReduction.NormExpSubLe"
+    ],
+    "callers": [
+      "Development.AbelianVarietyTheory.Proofs.DivisorProofs.MetaplecticGaussianNormalised",
+      "Development.AbelianVarietyTheory.Proofs.DivisorProofs.RealMetaplecticRepresentationHolds"
+    ]
+  },
+  {
+    "root": "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.OddDualWeylJacobian.OddDualWeylFactorization",
+    "n_files": 15,
+    "n_stmt": 0,
+    "tot_lines": 2222,
+    "ext_deps": 1,
+    "ext_callers": 2,
+    "def_props": 18,
+    "structs": 0,
+    "haves": 218,
+    "simp": 0,
+    "files": [
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.OddDualWeylJacobian.AevalMulHomog",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.OddDualWeylJacobian.DegreeBalance",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.OddDualWeylJacobian.DualSub",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.OddDualWeylJacobian.EvalDuality",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.OddDualWeylJacobian.ExistsEqMulOfColumnSpanLe",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.OddDualWeylJacobian.HighestWeightDualOf",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.OddDualWeylJacobian.HighestWeightMultiplicity",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.OddDualWeylJacobian.HighestWeightVectorUnique",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.OddDualWeylJacobian.JacRev",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.OddDualWeylJacobian.JacobiMinorIdentity",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.OddDualWeylJacobian.MnrUpdateEqZero",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.OddDualWeylJacobian.OddDualWeylFactorization",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.OddDualWeylJacobian.RevColOneTranspose",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.OddDualWeylJacobian.TransvectionMulApply",
+      "Lemmata.GeneralBFactRightAlt.Imports"
+    ],
+    "callers": [
+      "Formalism.PeriodIntegrals.OrbitalBoundsConclusion.OddDualWeyl",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.RationalRealBlocks.MapDetGenM"
+    ]
+  },
+  {
+    "root": "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.FockJointMultiplicity.FockJointMultOfCauchy",
+    "n_files": 10,
+    "n_stmt": 0,
+    "tot_lines": 2157,
+    "ext_deps": 18,
+    "ext_callers": 1,
+    "def_props": 14,
+    "structs": 0,
+    "haves": 265,
+    "simp": 0,
+    "files": [
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.FockJointMultiplicity.FockJointMultOfCauchy",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.FockJointMultiplicity.GlobalTheory",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.FockJointMultiplicity.IsBlockHighestWeight",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.FockJointMultiplicity.MemLeftHighestWeightOfIsMinimalJointVector",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.FockJointMultiplicity.MinDeg",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.FockJointMultiplicity.PosIffLtNP",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.FockJointMultiplicity.ShapeFromFacts",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.FockJointMultiplicity.ShapeProdVarMatNeZero",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.FockJointMultiplicity.VarsZeroOfSupported",
+      "Lemmata.B1959r.Imports"
+    ],
+    "callers": [
+      "Formalism.PeriodIntegrals.OrbitalBoundsConclusion.FockJointMult"
+    ]
+  },
+  {
+    "root": "Development.AutomorphicArithmetic.AutomorphicVarieties.LiteratureResults.KTheoryStability.ReductionBoundsTorsion.HeckeDoubleCosets.SHeckeOf",
+    "n_files": 12,
+    "n_stmt": 0,
+    "tot_lines": 2081,
+    "ext_deps": 4,
+    "ext_callers": 1,
+    "def_props": 15,
+    "structs": 0,
+    "haves": 244,
+    "simp": 0,
+    "files": [
+      "Development.AutomorphicArithmetic.AutomorphicVarieties.LiteratureResults.KTheoryStability.ReductionBoundsTorsion.HeckeDoubleCosets.Affine",
+      "Development.AutomorphicArithmetic.AutomorphicVarieties.LiteratureResults.KTheoryStability.ReductionBoundsTorsion.HeckeDoubleCosets.Assemble",
+      "Development.AutomorphicArithmetic.AutomorphicVarieties.LiteratureResults.KTheoryStability.ReductionBoundsTorsion.HeckeDoubleCosets.EvFinsetSum",
+      "Development.AutomorphicArithmetic.AutomorphicVarieties.LiteratureResults.KTheoryStability.ReductionBoundsTorsion.HeckeDoubleCosets.Formal",
+      "Development.AutomorphicArithmetic.AutomorphicVarieties.LiteratureResults.KTheoryStability.ReductionBoundsTorsion.HeckeDoubleCosets.KeyGenAlt",
+      "Development.AutomorphicArithmetic.AutomorphicVarieties.LiteratureResults.KTheoryStability.ReductionBoundsTorsion.HeckeDoubleCosets.MapPartialProd",
+      "Development.AutomorphicArithmetic.AutomorphicVarieties.LiteratureResults.KTheoryStability.ReductionBoundsTorsion.HeckeDoubleCosets.PHeckeFormal",
+      "Development.AutomorphicArithmetic.AutomorphicVarieties.LiteratureResults.KTheoryStability.ReductionBoundsTorsion.HeckeDoubleCosets.PKey",
+      "Development.AutomorphicArithmetic.AutomorphicVarieties.LiteratureResults.KTheoryStability.ReductionBoundsTorsion.HeckeDoubleCosets.PermMatrixMulApply",
+      "Development.AutomorphicArithmetic.AutomorphicVarieties.LiteratureResults.KTheoryStability.ReductionBoundsTorsion.HeckeDoubleCosets.SHeckeOf",
+      "Development.AutomorphicArithmetic.AutomorphicVarieties.LiteratureResults.KTheoryStability.ReductionBoundsTorsion.HeckeDoubleCosets.TkFcPzTop",
+      "Development.AutomorphicArithmetic.AutomorphicVarieties.LiteratureResults.KTheoryStability.ReductionBoundsTorsion.HeckeDoubleCosets.Transfer"
+    ],
+    "callers": [
+      "Development.AutomorphicArithmetic.AutomorphicVarieties.LiteratureResults.KTheoryStability.ReductionBoundsTorsion.SBridge"
+    ]
+  },
+  {
+    "root": "Formalism.PieriBlockIdeals.PieriColumnMinors.ParameterBounds",
+    "n_files": 6,
+    "n_stmt": 0,
+    "tot_lines": 2053,
+    "ext_deps": 3,
+    "ext_callers": 5,
+    "def_props": 18,
+    "structs": 2,
+    "haves": 588,
+    "simp": 0,
+    "files": [
+      "Formalism.PieriBlockIdeals.PieriColumnMinors.LocalComponentGL",
+      "Formalism.PieriBlockIdeals.PieriColumnMinors.LogarithmEquivalence",
+      "Formalism.PieriBlockIdeals.PieriColumnMinors.ParameterBounds",
+      "Formalism.PieriBlockIdeals.PieriColumnMinors.SharperSizeNeedsMleKFalse",
+      "Formalism.RankGapBounds.LargePrimeFactor",
+      "Formalism.RankGapBounds.RankGapProofs.CardLargePrimeFactorsLeOneHolds"
+    ],
+    "callers": [
+      "Formalism.PieriBlockIdeals.PieriColumnMinors.WeightBounds",
+      "Formalism.PieriBlockIdeals.PieriColumnMinors.LargeParameterEstimates",
+      "Development.AutomorphicArithmetic.PrimeDiscriminants.ExcSet",
+      "Development.AbelianVarietyTheory.Proofs.DivisorProofs.SmallStatement",
+      "Formalism.PieriBlockIdeals.PieriColumnMinors.WorkedExample"
+    ]
+  },
+  {
+    "root": "ReciprocityTheory.ReductiveGroups.ArithmeticGeometry.ArakelovGeometry.CNormSt",
+    "n_files": 9,
+    "n_stmt": 0,
+    "tot_lines": 1944,
+    "ext_deps": 29,
+    "ext_callers": 5,
+    "def_props": 1,
+    "structs": 2,
+    "haves": 305,
+    "simp": 1,
+    "files": [
+      "ReciprocityTheory.GeometryOfNumbers.SphericalMonomials.SupStMonoNormSqPos",
+      "ReciprocityTheory.ReductiveGroups.ArithmeticGeometry.ArakelovGeometry.CNormSt",
+      "ReciprocityTheory.ReductiveGroups.ArithmeticGeometry.ArakelovGeometry.FibreSt",
+      "ReciprocityTheory.ReductiveGroups.ArithmeticGeometry.ArakelovGeometry.FibreStA",
+      "ReciprocityTheory.ReductiveGroups.ArithmeticGeometry.ArakelovGeometry.FibreStB",
+      "ReciprocityTheory.ReductiveGroups.ArithmeticGeometry.ArakelovGeometry.FibreStC",
+      "ReciprocityTheory.ReductiveGroups.ArithmeticGeometry.ArakelovGeometry.FibreStD",
+      "ReciprocityTheory.ReductiveGroups.ArithmeticGeometry.ArakelovGeometry.FibreStE",
+      "ReciprocityTheory.ReductiveGroups.ArithmeticGeometry.ArakelovGeometry.SupLeL2NormSections"
+    ],
+    "callers": [
+      "ReciprocityTheory.ReductiveGroups.ArithmeticGeometry.ArakelovGeometry.CSandwichStA",
+      "ReciprocityTheory.ReductiveGroups.ArithmeticGeometry.ArakelovGeometry.AMassStB",
+      "GroundTheory.HeightsAndTheta.Heights.HilbertSamuel.PProjectionBounds",
+      "GroundTheory.HeightsAndTheta.Heights.HilbertSamuel.PPullFSExtension",
+      "GroundTheory.HeightsAndTheta.Heights.HilbertSamuel.ResSymMeasure"
+    ]
+  },
+  {
+    "root": "Formalism.PeriodIntegrals.OrbitalBoundsConclusion.DensInert",
+    "n_files": 12,
+    "n_stmt": 0,
+    "tot_lines": 1895,
+    "ext_deps": 1,
+    "ext_callers": 2,
+    "def_props": 7,
+    "structs": 0,
+    "haves": 249,
+    "simp": 0,
+    "files": [
+      "Formalism.PeriodIntegrals.OrbitalBoundsConclusion.DensInert",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.InertDensity.AnisoPeel",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.InertDensity.AnisoPeelAlt",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.InertDensity.DensExactInertOf",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.InertDensity.DensityProductAddTwoSuccSucc",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.InertDensity.ExistsTraceNeZero",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.InertDensity.FinrankInfKerAddOne",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.InertDensity.FinrankValPerp",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.InertDensity.HermitianDiagonalization",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.InertDensity.IsoPeel",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.InertDensity.RepCountCongruenceInvariant",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.InertDensity.ValMain"
+    ],
+    "callers": [
+      "Formalism.LocalToGlobal.SiegelLatticeTheory.ClosedVolumeStatements.DensInertDisplayHolds",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.CountingFormula.DensGFC"
+    ]
+  },
+  {
+    "root": "Formalism.WachLatticeTwists.LagrangeExtensionCocycles.ExtensionCocycleProofs.EtaleClosedPointLiftsSimpleRootsMonic",
+    "n_files": 13,
+    "n_stmt": 0,
+    "tot_lines": 1882,
+    "ext_deps": 25,
+    "ext_callers": 1,
+    "def_props": 24,
+    "structs": 0,
+    "haves": 181,
+    "simp": 0,
+    "files": [
+      "Formalism.CoboundaryTransfers.GammaStableTransfers.DiffOneSmulOfTower",
+      "Formalism.CoboundaryTransfers.GammaStableTransfers.GammaStableOfGammaQUnitHolds",
+      "Formalism.CoboundaryTransfers.GammaStableTransfers.MemCoboundariesOfIsOneCoboundary",
+      "Formalism.CoboundaryTransfers.GammaStableTransfers.TorsionKilledCriterionHolds",
+      "Formalism.CoboundaryTransfers.GammaStableTransfers.Transfer",
+      "Formalism.CoboundaryTransfers.StatementAPI",
+      "Formalism.CoboundaryTransfers.StatementBridge",
+      "Formalism.CoboundaryTransfers.StatementTransfer",
+      "Formalism.CoboundaryTransfers.WachBridges",
+      "Formalism.WachLatticeTwists.LagrangeExtensionCocycles.ExtensionCocycleProofs.EtaleClosedPointLiftsSimpleRootsMonic",
+      "Formalism.WachLatticeTwists.LagrangeExtensionCocycles.ExtensionCocycleProofs.GrothendieckTopDegree",
+      "Formalism.WachLatticeTwists.LagrangeExtensionCocycles.ExtensionCocycleProofs.LiftExistsSecondCase",
+      "Formalism.WachLatticeTwists.LagrangeExtensionCocycles.ExtensionCocycleProofs.PhiOnto"
+    ],
+    "callers": [
+      "Formalism.WachLatticeTwists.LagrangeExtensionCocycles.DualWByLettersExtended"
+    ]
+  },
+  {
+    "root": "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.ArchimedeanOrbitMeasures.CayDensExHaar",
+    "n_files": 13,
+    "n_stmt": 0,
+    "tot_lines": 1861,
+    "ext_deps": 0,
+    "ext_callers": 1,
+    "def_props": 10,
+    "structs": 0,
+    "haves": 308,
+    "simp": 0,
+    "files": [
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.ArchimedeanOrbitMeasures.CayDensExCayH",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.ArchimedeanOrbitMeasures.CayDensExCayK",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.ArchimedeanOrbitMeasures.CayDensExCayS",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.ArchimedeanOrbitMeasures.CayDensExHaar",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.ArchimedeanOrbitMeasures.CayDensExHua",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.ArchimedeanOrbitMeasures.CayDensExLHU",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.ArchimedeanOrbitMeasures.CayDensExOm",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.ArchimedeanOrbitMeasures.CayDensExTop",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.ArchimedeanOrbitMeasures.CayleyInverseMeasurable",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.ArchimedeanOrbitMeasures.ContinuousAdelicGL2Det",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.ArchimedeanOrbitMeasures.HasFDerivAtTauR",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.ArchimedeanOrbitMeasures.HuaInvOfTauDeriv",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.ArchimedeanOrbitMeasures.PreimageSubsetImage"
+    ],
+    "callers": [
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.ArchimedeanOrbitMeasures.CayDensEx"
+    ]
+  },
+  {
+    "root": "Formalism.HermitianCurvature.HermitianCurvatureProofs.TendstoRatioPow",
+    "n_files": 11,
+    "n_stmt": 0,
+    "tot_lines": 1861,
+    "ext_deps": 7,
+    "ext_callers": 2,
+    "def_props": 0,
+    "structs": 2,
+    "haves": 356,
+    "simp": 0,
+    "files": [
+      "Formalism.HermitianCurvature.HermitianCurvatureProofs.AestronglyMeasurableMainD",
+      "Formalism.HermitianCurvature.HermitianCurvatureProofs.GermFibreKernels",
+      "Formalism.HermitianCurvature.HermitianCurvatureProofs.GermRealisation",
+      "Formalism.HermitianCurvature.HermitianCurvatureProofs.IntegralNormCvecSq",
+      "Formalism.HermitianCurvature.HermitianCurvatureProofs.MemLpBzOfSup",
+      "Formalism.HermitianCurvature.HermitianCurvatureProofs.NormOfMemRootSetOne",
+      "Formalism.HermitianCurvature.HermitianCurvatureProofs.TendstoIntegralInnerGermMoving",
+      "Formalism.HermitianCurvature.HermitianCurvatureProofs.TendstoIntegralPsiMoving",
+      "Formalism.HermitianCurvature.HermitianCurvatureProofs.TendstoRatioPow",
+      "Formalism.HermitianCurvature.HermitianCurvatureProofs.TendstoSmulCocompact",
+      "Formalism.HermitianCurvature.HermitianCurvatureProofs.ZeroNotMemPreimagePow"
+    ],
+    "callers": [
+      "Formalism.HermitianCurvature.HermitianCurvatureProofs.GermLocTail",
+      "Formalism.HermitianCurvature.HermitianCurvatureProofs.CutGermParts"
+    ]
+  },
+  {
+    "root": "Development.WeilBound.RepresentationTheoryGL.SiegelWeilProof.HolomorphicContinuation.MollifiedIntegrability.GBClose",
+    "n_files": 12,
+    "n_stmt": 0,
+    "tot_lines": 1810,
+    "ext_deps": 3,
+    "ext_callers": 2,
+    "def_props": 6,
+    "structs": 0,
+    "haves": 244,
+    "simp": 0,
+    "files": [
+      "Development.WeilBound.RepresentationTheoryGL.SiegelWeilProof.HolomorphicContinuation.MollifiedIntegrability.ClsGainBSt",
+      "Development.WeilBound.RepresentationTheoryGL.SiegelWeilProof.HolomorphicContinuation.MollifiedIntegrability.ContDiffHerm",
+      "Development.WeilBound.RepresentationTheoryGL.SiegelWeilProof.HolomorphicContinuation.MollifiedIntegrability.GBBound",
+      "Development.WeilBound.RepresentationTheoryGL.SiegelWeilProof.HolomorphicContinuation.MollifiedIntegrability.GBCauchy",
+      "Development.WeilBound.RepresentationTheoryGL.SiegelWeilProof.HolomorphicContinuation.MollifiedIntegrability.GBClose",
+      "Development.WeilBound.RepresentationTheoryGL.SiegelWeilProof.HolomorphicContinuation.MollifiedIntegrability.GBFinal",
+      "Development.WeilBound.RepresentationTheoryGL.SiegelWeilProof.HolomorphicContinuation.MollifiedIntegrability.GBInvar",
+      "Development.WeilBound.RepresentationTheoryGL.SiegelWeilProof.HolomorphicContinuation.MollifiedIntegrability.GBLagr",
+      "Development.WeilBound.RepresentationTheoryGL.SiegelWeilProof.HolomorphicContinuation.MollifiedIntegrability.GBLink",
+      "Development.WeilBound.RepresentationTheoryGL.SiegelWeilProof.HolomorphicContinuation.MollifiedIntegrability.GBTwist",
+      "Development.WeilBound.RepresentationTheoryGL.SiegelWeilProof.HolomorphicContinuation.MollifiedIntegrability.Lagr",
+      "Development.WeilBound.RepresentationTheoryGL.SiegelWeilProof.HolomorphicContinuation.MollifiedIntegrability.RatBound"
+    ],
+    "callers": [
+      "Development.WeilBound.RepresentationTheoryGL.SiegelWeilProof.HolomorphicContinuation.MinorFormulas.SPrimeOfAlt",
+      "Development.WeilBound.RepresentationTheoryGL.SiegelWeilProof.HolomorphicContinuation.MollifiedIntegrability.Imports"
+    ]
+  },
+  {
+    "root": "Development.AutomorphicArithmetic.AutomorphicVarieties.LiteratureResults.KTheoryStability.ReductionBoundsTorsion.CompactLocalSets.SLocOf",
+    "n_files": 11,
+    "n_stmt": 0,
+    "tot_lines": 1636,
+    "ext_deps": 8,
+    "ext_callers": 1,
+    "def_props": 5,
+    "structs": 0,
+    "haves": 235,
+    "simp": 1,
+    "files": [
+      "Development.AutomorphicArithmetic.AutomorphicVarieties.LiteratureResults.KTheoryStability.ReductionBoundsTorsion.CompactLocalSets.Assemble",
+      "Development.AutomorphicArithmetic.AutomorphicVarieties.LiteratureResults.KTheoryStability.ReductionBoundsTorsion.CompactLocalSets.DiscrHolds",
+      "Development.AutomorphicArithmetic.AutomorphicVarieties.LiteratureResults.KTheoryStability.ReductionBoundsTorsion.CompactLocalSets.MargInt",
+      "Development.AutomorphicArithmetic.AutomorphicVarieties.LiteratureResults.KTheoryStability.ReductionBoundsTorsion.CompactLocalSets.MeasurableSetSimplex",
+      "Development.AutomorphicArithmetic.AutomorphicVarieties.LiteratureResults.KTheoryStability.ReductionBoundsTorsion.CompactLocalSets.Overlap",
+      "Development.AutomorphicArithmetic.AutomorphicVarieties.LiteratureResults.KTheoryStability.ReductionBoundsTorsion.CompactLocalSets.OverlapG",
+      "Development.AutomorphicArithmetic.AutomorphicVarieties.LiteratureResults.KTheoryStability.ReductionBoundsTorsion.CompactLocalSets.SLocOf",
+      "Development.AutomorphicArithmetic.AutomorphicVarieties.LiteratureResults.KTheoryStability.ReductionBoundsTorsion.CompactLocalSets.SimpBd",
+      "Development.AutomorphicArithmetic.AutomorphicVarieties.LiteratureResults.KTheoryStability.ReductionBoundsTorsion.CompactLocalSets.SimpBdM",
+      "Development.AutomorphicArithmetic.AutomorphicVarieties.LiteratureResults.KTheoryStability.ReductionBoundsTorsion.CompactLocalSets.Unfold",
+      "Development.AutomorphicArithmetic.AutomorphicVarieties.LiteratureResults.KTheoryStability.ReductionBoundsTorsion.CompactLocalSets.UnfoldM"
+    ],
+    "callers": [
+      "Development.AutomorphicArithmetic.AutomorphicVarieties.LiteratureResults.KTheoryStability.ReductionBoundsTorsion.SBridge"
+    ]
+  },
+  {
+    "root": "Development.AutomorphicArithmetic.CommutativeAlgebra.ProductLevelwiseOfAlexanderWhitney",
+    "n_files": 15,
+    "n_stmt": 0,
+    "tot_lines": 1609,
+    "ext_deps": 25,
+    "ext_callers": 1,
+    "def_props": 5,
+    "structs": 7,
+    "haves": 143,
+    "simp": 0,
+    "files": [
+      "Development.AutomorphicArithmetic.CommutativeAlgebra.BijectiveIffTotalQuasiIsoOfTotalModels",
+      "Development.AutomorphicArithmetic.CommutativeAlgebra.ColumnExactZeroOfTotalExactOfVerticalZero",
+      "Development.AutomorphicArithmetic.CommutativeAlgebra.DoubleMappingCylinderCochainExtension",
+      "Development.AutomorphicArithmetic.CommutativeAlgebra.EtaleCohomology.FaceRes",
+      "Development.AutomorphicArithmetic.CommutativeAlgebra.ExistsCupProductHomOfCocycleVanishingOnOpen",
+      "Development.AutomorphicArithmetic.CommutativeAlgebra.ExistsSectionRepresentingRelativeClass",
+      "Development.AutomorphicArithmetic.CommutativeAlgebra.MemPullbackImageIffFactorsThroughOpen",
+      "Development.AutomorphicArithmetic.CommutativeAlgebra.ProductLevelwiseOfAlexanderWhitney",
+      "Development.AutomorphicArithmetic.CommutativeAlgebra.RelativeCohomologyIsTotalModelOfImage",
+      "Development.AutomorphicArithmetic.CommutativeAlgebra.RelativeCupProductLevelwiseCompat",
+      "Development.AutomorphicArithmetic.CommutativeAlgebra.RelativeCupProductRealizesProductOfRepresentativ",
+      "Development.AutomorphicArithmetic.CommutativeAlgebra.SupportDoubleComplexBotTotalModel",
+      "Development.AutomorphicArithmetic.CommutativeAlgebra.SupportDoubleComplexIsAdmissible",
+      "Development.AutomorphicArithmetic.CommutativeAlgebra.SupportDoubleComplexTotalRepresentsVanishingCoch",
+      "Development.AutomorphicArithmetic.CommutativeAlgebra.TotalExactOfColumnExact"
+    ],
+    "callers": [
+      "Development.AutomorphicArithmetic.CommutativeAlgebra.EtaleCohomology.PurTop"
+    ]
+  },
+  {
+    "root": "Development.WeilBound.CoreStatements.StandardPublishedResults.StandardTheoremStatements.RealMetaplecticRepresentation",
+    "n_files": 10,
+    "n_stmt": 0,
+    "tot_lines": 1516,
+    "ext_deps": 12,
+    "ext_callers": 2,
+    "def_props": 14,
+    "structs": 1,
+    "haves": 271,
+    "simp": 0,
+    "files": [
+      "Development.WeilBound.CoreStatements.StandardPublishedResults.StandardTheoremStatements.RealMetaplecticRepresentation",
+      "Development.WeilBound.ThetaLifts.Reductions.MetaplecticDerivatives.ContinuousPair",
+      "Development.WeilBound.ThetaLifts.Reductions.MetaplecticDerivatives.ContinuousTo",
+      "Development.WeilBound.ThetaLifts.Reductions.MetaplecticDerivatives.HasFDerivAtOfCurves",
+      "Development.WeilBound.ThetaLifts.Reductions.MetaplecticDerivatives.HasFDerivAtOrb",
+      "Development.WeilBound.ThetaLifts.Reductions.MetaplecticDerivatives.MapOfRealMul",
+      "Development.WeilBound.ThetaLifts.Reductions.MetaplecticDerivatives.MetaplecticGroupT2Space",
+      "Development.WeilBound.ThetaLifts.Reductions.MetaplecticDerivatives.MetaplecticUnipotentBlockSecondDiag",
+      "Development.WeilBound.ThetaLifts.Reductions.MetaplecticDerivatives.MpFOne",
+      "Development.WeilBound.ThetaLifts.Reductions.MetaplecticDerivatives.RealMetaplecticRepresentationHolds"
+    ],
+    "callers": [
+      "Development.AutomorphicArithmetic.AutomorphicVarieties.ModularityArgument.ThresholdArguments.DenseThresholdCases.TemperedProductOfSquareIntegrable",
+      "Development.AutomorphicArithmetic.ThetaCorrespondence.ThetaPairLifts.ThirdPlaceSeries.EveryCharacterOfLiteratureOfVWin"
+    ]
+  },
+  {
+    "root": "ReciprocityTheory.ReductiveGroups.ArithmeticGeometry.StrongApproximation.LocGen",
+    "n_files": 8,
+    "n_stmt": 0,
+    "tot_lines": 1515,
+    "ext_deps": 3,
+    "ext_callers": 2,
+    "def_props": 2,
+    "structs": 1,
+    "haves": 282,
+    "simp": 0,
+    "files": [
+      "ReciprocityTheory.ReductiveGroups.ArithmeticGeometry.StrongApproximation.ConjMemEichSet",
+      "ReciprocityTheory.ReductiveGroups.ArithmeticGeometry.StrongApproximation.ExistsMaxOfNotCoprime",
+      "ReciprocityTheory.ReductiveGroups.ArithmeticGeometry.StrongApproximation.HfDecompSelf",
+      "ReciprocityTheory.ReductiveGroups.ArithmeticGeometry.StrongApproximation.LocGen",
+      "ReciprocityTheory.ReductiveGroups.ArithmeticGeometry.StrongApproximation.ReachableFixingAddSmulSecond",
+      "ReciprocityTheory.ReductiveGroups.ArithmeticGeometry.StrongApproximation.SUEqClosure",
+      "ReciprocityTheory.ReductiveGroups.ArithmeticGeometry.StrongApproximation.SubProjOrth",
+      "ReciprocityTheory.ReductiveGroups.ArithmeticGeometry.StrongApproximation.UnitaryTransvectionZeroSecondMemClosure"
+    ],
+    "callers": [
+      "GroundTheory.HeightsAndTheta.Heights.StrongApproximation.Statements",
+      "Development.WeilBound.CoreStatements.EqualVolumeCompactOpens.CongCompactOpen"
+    ]
+  },
+  {
+    "root": "Development.EtaleCohomology.EtaleSheaves.KummerSequence.ResMapNsmulHomotopy",
+    "n_files": 13,
+    "n_stmt": 0,
+    "tot_lines": 1489,
+    "ext_deps": 21,
+    "ext_callers": 1,
+    "def_props": 20,
+    "structs": 0,
+    "haves": 179,
+    "simp": 1,
+    "files": [
+      "Development.EtaleCohomology.EtaleSheaves.KummerSequence.GmSepPf",
+      "Development.EtaleCohomology.EtaleSheaves.KummerSequence.LeafKumMuInjPf",
+      "Development.EtaleCohomology.EtaleSheaves.KummerSequence.LeafKumMuInjPfGlue",
+      "Development.EtaleCohomology.EtaleSheaves.KummerSequence.LeafKumMuMapPf",
+      "Development.EtaleCohomology.EtaleSheaves.KummerSequence.LeafKumMuSurjPf",
+      "Development.EtaleCohomology.EtaleSheaves.KummerSequence.LeafKumMuSurjPowPf",
+      "Development.EtaleCohomology.EtaleSheaves.KummerSequence.LeafKumMuSurjPrimPf",
+      "Development.EtaleCohomology.EtaleSheaves.KummerSequence.LeafKumMuUnitsPf",
+      "Development.EtaleCohomology.EtaleSheaves.KummerSequence.LeafKumSecSurjPf",
+      "Development.EtaleCohomology.EtaleSheaves.KummerSequence.LeafUnitRootPf",
+      "Development.EtaleCohomology.EtaleSheaves.KummerSequence.ResMapNsmulHomotopy",
+      "Development.EtaleCohomology.EtaleSheaves.KummerSequence.TwLocGenPf",
+      "Development.EtaleCohomology.EtaleSheaves.KummerSequence.TwLocGenPfSec"
+    ],
+    "callers": [
+      "Development.EtaleCohomology.EtaleSheaves.KummerFields"
+    ]
+  },
+  {
+    "root": "Formalism.PeriodIntegrals.OrbitalBoundsConclusion.OpWords",
+    "n_files": 11,
+    "n_stmt": 0,
+    "tot_lines": 1470,
+    "ext_deps": 1,
+    "ext_callers": 1,
+    "def_props": 14,
+    "structs": 0,
+    "haves": 156,
+    "simp": 0,
+    "files": [
+      "Formalism.PeriodIntegrals.OrbitalBoundsConclusion.OpWords",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.PolynomialDifferentialWords.Assemble",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.PolynomialDifferentialWords.DivideAll",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.PolynomialDifferentialWords.IsWeightedHomogeneousPairingLeft",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.PolynomialDifferentialWords.KappaCoeff",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.PolynomialDifferentialWords.KappaMain",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.PolynomialDifferentialWords.KappaRight",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.PolynomialDifferentialWords.PairingPowMemSymbolRange",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.PolynomialDifferentialWords.PolarizationBihomogeneous",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.PolynomialDifferentialWords.VanishExp",
+      "Formalism.PeriodIntegrals.UnitaryGroupMassFormula.PolynomialDifferentialWords.VanishMain"
+    ],
+    "callers": [
+      "Formalism.SharpRestriction.GrowthBounds.TwistedSubstitution.OperatorWeightBoundHolds"
+    ]
+  }
+]

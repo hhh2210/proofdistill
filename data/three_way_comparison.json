@@ -1,0 +1,2013 @@
+{
+  "repo_metadata": {
+    "Carleson": {
+      "commit": "f7487cc9da4d1e73f009dc0280cd5b958f3e2c78",
+      "date": "2026-11-17",
+      "remote": "https://github.com/fpvandoorn/carleson.git"
+    },
+    "SphereEversion": {
+      "commit": "33ab3d626854a0f0f04ed5772e3102d652e96475",
+      "date": "2026-10-17",
+      "remote": "https://github.com/leanprover-community/sphere-eversion.git"
+    },
+    "PFR": {
+      "commit": "7595a42f6f9e04ad649ff663a43233ef6c86d775",
+      "date": "2026-11-22",
+      "remote": "https://github.com/teorth/pfr.git"
+    },
+    "FLT": {
+      "commit": "019805815d7da565ed1e9f427b6fbd0cbc9d00d3",
+      "date": "2026-11-18",
+      "remote": "https://github.com/ImperialCollegeLondon/FLT.git"
+    },
+    "PrimeNumberTheoremAnd": {
+      "commit": "a4fb6989b07e9c76b511807ae93e33e25b820e9b",
+      "date": "2026-11-14",
+      "remote": "https://github.com/AlexKontorovich/PrimeNumberTheoremAnd.git"
+    }
+  },
+  "ai_mention_scans": {
+    "Carleson": {
+      "files_checked": 124,
+      "files_with_ai_mention": 0,
+      "sample_files": []
+    },
+    "SphereEversion": {
+      "files_checked": 64,
+      "files_with_ai_mention": 0,
+      "sample_files": []
+    },
+    "PFR": {
+      "files_checked": 71,
+      "files_with_ai_mention": 0,
+      "sample_files": []
+    },
+    "FLT": {
+      "files_checked": 260,
+      "files_with_ai_mention": 26,
+      "sample_files": [
+        "Mathlib/FieldTheory/SeparableDegree.lean",
+        "Mathlib/FieldTheory/Separable.lean",
+        "Mathlib/FieldTheory/Galois/Basic.lean",
+        "Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.lean",
+        "Mathlib/AlgebraicGeometry/EllipticCurve/Aut.lean"
+      ]
+    },
+    "PrimeNumberTheoremAnd": {
+      "files_checked": 233,
+      "files_with_ai_mention": 18,
+      "sample_files": [
+        "EulerMascheroniBounds.lean",
+        "ZetaBounds.lean",
+        "Consequences.lean",
+        "ZetaConj.lean",
+        "Mathlib/Analysis/SpecialFunctions/Gamma/DigammaSeries.lean"
+      ]
+    },
+    "PNT+ Core (excl. IEANTN)": {
+      "files_checked": 107,
+      "files_with_ai_mention": 9,
+      "sample_files": [
+        "EulerMascheroniBounds.lean",
+        "ZetaBounds.lean",
+        "Consequences.lean",
+        "ZetaConj.lean",
+        "Mathlib/Analysis/SpecialFunctions/Gamma/DigammaSeries.lean"
+      ]
+    },
+    "PNT+/IEANTN (2026 AI PRs)": {
+      "files_checked": 126,
+      "files_with_ai_mention": 9,
+      "sample_files": [
+        "IEANTN/PVIdentity.lean",
+        "IEANTN/TMEEMT.lean",
+        "IEANTN/Kadiri.lean",
+        "IEANTN/FKS2.lean",
+        "IEANTN/LiSeries.lean"
+      ]
+    }
+  },
+  "rh_v436_main_check": {
+    "commit": "c592e91eb8f41bfd149227c09460fae0c17bf3c5",
+    "lean_files_in_src": 149098,
+    "import_mathlib_root_files": 115739,
+    "import_mathlib_root_pct": 77.63
+  },
+  "summary_table": [
+    {
+      "name": "Mathlib v4.36 (StdLib)",
+      "category": "stdlib",
+      "files": 8712,
+      "lines": 2368060,
+      "avg_lines_per_file": 271.8,
+      "import_mathlib_root_pct": 0.02,
+      "classes": 2019,
+      "class_per_1m_lines": 852.6,
+      "structures": 1833,
+      "instances": 11111,
+      "inst_per_struct": 6.06,
+      "theorems": 183572,
+      "simp_attrs": 51114,
+      "simp_pct_of_thms": 27.84,
+      "ext_attrs": 1396,
+      "ext_per_1m_lines": 589.5,
+      "def_lines": 32565,
+      "def_prop_lines": 1073,
+      "def_prop_pct": 3.29,
+      "have_lines": 40574,
+      "have_per_1k_lines": 17.1,
+      "long50_count": 1013,
+      "long50_pct_of_thms": 0.55,
+      "indeg_eq_1_pct": 29.81,
+      "indeg_le_1_pct": 47.92,
+      "indeg_median": 2,
+      "docstrings": 77649,
+      "docstrings_per_1k_lines": 32.8
+    },
+    {
+      "name": "Carleson",
+      "category": "pure_human",
+      "files": 124,
+      "lines": 49511,
+      "avg_lines_per_file": 399.3,
+      "import_mathlib_root_pct": 0.0,
+      "classes": 15,
+      "class_per_1m_lines": 303.0,
+      "structures": 12,
+      "instances": 22,
+      "inst_per_struct": 1.83,
+      "theorems": 2580,
+      "simp_attrs": 120,
+      "simp_pct_of_thms": 4.65,
+      "ext_attrs": 1,
+      "ext_per_1m_lines": 20.2,
+      "def_lines": 346,
+      "def_prop_lines": 12,
+      "def_prop_pct": 3.47,
+      "have_lines": 2452,
+      "have_per_1k_lines": 49.5,
+      "long50_count": 192,
+      "long50_pct_of_thms": 7.44,
+      "indeg_eq_1_pct": 49.19,
+      "indeg_le_1_pct": 57.26,
+      "indeg_median": 1,
+      "docstrings": 753,
+      "docstrings_per_1k_lines": 15.2,
+      "ai_mention_files": 0
+    },
+    {
+      "name": "SphereEversion",
+      "category": "pure_human",
+      "files": 64,
+      "lines": 14861,
+      "avg_lines_per_file": 232.2,
+      "import_mathlib_root_pct": 0.0,
+      "classes": 0,
+      "class_per_1m_lines": 0.0,
+      "structures": 30,
+      "instances": 13,
+      "inst_per_struct": 0.43,
+      "theorems": 910,
+      "simp_attrs": 155,
+      "simp_pct_of_thms": 17.03,
+      "ext_attrs": 12,
+      "ext_per_1m_lines": 807.5,
+      "def_lines": 203,
+      "def_prop_lines": 24,
+      "def_prop_pct": 11.82,
+      "have_lines": 541,
+      "have_per_1k_lines": 36.4,
+      "long50_count": 21,
+      "long50_pct_of_thms": 2.31,
+      "indeg_eq_1_pct": 56.25,
+      "indeg_le_1_pct": 73.44,
+      "indeg_median": 1,
+      "docstrings": 261,
+      "docstrings_per_1k_lines": 17.6,
+      "ai_mention_files": 0
+    },
+    {
+      "name": "PFR",
+      "category": "pure_human",
+      "files": 71,
+      "lines": 21549,
+      "avg_lines_per_file": 303.5,
+      "import_mathlib_root_pct": 0.0,
+      "classes": 3,
+      "class_per_1m_lines": 139.2,
+      "structures": 5,
+      "instances": 23,
+      "inst_per_struct": 4.6,
+      "theorems": 880,
+      "simp_attrs": 68,
+      "simp_pct_of_thms": 7.73,
+      "ext_attrs": 0,
+      "ext_per_1m_lines": 0.0,
+      "def_lines": 58,
+      "def_prop_lines": 9,
+      "def_prop_pct": 15.52,
+      "have_lines": 2052,
+      "have_per_1k_lines": 95.2,
+      "long50_count": 75,
+      "long50_pct_of_thms": 8.52,
+      "indeg_eq_1_pct": 64.79,
+      "indeg_le_1_pct": 70.42,
+      "indeg_median": 1,
+      "docstrings": 567,
+      "docstrings_per_1k_lines": 26.3,
+      "ai_mention_files": 0
+    },
+    {
+      "name": "Pure Human Research (3 repos)",
+      "category": "aggregate_pure_human",
+      "files": 259,
+      "lines": 85921,
+      "avg_lines_per_file": 331.7,
+      "import_mathlib_root_pct": 0.0,
+      "classes": 18,
+      "class_per_1m_lines": 209.5,
+      "structures": 47,
+      "instances": 58,
+      "inst_per_struct": 1.23,
+      "theorems": 4370,
+      "simp_attrs": 343,
+      "simp_pct_of_thms": 7.85,
+      "ext_attrs": 13,
+      "ext_per_1m_lines": 151.3,
+      "def_lines": 607,
+      "def_prop_lines": 45,
+      "def_prop_pct": 7.41,
+      "have_lines": 5045,
+      "have_per_1k_lines": 58.7,
+      "long50_count": 288,
+      "long50_pct_of_thms": 6.59,
+      "indeg_eq_1_pct": 55.21,
+      "indeg_le_1_pct": 64.86,
+      "indeg_median": 1,
+      "docstrings": 1581,
+      "docstrings_per_1k_lines": 18.4,
+      "ai_mention_files": 0
+    },
+    {
+      "name": "FLT",
+      "category": "human_curated_with_ai",
+      "files": 260,
+      "lines": 58042,
+      "avg_lines_per_file": 223.2,
+      "import_mathlib_root_pct": 0.77,
+      "classes": 29,
+      "class_per_1m_lines": 499.6,
+      "structures": 20,
+      "instances": 109,
+      "inst_per_struct": 5.45,
+      "theorems": 2138,
+      "simp_attrs": 360,
+      "simp_pct_of_thms": 16.84,
+      "ext_attrs": 14,
+      "ext_per_1m_lines": 241.2,
+      "def_lines": 647,
+      "def_prop_lines": 10,
+      "def_prop_pct": 1.55,
+      "have_lines": 3041,
+      "have_per_1k_lines": 52.4,
+      "long50_count": 119,
+      "long50_pct_of_thms": 5.57,
+      "indeg_eq_1_pct": 49.23,
+      "indeg_le_1_pct": 65.0,
+      "indeg_median": 1,
+      "docstrings": 1340,
+      "docstrings_per_1k_lines": 23.1,
+      "ai_mention_files": 26
+    },
+    {
+      "name": "Human-Curated Research (4 repos)",
+      "category": "aggregate_human_curated",
+      "files": 519,
+      "lines": 143963,
+      "avg_lines_per_file": 277.4,
+      "import_mathlib_root_pct": 0.39,
+      "classes": 47,
+      "class_per_1m_lines": 326.5,
+      "structures": 67,
+      "instances": 167,
+      "inst_per_struct": 2.49,
+      "theorems": 6508,
+      "simp_attrs": 703,
+      "simp_pct_of_thms": 10.8,
+      "ext_attrs": 27,
+      "ext_per_1m_lines": 187.5,
+      "def_lines": 1254,
+      "def_prop_lines": 55,
+      "def_prop_pct": 4.39,
+      "have_lines": 8086,
+      "have_per_1k_lines": 56.2,
+      "long50_count": 407,
+      "long50_pct_of_thms": 6.25,
+      "indeg_eq_1_pct": 52.22,
+      "indeg_le_1_pct": 64.93,
+      "indeg_median": 1,
+      "docstrings": 2921,
+      "docstrings_per_1k_lines": 20.3,
+      "ai_mention_files": 26
+    },
+    {
+      "name": "PNT+ Core (excl. IEANTN)",
+      "category": "analytic_nt_human",
+      "files": 107,
+      "lines": 51898,
+      "avg_lines_per_file": 485.0,
+      "import_mathlib_root_pct": 2.8,
+      "classes": 2,
+      "class_per_1m_lines": 38.5,
+      "structures": 6,
+      "instances": 6,
+      "inst_per_struct": 1.0,
+      "theorems": 1917,
+      "simp_attrs": 65,
+      "simp_pct_of_thms": 3.39,
+      "ext_attrs": 1,
+      "ext_per_1m_lines": 19.3,
+      "def_lines": 221,
+      "def_prop_lines": 45,
+      "def_prop_pct": 20.36,
+      "have_lines": 6133,
+      "have_per_1k_lines": 118.2,
+      "long50_count": 176,
+      "long50_pct_of_thms": 9.18,
+      "indeg_eq_1_pct": 49.53,
+      "indeg_le_1_pct": 71.03,
+      "indeg_median": 1,
+      "docstrings": 539,
+      "docstrings_per_1k_lines": 10.4,
+      "ai_mention_files": 9
+    },
+    {
+      "name": "PNT+/IEANTN (2026 AI PRs)",
+      "category": "ai_single_agent_prs",
+      "files": 126,
+      "lines": 120296,
+      "avg_lines_per_file": 954.7,
+      "import_mathlib_root_pct": 0.0,
+      "classes": 2,
+      "class_per_1m_lines": 16.6,
+      "structures": 11,
+      "instances": 0,
+      "inst_per_struct": 0.0,
+      "theorems": 6349,
+      "simp_attrs": 4,
+      "simp_pct_of_thms": 0.06,
+      "ext_attrs": 0,
+      "ext_per_1m_lines": 0.0,
+      "def_lines": 454,
+      "def_prop_lines": 40,
+      "def_prop_pct": 8.81,
+      "have_lines": 11171,
+      "have_per_1k_lines": 92.9,
+      "long50_count": 280,
+      "long50_pct_of_thms": 4.41,
+      "indeg_eq_1_pct": 65.08,
+      "indeg_le_1_pct": 73.81,
+      "indeg_median": 1,
+      "docstrings": 2351,
+      "docstrings_per_1k_lines": 19.5,
+      "ai_mention_files": 9
+    },
+    {
+      "name": "PrimeNumberTheoremAnd",
+      "category": "hybrid_total",
+      "files": 233,
+      "lines": 172194,
+      "avg_lines_per_file": 739.0,
+      "import_mathlib_root_pct": 1.29,
+      "classes": 4,
+      "class_per_1m_lines": 23.2,
+      "structures": 17,
+      "instances": 6,
+      "inst_per_struct": 0.35,
+      "theorems": 8266,
+      "simp_attrs": 69,
+      "simp_pct_of_thms": 0.83,
+      "ext_attrs": 1,
+      "ext_per_1m_lines": 5.8,
+      "def_lines": 675,
+      "def_prop_lines": 85,
+      "def_prop_pct": 12.59,
+      "have_lines": 17304,
+      "have_per_1k_lines": 100.5,
+      "long50_count": 456,
+      "long50_pct_of_thms": 5.52,
+      "indeg_eq_1_pct": 58.37,
+      "indeg_le_1_pct": 69.1,
+      "indeg_median": 1,
+      "docstrings": 2890,
+      "docstrings_per_1k_lines": 16.8,
+      "ai_mention_files": 18
+    },
+    {
+      "name": "Research Pooled (all 5 repos)",
+      "category": "aggregate_all_5",
+      "files": 752,
+      "lines": 316157,
+      "avg_lines_per_file": 420.4,
+      "import_mathlib_root_pct": 0.66,
+      "classes": 51,
+      "class_per_1m_lines": 161.3,
+      "structures": 84,
+      "instances": 173,
+      "inst_per_struct": 2.06,
+      "theorems": 14774,
+      "simp_attrs": 772,
+      "simp_pct_of_thms": 5.23,
+      "ext_attrs": 28,
+      "ext_per_1m_lines": 88.6,
+      "def_lines": 1929,
+      "def_prop_lines": 140,
+      "def_prop_pct": 7.26,
+      "have_lines": 25390,
+      "have_per_1k_lines": 80.3,
+      "long50_count": 863,
+      "long50_pct_of_thms": 5.84,
+      "indeg_eq_1_pct": 54.12,
+      "indeg_le_1_pct": 66.22,
+      "indeg_median": 1,
+      "docstrings": 5811,
+      "docstrings_per_1k_lines": 18.4
+    },
+    {
+      "name": "Alp\u00f6ge RH Live Cone (AI)",
+      "category": "ai_parallel_orchestrator",
+      "files": 147489,
+      "lines": 15218364,
+      "avg_lines_per_file": 103.2,
+      "import_mathlib_root_pct": 76.04,
+      "classes": 33,
+      "class_per_1m_lines": 2.2,
+      "structures": 6836,
+      "instances": 3915,
+      "inst_per_struct": 0.57,
+      "theorems": 722297,
+      "simp_attrs": 5973,
+      "simp_pct_of_thms": 0.83,
+      "ext_attrs": 104,
+      "ext_per_1m_lines": 6.8,
+      "def_lines": 175424,
+      "def_prop_lines": 65028,
+      "def_prop_pct": 37.07,
+      "have_lines": 1891600,
+      "have_per_1k_lines": 124.3,
+      "long50_count": 45941,
+      "long50_pct_of_thms": 6.36,
+      "indeg_eq_1_pct": 56.13,
+      "indeg_le_1_pct": 57.92,
+      "indeg_median": 1,
+      "docstrings": 0,
+      "docstrings_per_1k_lines": 0.0
+    }
+  ],
+  "human_baselines_raw": {
+    "Carleson": {
+      "stats": {
+        "files": 124,
+        "total_lines": 49511,
+        "blank_lines": 4867,
+        "comment_lines": 1965,
+        "def_lines": 346,
+        "docstrings": 753,
+        "simp_attrs": 120,
+        "have_lines": 2452,
+        "calc_lines": 629,
+        "ext_attrs": 1,
+        "def_prop_lines": 12
+      },
+      "decl_kinds": {
+        "lemma": 2202,
+        "def": 346,
+        "instance": 22,
+        "theorem": 378,
+        "structure": 12,
+        "class": 15,
+        "abbrev": 9
+      },
+      "file_decl_buckets": {
+        "21+": 44,
+        "2-5": 28,
+        "6-20": 41,
+        "1": 10,
+        "0": 1
+      },
+      "proof_len_buckets": {
+        "1-5": 754,
+        "6-20": 1267,
+        "21-50": 367,
+        "51-150": 185,
+        "151-500": 7
+      },
+      "indeg_all": {
+        "count": 124,
+        "buckets": {
+          "2": 33,
+          "1": 61,
+          "3-5": 18,
+          "6-20": 2,
+          "0": 10
+        },
+        "pct_eq_1": 49.19,
+        "pct_le_1": 57.26,
+        "pct_le_2": 83.87,
+        "median": 1,
+        "p90": 3,
+        "p99": 6,
+        "mean": 1.66,
+        "max": 6
+      },
+      "indeg_non_stmt": {
+        "count": 124,
+        "buckets": {
+          "2": 33,
+          "1": 61,
+          "3-5": 18,
+          "6-20": 2,
+          "0": 10
+        },
+        "pct_eq_1": 49.19,
+        "pct_le_1": 57.26,
+        "pct_le_2": 83.87,
+        "median": 1,
+        "p90": 3,
+        "p99": 6,
+        "mean": 1.66,
+        "max": 6
+      },
+      "lines_breakdown": {
+        "total": 49511,
+        "stmt_or_glue_files": 0,
+        "non_stmt_with_dump_strict": 0,
+        "non_stmt_clean_strict": 49511
+      },
+      "dup_exact_name_total_extra": 76,
+      "top_dup_exact_names": [
+        [
+          "indicator",
+          6
+        ],
+        [
+          "const",
+          4
+        ],
+        [
+          "aestronglyMeasurable",
+          3
+        ],
+        [
+          "zero",
+          3
+        ],
+        [
+          "seven_le_c",
+          2
+        ],
+        [
+          "c_le_100",
+          2
+        ],
+        [
+          "nonempty",
+          2
+        ],
+        [
+          "induction",
+          2
+        ],
+        [
+          "restrict",
+          2
+        ],
+        [
+          "memLp",
+          2
+        ],
+        [
+          "integrable",
+          2
+        ],
+        [
+          "norm",
+          2
+        ],
+        [
+          "neg",
+          2
+        ],
+        [
+          "add",
+          2
+        ],
+        [
+          "sub",
+          2
+        ],
+        [
+          "mono",
+          2
+        ],
+        [
+          "oo_eq_empty",
+          2
+        ],
+        [
+          "oc_eq_empty",
+          2
+        ],
+        [
+          "co_eq_empty",
+          2
+        ],
+        [
+          "cc_eq_empty",
+          2
+        ]
+      ],
+      "multi_stem_groups_ge3": 25,
+      "multi_stem_total_decls_ge3": 97,
+      "top_stems": [
+        [
+          "calculation",
+          17
+        ],
+        [
+          "indicator",
+          6
+        ],
+        [
+          "ordConnected_C",
+          6
+        ],
+        [
+          "lintegral_rearrangement_eq",
+          4
+        ],
+        [
+          "holder_correlation_tree",
+          4
+        ],
+        [
+          "const_n_prop",
+          3
+        ],
+        [
+          "aux_8_0",
+          3
+        ],
+        [
+          "induction",
+          3
+        ],
+        [
+          "aestronglyMeasurable",
+          3
+        ],
+        [
+          "eLpNorm_const_smul",
+          3
+        ],
+        [
+          "power_aux",
+          3
+        ],
+        [
+          "\u03b6_pos_iff",
+          3
+        ],
+        [
+          "\u03b6_neg_iff",
+          3
+        ],
+        [
+          "eLorentzNorm_add_le",
+          3
+        ],
+        [
+          "czOperator_aestronglyMeasurable",
+          3
+        ],
+        [
+          "estimate_10_1",
+          3
+        ],
+        [
+          "maximal_theorem",
+          3
+        ],
+        [
+          "depth_bound",
+          3
+        ],
+        [
+          "antichain_L",
+          3
+        ],
+        [
+          "john_nirenberg",
+          3
+        ]
+      ]
+    },
+    "SphereEversion": {
+      "stats": {
+        "files": 64,
+        "total_lines": 14861,
+        "blank_lines": 2533,
+        "comment_lines": 814,
+        "have_lines": 541,
+        "calc_lines": 7,
+        "docstrings": 261,
+        "def_lines": 203,
+        "simp_attrs": 155,
+        "ext_attrs": 12,
+        "def_prop_lines": 24
+      },
+      "decl_kinds": {
+        "inductive": 1,
+        "theorem": 896,
+        "def": 203,
+        "structure": 30,
+        "instance": 13,
+        "lemma": 14,
+        "abbrev": 4
+      },
+      "file_decl_buckets": {
+        "6-20": 21,
+        "2-5": 12,
+        "0": 1,
+        "21+": 22,
+        "1": 8
+      },
+      "proof_len_buckets": {
+        "21-50": 106,
+        "51-150": 19,
+        "6-20": 408,
+        "1-5": 375,
+        "151-500": 2
+      },
+      "indeg_all": {
+        "count": 64,
+        "buckets": {
+          "1": 36,
+          "0": 11,
+          "3-5": 5,
+          "2": 12
+        },
+        "pct_eq_1": 56.25,
+        "pct_le_1": 73.44,
+        "pct_le_2": 92.19,
+        "median": 1,
+        "p90": 2,
+        "p99": 5,
+        "mean": 1.22,
+        "max": 5
+      },
+      "indeg_non_stmt": {
+        "count": 64,
+        "buckets": {
+          "1": 36,
+          "0": 11,
+          "3-5": 5,
+          "2": 12
+        },
+        "pct_eq_1": 56.25,
+        "pct_le_1": 73.44,
+        "pct_le_2": 92.19,
+        "median": 1,
+        "p90": 2,
+        "p99": 5,
+        "mean": 1.22,
+        "max": 5
+      },
+      "lines_breakdown": {
+        "total": 14861,
+        "stmt_or_glue_files": 0,
+        "non_stmt_with_dump_strict": 0,
+        "non_stmt_clean_strict": 14861
+      },
+      "dup_exact_name_total_extra": 24,
+      "top_dup_exact_names": [
+        [
+          "coe_mk",
+          6
+        ],
+        [
+          "one",
+          3
+        ],
+        [
+          "coe_apply",
+          3
+        ],
+        [
+          "bs_eq",
+          3
+        ],
+        [
+          "eqv",
+          2
+        ],
+        [
+          "ext",
+          2
+        ],
+        [
+          "IsHolonomicAt.congr",
+          2
+        ],
+        [
+          "mem_slice",
+          2
+        ],
+        [
+          "FormalSol.eq_iff",
+          2
+        ],
+        [
+          "continuous",
+          2
+        ],
+        [
+          "mono",
+          2
+        ],
+        [
+          "fst_eq",
+          2
+        ],
+        [
+          "snd_eq",
+          2
+        ],
+        [
+          "is_sec",
+          2
+        ],
+        [
+          "contMDiff",
+          2
+        ],
+        [
+          "contMDiff_bs",
+          2
+        ],
+        [
+          "is_sol",
+          2
+        ]
+      ],
+      "multi_stem_groups_ge3": 4,
+      "multi_stem_total_decls_ge3": 16,
+      "top_stems": [
+        [
+          "coe_mk",
+          7
+        ],
+        [
+          "contDiff_parametric_primitive_of_contDiff",
+          3
+        ],
+        [
+          "coe_apply",
+          3
+        ],
+        [
+          "exist_loops",
+          3
+        ]
+      ]
+    },
+    "PFR": {
+      "stats": {
+        "files": 71,
+        "total_lines": 21549,
+        "blank_lines": 1959,
+        "comment_lines": 761,
+        "docstrings": 567,
+        "have_lines": 2052,
+        "def_lines": 58,
+        "def_prop_lines": 9,
+        "calc_lines": 130,
+        "simp_attrs": 68
+      },
+      "decl_kinds": {
+        "theorem": 67,
+        "def": 60,
+        "lemma": 813,
+        "structure": 5,
+        "abbrev": 8,
+        "class": 3,
+        "inductive": 2,
+        "instance": 23
+      },
+      "file_decl_buckets": {
+        "2-5": 17,
+        "21+": 16,
+        "6-20": 20,
+        "0": 7,
+        "1": 11
+      },
+      "proof_len_buckets": {
+        "6-20": 498,
+        "1-5": 127,
+        "21-50": 180,
+        "51-150": 66,
+        "151-500": 9
+      },
+      "indeg_all": {
+        "count": 71,
+        "buckets": {
+          "1": 46,
+          "2": 17,
+          "0": 4,
+          "3-5": 4
+        },
+        "pct_eq_1": 64.79,
+        "pct_le_1": 70.42,
+        "pct_le_2": 94.37,
+        "median": 1,
+        "p90": 2,
+        "p99": 5,
+        "mean": 1.35,
+        "max": 5
+      },
+      "indeg_non_stmt": {
+        "count": 71,
+        "buckets": {
+          "1": 46,
+          "2": 17,
+          "0": 4,
+          "3-5": 4
+        },
+        "pct_eq_1": 64.79,
+        "pct_le_1": 70.42,
+        "pct_le_2": 94.37,
+        "median": 1,
+        "p90": 2,
+        "p99": 5,
+        "mean": 1.35,
+        "max": 5
+      },
+      "lines_breakdown": {
+        "total": 21549,
+        "stmt_or_glue_files": 0,
+        "non_stmt_with_dump_strict": 0,
+        "non_stmt_clean_strict": 21549
+      },
+      "dup_exact_name_total_extra": 19,
+      "top_dup_exact_names": [
+        [
+          "iIndepFun.finsets",
+          2
+        ],
+        [
+          "iIndepFun.blocks",
+          2
+        ],
+        [
+          "entropy_inv",
+          2
+        ],
+        [
+          "entropy_div_comm",
+          2
+        ],
+        [
+          "max_entropy_sub_mutualInfo_le_entropy_mul",
+          2
+        ],
+        [
+          "max_entropy_sub_mutualInfo_le_entropy_div",
+          2
+        ],
+        [
+          "entropy_zero_measure",
+          2
+        ],
+        [
+          "entropy_congr",
+          2
+        ],
+        [
+          "entropy_nonneg",
+          2
+        ],
+        [
+          "entropy_le_log_card",
+          2
+        ],
+        [
+          "chain_rule'",
+          2
+        ],
+        [
+          "chain_rule",
+          2
+        ],
+        [
+          "mutualInfo_def",
+          2
+        ],
+        [
+          "mutualInfo_nonneg",
+          2
+        ],
+        [
+          "entropy_triple_add_entropy_le",
+          2
+        ],
+        [
+          "rdist_symm",
+          2
+        ],
+        [
+          "rdist_nonneg",
+          2
+        ],
+        [
+          "ent_of_diff_le",
+          2
+        ],
+        [
+          "rdist_triangle",
+          2
+        ]
+      ],
+      "multi_stem_groups_ge3": 17,
+      "multi_stem_total_decls_ge3": 62,
+      "top_stems": [
+        [
+          "independenceCondition",
+          6
+        ],
+        [
+          "gen_ineq",
+          5
+        ],
+        [
+          "chain_rule",
+          5
+        ],
+        [
+          "rhoMinus_continuous",
+          4
+        ],
+        [
+          "diff_rdist_le",
+          4
+        ],
+        [
+          "rdist_triangle",
+          4
+        ],
+        [
+          "condRuzsaDist_diff_le",
+          4
+        ],
+        [
+          "tau_strictly_decreases",
+          3
+        ],
+        [
+          "new_gen_ineq",
+          3
+        ],
+        [
+          "better_PFR_conjecture",
+          3
+        ],
+        [
+          "mutual_information_le_t",
+          3
+        ],
+        [
+          "max_entropy_sub_mutualInfo_le_entropy_mul",
+          3
+        ],
+        [
+          "mutualInfo_nonneg",
+          3
+        ],
+        [
+          "entropy_triple_add_entropy_le",
+          3
+        ],
+        [
+          "diff_ent_le_rdist",
+          3
+        ],
+        [
+          "Measure.compProd_compProd",
+          3
+        ],
+        [
+          "entropy_compProd",
+          3
+        ]
+      ]
+    },
+    "FLT": {
+      "stats": {
+        "files": 260,
+        "total_lines": 58042,
+        "comment_lines": 3046,
+        "blank_lines": 8310,
+        "docstrings": 1340,
+        "def_lines": 647,
+        "def_prop_lines": 10,
+        "have_lines": 3041,
+        "simp_attrs": 360,
+        "ext_attrs": 14,
+        "calc_lines": 152,
+        "import_mathlib_root": 2
+      },
+      "decl_kinds": {
+        "def": 647,
+        "theorem": 763,
+        "abbrev": 101,
+        "instance": 109,
+        "lemma": 1375,
+        "class": 29,
+        "structure": 20,
+        "axiom": 3
+      },
+      "file_decl_buckets": {
+        "6-20": 85,
+        "21+": 45,
+        "1": 54,
+        "2-5": 59,
+        "0": 17
+      },
+      "proof_len_buckets": {
+        "1-5": 420,
+        "6-20": 1163,
+        "21-50": 436,
+        "51-150": 113,
+        "151-500": 6
+      },
+      "indeg_all": {
+        "count": 260,
+        "buckets": {
+          "0": 41,
+          "1": 128,
+          "3-5": 35,
+          "2": 51,
+          "6-20": 5
+        },
+        "pct_eq_1": 49.23,
+        "pct_le_1": 65.0,
+        "pct_le_2": 84.62,
+        "median": 1,
+        "p90": 3,
+        "p99": 7,
+        "mean": 1.53,
+        "max": 8
+      },
+      "indeg_non_stmt": {
+        "count": 260,
+        "buckets": {
+          "0": 41,
+          "1": 128,
+          "3-5": 35,
+          "2": 51,
+          "6-20": 5
+        },
+        "pct_eq_1": 49.23,
+        "pct_le_1": 65.0,
+        "pct_le_2": 84.62,
+        "median": 1,
+        "p90": 3,
+        "p99": 7,
+        "mean": 1.53,
+        "max": 8
+      },
+      "lines_breakdown": {
+        "total": 58042,
+        "stmt_or_glue_files": 0,
+        "non_stmt_with_dump_strict": 0,
+        "non_stmt_clean_strict": 58042
+      },
+      "dup_exact_name_total_extra": 27,
+      "top_dup_exact_names": [
+        [
+          "ext",
+          4
+        ],
+        [
+          "prop",
+          3
+        ],
+        [
+          "mapSemialgHom_apply",
+          2
+        ],
+        [
+          "HeightOneSpectrum.nonempty",
+          2
+        ],
+        [
+          "valuation_algebraMap_lt_one",
+          2
+        ],
+        [
+          "lift_of",
+          2
+        ],
+        [
+          "linearEquiv_symm_apply",
+          2
+        ],
+        [
+          "coe_add",
+          2
+        ],
+        [
+          "coe_smul",
+          2
+        ],
+        [
+          "isIrreducible_iff_forall",
+          2
+        ],
+        [
+          "smul_tmul_mem_range_iff",
+          2
+        ],
+        [
+          "exists_smul_eq_of_commute",
+          2
+        ],
+        [
+          "adjoinRange_eq_top",
+          2
+        ],
+        [
+          "adjoinRange_baseChange_eq_top",
+          2
+        ],
+        [
+          "isIrreducible_of_adjoinRange_eq_top",
+          2
+        ],
+        [
+          "isIrreducible_of_baseChange",
+          2
+        ],
+        [
+          "isIrreducible_baseChange_of_finrank_eigenspace_eq_one",
+          2
+        ],
+        [
+          "isIrreducible_iff_isAbsolutelyIrreducible",
+          2
+        ],
+        [
+          "baseChange_bijective",
+          2
+        ],
+        [
+          "canonicalForm",
+          2
+        ]
+      ],
+      "multi_stem_groups_ge3": 3,
+      "multi_stem_total_decls_ge3": 11,
+      "top_stems": [
+        [
+          "three_transitive",
+          4
+        ],
+        [
+          "rootDiscrBound_strictMono",
+          4
+        ],
+        [
+          "factorization_60",
+          3
+        ]
+      ]
+    },
+    "PrimeNumberTheoremAnd": {
+      "stats": {
+        "files": 233,
+        "total_lines": 172194,
+        "blank_lines": 12269,
+        "comment_lines": 4628,
+        "def_lines": 675,
+        "calc_lines": 1170,
+        "have_lines": 17304,
+        "def_prop_lines": 85,
+        "simp_attrs": 69,
+        "docstrings": 2890,
+        "ext_attrs": 1,
+        "import_mathlib_root": 3
+      },
+      "decl_kinds": {
+        "def": 676,
+        "lemma": 4243,
+        "theorem": 4023,
+        "instance": 6,
+        "abbrev": 43,
+        "structure": 17,
+        "class": 4
+      },
+      "file_decl_buckets": {
+        "21+": 81,
+        "2-5": 48,
+        "6-20": 74,
+        "0": 7,
+        "1": 23
+      },
+      "proof_len_buckets": {
+        "1-5": 1654,
+        "6-20": 5066,
+        "21-50": 1090,
+        "51-150": 399,
+        "151-500": 52,
+        "500+": 5
+      },
+      "indeg_all": {
+        "count": 233,
+        "buckets": {
+          "3-5": 27,
+          "6-20": 11,
+          "1": 136,
+          "2": 34,
+          "0": 25
+        },
+        "pct_eq_1": 58.37,
+        "pct_le_1": 69.1,
+        "pct_le_2": 83.69,
+        "median": 1,
+        "p90": 4,
+        "p99": 13,
+        "mean": 1.79,
+        "max": 17
+      },
+      "indeg_non_stmt": {
+        "count": 233,
+        "buckets": {
+          "3-5": 27,
+          "6-20": 11,
+          "1": 136,
+          "2": 34,
+          "0": 25
+        },
+        "pct_eq_1": 58.37,
+        "pct_le_1": 69.1,
+        "pct_le_2": 83.69,
+        "median": 1,
+        "p90": 4,
+        "p99": 13,
+        "mean": 1.79,
+        "max": 17
+      },
+      "lines_breakdown": {
+        "total": 172194,
+        "stmt_or_glue_files": 0,
+        "non_stmt_with_dump_strict": 0,
+        "non_stmt_clean_strict": 172194
+      },
+      "dup_exact_name_total_extra": 121,
+      "top_dup_exact_names": [
+        [
+          "logx1_lt_44",
+          13
+        ],
+        [
+          "has_prime_in_interval",
+          12
+        ],
+        [
+          "a1_large_le_two",
+          12
+        ],
+        [
+          "p_n_lower",
+          5
+        ],
+        [
+          "theorem_a",
+          4
+        ],
+        [
+          "theorem_b",
+          4
+        ],
+        [
+          "theorem_c",
+          3
+        ],
+        [
+          "theorem_d",
+          3
+        ],
+        [
+          "psi_bound",
+          3
+        ],
+        [
+          "p_n_upper",
+          3
+        ],
+        [
+          "floor_row1",
+          3
+        ],
+        [
+          "summable_vonMangoldt_div_rpow",
+          2
+        ],
+        [
+          "continuous",
+          2
+        ],
+        [
+          "hasDerivAt",
+          2
+        ],
+        [
+          "differentiable",
+          2
+        ],
+        [
+          "horizontalPath_not_eventuallyConst",
+          2
+        ],
+        [
+          "tendsto_mul_self_of_sub_principal_isBigO_one",
+          2
+        ],
+        [
+          "meromorphicOrderAt_nonneg_of_isBigO_one",
+          2
+        ],
+        [
+          "meromorphicOrderAt_eq_neg_one_of_sub_principal_isBigO_one",
+          2
+        ],
+        [
+          "selbergBoundingSum_ge_sum_div",
+          2
+        ]
+      ],
+      "multi_stem_groups_ge3": 85,
+      "multi_stem_total_decls_ge3": 1107,
+      "top_stems": [
+        [
+          "table_10_next_cert",
+          285
+        ],
+        [
+          "table_11_suffix_from",
+          261
+        ],
+        [
+          "table_8_mem",
+          96
+        ],
+        [
+          "floor_row",
+          22
+        ],
+        [
+          "floor_trusted_row",
+          16
+        ],
+        [
+          "has_prime_in_interval",
+          15
+        ],
+        [
+          "mid_row",
+          14
+        ],
+        [
+          "logx1_lt",
+          13
+        ],
+        [
+          "sliver_row",
+          12
+        ],
+        [
+          "a1_large_le_two",
+          12
+        ],
+        [
+          "corollary_24_row",
+          11
+        ],
+        [
+          "band_row",
+          11
+        ],
+        [
+          "floor_slab_check_row",
+          10
+        ],
+        [
+          "corollary",
+          10
+        ],
+        [
+          "log_ineq",
+          9
+        ],
+        [
+          "tail_row",
+          9
+        ],
+        [
+          "slabs_checked",
+          9
+        ],
+        [
+          "corollary_23_row",
+          9
+        ],
+        [
+          "eval_rhsE",
+          8
+        ],
+        [
+          "floor_buthe",
+          8
+        ]
+      ]
+    },
+    "PNT+ Core (excl. IEANTN)": {
+      "stats": {
+        "files": 107,
+        "total_lines": 51898,
+        "blank_lines": 4438,
+        "comment_lines": 1521,
+        "def_lines": 221,
+        "calc_lines": 371,
+        "have_lines": 6133,
+        "def_prop_lines": 45,
+        "simp_attrs": 65,
+        "docstrings": 539,
+        "ext_attrs": 1,
+        "import_mathlib_root": 3
+      },
+      "decl_kinds": {
+        "def": 222,
+        "lemma": 1184,
+        "theorem": 733,
+        "instance": 6,
+        "abbrev": 21,
+        "structure": 6,
+        "class": 2
+      },
+      "file_decl_buckets": {
+        "21+": 28,
+        "2-5": 24,
+        "6-20": 35,
+        "0": 4,
+        "1": 16
+      },
+      "proof_len_buckets": {
+        "1-5": 316,
+        "6-20": 973,
+        "21-50": 452,
+        "51-150": 148,
+        "151-500": 27,
+        "500+": 1
+      },
+      "indeg_all": {
+        "count": 107,
+        "buckets": {
+          "2": 17,
+          "1": 53,
+          "0": 23,
+          "3-5": 14
+        },
+        "pct_eq_1": 49.53,
+        "pct_le_1": 71.03,
+        "pct_le_2": 86.92,
+        "median": 1,
+        "p90": 3,
+        "p99": 4,
+        "mean": 1.26,
+        "max": 4
+      },
+      "indeg_non_stmt": {
+        "count": 107,
+        "buckets": {
+          "2": 17,
+          "1": 53,
+          "0": 23,
+          "3-5": 14
+        },
+        "pct_eq_1": 49.53,
+        "pct_le_1": 71.03,
+        "pct_le_2": 86.92,
+        "median": 1,
+        "p90": 3,
+        "p99": 4,
+        "mean": 1.26,
+        "max": 4
+      },
+      "lines_breakdown": {
+        "total": 51898,
+        "stmt_or_glue_files": 0,
+        "non_stmt_with_dump_strict": 0,
+        "non_stmt_clean_strict": 51898
+      },
+      "dup_exact_name_total_extra": 14,
+      "top_dup_exact_names": [
+        [
+          "continuous",
+          2
+        ],
+        [
+          "hasDerivAt",
+          2
+        ],
+        [
+          "differentiable",
+          2
+        ],
+        [
+          "selbergBoundingSum_ge_sum_div",
+          2
+        ],
+        [
+          "hardy_sigma_delayed_eq",
+          2
+        ],
+        [
+          "hardy_sigma_delayed_tendsto",
+          2
+        ],
+        [
+          "hardy_sigma_delayed_sub_s_eq",
+          2
+        ],
+        [
+          "hardy_sigma_delayed_bound",
+          2
+        ],
+        [
+          "k_n_properties",
+          2
+        ],
+        [
+          "hardy_diff_bound",
+          2
+        ],
+        [
+          "tendsto_of_approx_aux",
+          2
+        ],
+        [
+          "hardy_k_ratio_bounded",
+          2
+        ],
+        [
+          "hardy_tauberian",
+          2
+        ],
+        [
+          "hardy_tauberian_theorem",
+          2
+        ]
+      ],
+      "multi_stem_groups_ge3": 26,
+      "multi_stem_total_decls_ge3": 100,
+      "top_stems": [
+        [
+          "log_ineq",
+          9
+        ],
+        [
+          "DerivUpperBnd",
+          7
+        ],
+        [
+          "hasDerivAt_log_ineq",
+          5
+        ],
+        [
+          "ZetaSum_aux1",
+          5
+        ],
+        [
+          "UpperBnd",
+          5
+        ],
+        [
+          "DerivUpperBnd_aux7",
+          5
+        ],
+        [
+          "ZetaLowerBound3",
+          5
+        ],
+        [
+          "nnabla_bound",
+          4
+        ],
+        [
+          "comp_exp_support",
+          4
+        ],
+        [
+          "first_fourier",
+          3
+        ],
+        [
+          "prelim_decay",
+          3
+        ],
+        [
+          "summation_by_parts",
+          3
+        ],
+        [
+          "limiting_fourier_lim",
+          3
+        ],
+        [
+          "bound_sum_log",
+          3
+        ],
+        [
+          "wiener_ikehara_smooth",
+          3
+        ],
+        [
+          "WeakPNT",
+          3
+        ],
+        [
+          "logDerivResidue",
+          3
+        ],
+        [
+          "ZetaSum",
+          3
+        ],
+        [
+          "ZetaLowerBound",
+          3
+        ],
+        [
+          "ZetaInvBnd",
+          3
+        ]
+      ]
+    },
+    "PNT+/IEANTN (2026 AI PRs)": {
+      "stats": {
+        "files": 126,
+        "total_lines": 120296,
+        "blank_lines": 7831,
+        "comment_lines": 3107,
+        "docstrings": 2351,
+        "have_lines": 11171,
+        "calc_lines": 799,
+        "def_lines": 454,
+        "def_prop_lines": 40,
+        "simp_attrs": 4
+      },
+      "decl_kinds": {
+        "theorem": 3290,
+        "def": 454,
+        "lemma": 3059,
+        "class": 2,
+        "abbrev": 22,
+        "structure": 11
+      },
+      "file_decl_buckets": {
+        "6-20": 39,
+        "2-5": 24,
+        "0": 3,
+        "1": 7,
+        "21+": 53
+      },
+      "proof_len_buckets": {
+        "1-5": 1338,
+        "6-20": 4093,
+        "21-50": 638,
+        "51-150": 251,
+        "151-500": 25,
+        "500+": 4
+      },
+      "indeg_all": {
+        "count": 126,
+        "buckets": {
+          "1": 82,
+          "6-20": 8,
+          "3-5": 10,
+          "0": 11,
+          "2": 15
+        },
+        "pct_eq_1": 65.08,
+        "pct_le_1": 73.81,
+        "pct_le_2": 85.71,
+        "median": 1,
+        "p90": 4,
+        "p99": 15,
+        "mean": 1.87,
+        "max": 17
+      },
+      "indeg_non_stmt": {
+        "count": 126,
+        "buckets": {
+          "1": 82,
+          "6-20": 8,
+          "3-5": 10,
+          "0": 11,
+          "2": 15
+        },
+        "pct_eq_1": 65.08,
+        "pct_le_1": 73.81,
+        "pct_le_2": 85.71,
+        "median": 1,
+        "p90": 4,
+        "p99": 15,
+        "mean": 1.87,
+        "max": 17
+      },
+      "lines_breakdown": {
+        "total": 120296,
+        "stmt_or_glue_files": 0,
+        "non_stmt_with_dump_strict": 0,
+        "non_stmt_clean_strict": 120296
+      },
+      "dup_exact_name_total_extra": 102,
+      "top_dup_exact_names": [
+        [
+          "logx1_lt_44",
+          13
+        ],
+        [
+          "has_prime_in_interval",
+          12
+        ],
+        [
+          "a1_large_le_two",
+          12
+        ],
+        [
+          "p_n_lower",
+          5
+        ],
+        [
+          "theorem_a",
+          4
+        ],
+        [
+          "theorem_b",
+          4
+        ],
+        [
+          "theorem_c",
+          3
+        ],
+        [
+          "theorem_d",
+          3
+        ],
+        [
+          "psi_bound",
+          3
+        ],
+        [
+          "p_n_upper",
+          3
+        ],
+        [
+          "floor_row1",
+          3
+        ],
+        [
+          "mid_row9",
+          2
+        ],
+        [
+          "floor_row9",
+          2
+        ],
+        [
+          "floor_trusted_row9",
+          2
+        ],
+        [
+          "sliver_row9",
+          2
+        ],
+        [
+          "floor_trusted_row5",
+          2
+        ],
+        [
+          "band_row5",
+          2
+        ],
+        [
+          "floor_row2",
+          2
+        ],
+        [
+          "pv_exp_div_eq_gamma_add_log_add_integral",
+          2
+        ],
+        [
+          "floor_row3",
+          2
+        ]
+      ],
+      "multi_stem_groups_ge3": 59,
+      "multi_stem_total_decls_ge3": 1007,
+      "top_stems": [
+        [
+          "table_10_next_cert",
+          285
+        ],
+        [
+          "table_11_suffix_from",
+          261
+        ],
+        [
+          "table_8_mem",
+          96
+        ],
+        [
+          "floor_row",
+          22
+        ],
+        [
+          "floor_trusted_row",
+          16
+        ],
+        [
+          "has_prime_in_interval",
+          15
+        ],
+        [
+          "mid_row",
+          14
+        ],
+        [
+          "logx1_lt",
+          13
+        ],
+        [
+          "sliver_row",
+          12
+        ],
+        [
+          "a1_large_le_two",
+          12
+        ],
+        [
+          "corollary_24_row",
+          11
+        ],
+        [
+          "band_row",
+          11
+        ],
+        [
+          "floor_slab_check_row",
+          10
+        ],
+        [
+          "corollary",
+          10
+        ],
+        [
+          "tail_row",
+          9
+        ],
+        [
+          "slabs_checked",
+          9
+        ],
+        [
+          "corollary_23_row",
+          9
+        ],
+        [
+          "eval_rhsE",
+          8
+        ],
+        [
+          "floor_buthe",
+          8
+        ],
+        [
+          "prop_3_sub",
+          8
+        ]
+      ]
+    }
+  }
+}
